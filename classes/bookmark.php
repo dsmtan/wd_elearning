@@ -30,4 +30,18 @@ class Bookmark extends Dbh
             echo $ex;
         }
     }
+
+    public function getBookmarks($userID)
+    {
+        try {
+            $db = $this->connectDB();
+            $q = $db->prepare('SELECT * FROM bookmark WHERE userID= :userID');
+            $q->bindValue(':userID', $userID);
+            $q->execute();
+            $data = $q->fetchAll();
+            print_r($data);
+        } catch (PDOException $ex) {
+            echo $ex;
+        }
+    }
 }

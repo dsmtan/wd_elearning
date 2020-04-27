@@ -15,7 +15,7 @@ class User extends Dbh
             $q->bindValue(':password', $password);
             $q->execute();
             echo 'New userID: ' . $db->lastInsertId();
-            // FIX ME: create moduleprogress and segmentprogress for each module/segment
+            // FIX ME: create moduleprogress and segmentprogress for each module/segment when user is created
         } catch (PDOException $ex) {
             echo $ex;
         }
@@ -69,11 +69,12 @@ class User extends Dbh
             $db = $this->connectDB();
             $q = $db->prepare('SELECT * FROM user');
             $q->execute();
-            // $data = $q->fetchAll(); // returns array
-            while ($row = $q->fetch()) {
-                echo "<p>$row->firstName </p>";
-                echo json_encode($row);
-            }
+            $data = $q->fetchAll(); // returns array
+            print_r($data);
+            // while ($row = $q->fetch()) {
+            //     echo "<p>$row->firstName </p>";
+            //     echo json_encode($row);
+            // }
         } catch (PDOException $ex) {
             echo $ex;
         }

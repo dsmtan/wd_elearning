@@ -3,6 +3,22 @@ require_once('db.php');
 
 class UserProgress extends Dbh
 {
+
+    public function getModuleProgress($userID, $moduleID)
+    {
+        try {
+            $db = $this->connectDB();
+            $q = $db->prepare('SELECT * FROM moduleprogress WHERE userID= :userID AND moduleID= :moduleID');
+            $q->bindValue(':userID', $userID);
+            $q->bindValue(':moduleID', $moduleID);
+            $q->execute();
+            $data = $q->fetch();
+            echo json_encode($data);
+        } catch (PDOException $ex) {
+            echo $ex;
+        }
+    }
+
     public function createModuleProgress($userID, $moduleID) // called when user is created
     {
         try {
@@ -48,6 +64,21 @@ class UserProgress extends Dbh
         }
     }
 
+    public function getSegmentProgress($userID, $segmentID)
+    {
+        try {
+            $db = $this->connectDB();
+            $q = $db->prepare('SELECT * FROM segmentprogress WHERE userID= :userID AND segmentID= :segmentID');
+            $q->bindValue(':userID', $userID);
+            $q->bindValue(':segmentID', $segmentID);
+            $q->execute();
+            $data = $q->fetch();
+            echo json_encode($data);
+        } catch (PDOException $ex) {
+            echo $ex;
+        }
+    }
+
     public function createSegmentProgress($userID, $segmentID) // called when user is created
     {
         try {
@@ -76,34 +107,84 @@ class UserProgress extends Dbh
         }
     }
 
+    public function getTestResult($userID, $testID)
+    {
+        try {
+            $db = $this->connectDB();
+            $q = $db->prepare('SELECT * FROM usertestresult WHERE userID= :userID AND testID= :testID');
+            $q->bindValue(':userID', $userID);
+            $q->bindValue(':testID', $testID);
+            $q->execute();
+            $data = $q->fetch();
+            echo 'Test score is: ' . $data->testScore;
+        } catch (PDOException $ex) {
+            echo $ex;
+        }
+    }
+
     public function addTestResult($userID, $testID, $testScore) // when test is submitted and all questions answered
     {
         try {
             $db = $this->connectDB();
-            $q = $db->prepare('INSERT INTO usertestresult VALUES(:userID, :testID, :testScore)');
+            $q = $db->prepare('INSERT INTO usertestresult VALUES(:userID, :testID, :testScore) ON DUPLICATE KEY UPDATE testScore= :testScore');
             $q->bindValue(':userID', $userID);
             $q->bindValue(':testID', $testID);
             $q->bindValue(':testScore', $testScore);
             $q->execute();
             echo 'Module test finished. Rows: ' . $q->rowCount();
             // FIX ME: create trigger when testScore > 80 module is completed
-            // FIX ME: add update function in case user has already done (and failed) test before
         } catch (PDOException $ex) {
             echo $ex;
         }
     }
 
+
+    public function calculateTestScore($userID, $testID)
+    {
+        try {
+            $db = $this->connectDB();
+            $q = $db->prepare('SELECT usertestanswer.questionID, usertestanswer.correct FROM usertestanswer
+            JOIN testquestion
+            ON usertestanswer.questionID = testquestion.questionID AND testquestion.testID = :testID
+            WHERE usertestanswer.userID = :userID AND usertestanswer.correct = 1');
+            $q->bindValue(':userID', $userID);
+            $q->bindValue(':testID', $testID);
+            $q->execute();
+            $data = $q->fetchAll();
+            $testScore = (count($data) * 20);
+            echo 'Test score is: ' .  $testScore . '/100';
+        } catch (PDOException $ex) {
+            echo $ex;
+        }
+    }
+
+
+    public function getTestAnswer($userID, $questionID)
+    {
+        try {
+            $db = $this->connectDB();
+            $q = $db->prepare('SELECT * FROM usertestanswer WHERE userID= :userID AND questionID= :questionID');
+            $q->bindValue(':userID', $userID);
+            $q->bindValue(':questionID', $questionID);
+            $q->execute();
+            $data = $q->fetch();
+            echo 'User answered correct: ' . ($data->correct > 0 ? "true" : "false");
+        } catch (PDOException $ex) {
+            echo $ex;
+        }
+    }
+
+
     public function addTestAnswer($userID, $questionID, $answeredCorrect) // when user submits answer
     {
         try {
             $db = $this->connectDB();
-            $q = $db->prepare('INSERT INTO usertestanswer VALUES(:userID, :questionID, :correct)');
+            $q = $db->prepare('INSERT INTO usertestanswer VALUES(:userID, :questionID, :correct) ON DUPLICATE KEY UPDATE correct= :correct');
             $q->bindValue(':userID', $userID);
             $q->bindValue(':questionID', $questionID);
             $q->bindValue(':correct', $answeredCorrect); // boolean
             $q->execute();
             echo 'TestAnswer saved. Rows: ' . $q->rowCount();
-            // FIX ME: add update function in case user has already done (and failed) question before
             // REMINDER: answeredCorrect = true then add points to testTotal in frontend
         } catch (PDOException $ex) {
             echo $ex;
