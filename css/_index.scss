@@ -1,0 +1,9 @@
+.main--indexWrapper {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+}
+
+.section--contentsTable {
+  background-color: $backgroundblue;
+  padding-left: 20px;
+}

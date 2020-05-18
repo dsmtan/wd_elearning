@@ -15,7 +15,7 @@ class User extends Dbh
             $q->bindValue(':password', $password);
             $q->execute();
             echo 'New userID: ' . $db->lastInsertId();
-            // FIX ME: create moduleprogress and segmentprogress for each module/segment when user is created
+            // FIX ME: create moduleprogress for each module when user is created
         } catch (PDOException $ex) {
             echo $ex;
         }
