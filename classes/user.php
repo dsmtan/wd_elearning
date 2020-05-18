@@ -79,4 +79,39 @@ class User extends Dbh
             echo $ex;
         }
     }
+
+
+    public function loginUser($email)
+    {
+        try {
+            $db = $this->connectDB();
+   
+            $q = $db->prepare('SELECT * FROM user WHERE email= :email');
+            $q->bindValue(':email', $email);
+            $q->execute();
+            while ($row = $q->fetch()) {
+      
+                        echo json_encode($row->userID);
+                            
+                            if ($_POST["userPassword"] == $row->password  && $_POST["userEmail"] == $row->email  ) {
+                                echo "you are logged in";
+                                // Start session with stored userID
+                                // session_start();
+                                // $_SESSION['userEmail'] = $userEmail;
+                                // $_SESSION['userName'] = $sCorrectName;
+                                // header('Location: admin.php');
+                                // exit();
+                            }
+                            else if ($_POST["userPassword"] != $row->password ){
+                                echo "wrong password";
+                            }   
+                            else {
+                                echo "wrong password or email";
+                            }
+                    }
+
+        } catch (PDOException $ex) {
+            echo $ex;
+        }
+    }
 }
