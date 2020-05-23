@@ -79,7 +79,7 @@ class UserProgress extends Dbh
         }
     }
 
-    public function createSegmentProgress($userID, $segmentID) // called when user is created
+    public function createSegmentProgress($userID, $segmentID) // called when user starts module
     {
         try {
             $db = $this->connectDB();

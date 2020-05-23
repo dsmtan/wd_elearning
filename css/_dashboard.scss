@@ -1,0 +1,8 @@
+.main--dashboardWrapper {
+  @include generalBodyLayout;
+}
+
+.section--dashboardContent {
+  background-color: $backgroundblue;
+  padding-left: 20px;
+}

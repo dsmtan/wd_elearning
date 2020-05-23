@@ -1,0 +1,14 @@
+<svg id="logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="87.4" height="87.4" viewBox="0 0 87.4 87.4">
+  <defs>
+    <radialGradient id="radial-gradient" cx="43.71" cy="43.71" r="43.71" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#9ec3f1"/>
+      <stop offset="0.87" stop-color="#182490"/>
+      <stop offset="1" stop-color="#172382"/>
+    </radialGradient>
+  </defs>
+  <circle cx="43.7" cy="43.7" r="43.7" fill="url(#radial-gradient)"/>
+  <g>
+    <ellipse cx="31" cy="43.9" rx="5" ry="9" fill="#6dffe6"/>
+    <ellipse cx="57" cy="43.9" rx="5" ry="9" fill="#6dffe6"/>
+  </g>
+</svg>
