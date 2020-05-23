@@ -59,3 +59,8 @@ p {
   font-weight: 900;
   font-size: 15px;
 }
+
+@mixin generalBodyLayout {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+}

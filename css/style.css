@@ -61,8 +61,8 @@ p {
 }
 
 .nav--main .img--logo {
-  height: 50px;
-  width: 50px;
+  height: 55px;
+  width: 55px;
   display: block;
   position: absolute;
   top: 0;
@@ -83,6 +83,18 @@ p {
   text-decoration: none;
 }
 
+.svg--navIcons:hover path {
+  fill: #182391;
+}
+
+.svg--navIcons:active path {
+  fill: #182391;
+}
+
+.current path {
+  fill: #142056;
+}
+
 .main--indexWrapper {
   display: -ms-grid;
   display: grid;
@@ -91,6 +103,30 @@ p {
 }
 
 .section--contentsTable {
+  background-color: #eef6ff;
+  padding-left: 20px;
+}
+
+.main--dashboardWrapper {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 90px 1fr;
+      grid-template-columns: 90px 1fr;
+}
+
+.section--dashboardContent {
+  background-color: #eef6ff;
+  padding-left: 20px;
+}
+
+.main--bookmarksWrapper {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 90px 1fr;
+      grid-template-columns: 90px 1fr;
+}
+
+.section--bookmarksContent {
   background-color: #eef6ff;
   padding-left: 20px;
 }

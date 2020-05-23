@@ -1,8 +1,8 @@
-.main--indexWrapper {
+.main--bookmarksWrapper {
   @include generalBodyLayout;
 }
 
-.section--contentsTable {
+.section--bookmarksContent {
   background-color: $backgroundblue;
   padding-left: 20px;
 }
