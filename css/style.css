@@ -1,11 +1,27 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Lato", sans-serif;
+  color: #142056;
+}
+
 html,
 body {
   height: 100%;
+  width: 100%;
   margin: 0;
 }
 
-h1, h2, h3 {
-  font-family: "Lato", sans-serif;
+body {
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+h1,
+h2,
+h3 {
   color: #142056;
 }
 
@@ -22,8 +38,97 @@ h3 {
 }
 
 p {
-  font-family: "Lato", sans-serif;
   font-size: 18px;
+}
+
+.nav--main {
+  position: relative;
+  background-color: white;
+  height: 100vh;
+  width: 90px;
+  -webkit-box-shadow: 1px 1px 6px 2px #c4c4c480;
+          box-shadow: 1px 1px 6px 2px #c4c4c480;
+  z-index: 100;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.nav--main .img--logo {
+  height: 55px;
+  width: 55px;
+  display: block;
+  position: absolute;
+  top: 0;
+  margin: 1em auto;
+}
+
+.div--navLinks {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.div--navLinks a {
+  display: block;
+  position: relative;
+  height: 70px;
+  margin: 20px auto;
+  text-decoration: none;
+}
+
+.svg--navIcons:hover path {
+  fill: #182391;
+}
+
+.svg--navIcons:active path {
+  fill: #182391;
+}
+
+.current path {
+  fill: #142056;
+}
+
+.main--indexWrapper {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 90px 1fr;
+      grid-template-columns: 90px 1fr;
+}
+
+.section--contentsTable {
+  background-color: #eef6ff;
+  padding-left: 20px;
+}
+
+.main--dashboardWrapper {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 90px 1fr;
+      grid-template-columns: 90px 1fr;
+}
+
+.section--dashboardContent {
+  background-color: #eef6ff;
+  padding-left: 20px;
+}
+
+.main--bookmarksWrapper {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 90px 1fr;
+      grid-template-columns: 90px 1fr;
+}
+
+.section--bookmarksContent {
+  background-color: #eef6ff;
+  padding-left: 20px;
 }
 
 .div--login, .div--signup {
@@ -76,7 +181,7 @@ p {
           box-sizing: border-box;
   border-radius: 4px;
   border: none;
-  background-color: #EEF6FF;
+  background-color: #eef6ff;
   width: 100%;
 }
 
@@ -86,7 +191,6 @@ p {
   padding: 10px 35px;
   border: none;
   border-radius: 4px;
-  font-family: "Lato", sans-serif;
   font-weight: 900;
   font-size: 15px;
   position: absolute;
@@ -95,12 +199,12 @@ p {
 
 #formLoginUser .div--error, #formSignupUser .div--error {
   margin-top: 50px;
-  background-color: #FFEEEE;
+  background-color: #ffeeee;
   border-radius: 4px;
-  border: #F47474 1px solid;
+  border: #f47474 1px solid;
 }
 
 #formLoginUser .div--error p, #formSignupUser .div--error p {
-  color: #F47474;
+  color: #f47474;
 }
 /*# sourceMappingURL=style.css.map */

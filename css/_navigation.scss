@@ -1,0 +1,50 @@
+.nav--main {
+  position: relative;
+  background-color: white;
+  height: 100vh;
+  width: 90px;
+  box-shadow: 1px 1px 6px 2px #c4c4c480;
+  z-index: 100;
+  @include flexCenter;
+
+  .img--logo {
+    height: 55px;
+    width: 55px;
+    display: block;
+    position: absolute;
+    top: 0;
+    margin: 1em auto;
+  }
+}
+
+.div--navLinks {
+  display: block;
+  width: 100%;
+  text-align: center;
+  a {
+    display: block;
+    position: relative;
+    height: 70px;
+    margin: 20px auto;
+    text-decoration: none;
+  }
+}
+
+.svg--navIcons {
+  &:hover {
+    path {
+      fill: $mediumblue;
+    }
+  }
+  &:active {
+    path {
+      fill: $mediumblue;
+    }
+  }
+}
+
+.current {
+  path {
+    fill: $darkblue;
+  }
+}

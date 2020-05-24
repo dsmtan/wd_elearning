@@ -1,0 +1,8 @@
+.main--bookmarksWrapper {
+  @include generalBodyLayout;
+}
+
+.section--bookmarksContent {
+  background-color: $backgroundblue;
+  padding-left: 20px;
+}

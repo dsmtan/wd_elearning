@@ -1,0 +1,28 @@
+<svg id="ach_1test" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="48.2" height="54.1" viewBox="0 0 48.2 54.1">
+  <defs>
+    <linearGradient id="linear-gradient" x1="8.83" y1="30.38" x2="51.08" y2="30.38" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="0.18" stop-color="#f9fbfe"/>
+      <stop offset="0.42" stop-color="#e7f1fc"/>
+      <stop offset="0.71" stop-color="#c9e0f9"/>
+      <stop offset="1" stop-color="#a4cbf5"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="16.3" y1="11.48" x2="32.34" y2="11.48" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-3" x1="15.44" y1="36.04" x2="25.09" y2="36.04" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-4" x1="7.08" y1="20.37" x2="25.8" y2="20.37" xlink:href="#linear-gradient"/>
+  </defs>
+  <g>
+    <path d="M28.2,3.8,7.6,15.6a3.5,3.5,0,0,0-1.8,3.1V41.3a3.8,3.8,0,0,0,1.7,3.1L28,56.9a3.6,3.6,0,0,0,3.6.1L52.3,45.2a3.5,3.5,0,0,0,1.8-3.1V18.5a3.5,3.5,0,0,0-1.8-3.1L31.7,3.8A3.6,3.6,0,0,0,28.2,3.8Z" transform="translate(-5.8 -3.3)" fill="#fff"/>
+    <path d="M28.4,7.1l-18,10.3a3.2,3.2,0,0,0-1.6,2.7V40a3,3,0,0,0,1.5,2.6l17.9,11a3.3,3.3,0,0,0,3.2.1L49.5,43.4a3.2,3.2,0,0,0,1.6-2.7V20a2.9,2.9,0,0,0-1.6-2.7L31.5,7.1A2.9,2.9,0,0,0,28.4,7.1Z" transform="translate(-5.8 -3.3)" fill="url(#linear-gradient)"/>
+    <g>
+      <polygon points="22.8 7 32.3 12.2 25.8 16 16.3 10.8 22.8 7" fill="url(#linear-gradient-2)"/>
+      <g>
+        <polygon points="25.1 25.5 25 29.8 25 47.5 15.5 42.2 15.4 27.3 24.3 24.6 25.1 25.5" fill="url(#linear-gradient-3)"/>
+        <path d="M30.8,51.2,21,45.8V30.3l9.3-2.7,1,1.1V51Zm-9.1-5.8,8.8,4.8V29l-.5-.7-8.5,2.6Z" transform="translate(-5.8 -3.3)" fill="#09285a"/>
+      </g>
+      <polygon points="7.1 24.8 16.6 30 25.8 16 16.3 10.8 7.1 24.8" fill="url(#linear-gradient-4)"/>
+      <polygon points="22.8 9.2 32.3 14.4 25.8 18.2 16.3 13 22.8 9.2" fill="#ffce44"/>
+      <path d="M28.7,9.9l-6.8,3.9L12.5,28.1l.2.3,3.8,3.2L26,36.8h.3L29.5,32l1-1.7V51l.3.2,7.7-4.5V15.3Zm-6.4,23L13.4,28l8.9-13.5.8.5,8.1,4.4ZM33.8,17.7l-2.2,1.2L24,14.7l-1.2-.6,5.9-3.4,8.8,4.8Z" transform="translate(-5.8 -3.3)" fill="#09285a"/>
+    </g>
+  </g>
+</svg>

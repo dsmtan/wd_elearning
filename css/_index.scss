@@ -1,0 +1,8 @@
+.main--indexWrapper {
+  @include generalBodyLayout;
+}
+
+.section--contentsTable {
+  background-color: $backgroundblue;
+  padding-left: 20px;
+}
