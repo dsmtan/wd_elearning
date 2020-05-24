@@ -2,7 +2,12 @@
   @include generalBodyLayout;
 }
 
-.section--contentsTable {
+.section--indexContent {
   background-color: $backgroundblue;
   padding-left: 20px;
+
+  a {
+    display: block;
+    margin: 10px 0;
+  }
 }

@@ -102,9 +102,14 @@ p {
       grid-template-columns: 90px 1fr;
 }
 
-.section--contentsTable {
+.section--indexContent {
   background-color: #eef6ff;
   padding-left: 20px;
+}
+
+.section--indexContent a {
+  display: block;
+  margin: 10px 0;
 }
 
 .main--dashboardWrapper {
@@ -129,5 +134,69 @@ p {
 .section--bookmarksContent {
   background-color: #eef6ff;
   padding-left: 20px;
+}
+
+.main--moduleWrapper {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 90px 1fr;
+      grid-template-columns: 90px 1fr;
+}
+
+.section--moduleContent {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto 350px;
+      grid-template-columns: auto 350px;
+}
+
+.art--segmentContent {
+  display: block;
+  padding: 5em;
+}
+
+.art--segmentContent h2 {
+  margin-bottom: 2em;
+}
+
+.art--segmentContent h3 {
+  margin: 1em 0;
+}
+
+.art--segmentContent p {
+  margin-bottom: 1em;
+}
+
+.art--moduleOverview {
+  background-color: #142056;
+}
+
+.art--moduleOverview div {
+  background-color: white;
+  border-radius: 4px;
+  margin: 17px;
+  padding: 10px;
+}
+
+.main--testWrapper {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 90px 1fr;
+      grid-template-columns: 90px 1fr;
+}
+
+.section--testContent {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto 350px;
+      grid-template-columns: auto 350px;
+}
+
+.art--testContent {
+  padding: 5em;
+}
+
+.art--testContent h2 {
+  margin-bottom: 2em;
 }
 /*# sourceMappingURL=style.css.map */

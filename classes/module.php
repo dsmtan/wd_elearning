@@ -10,9 +10,7 @@ class Module extends Dbh
             $q = $db->prepare('SELECT * FROM module');
             $q->execute();
             $data = $q->fetchAll(); // returns array
-            foreach ($data as $module) {
-                echo $module->title;
-            }
+            return $data;
         } catch (PDOException $ex) {
             echo $ex;
         }
@@ -26,7 +24,7 @@ class Module extends Dbh
             $q->bindValue(':moduleID', $moduleID);
             $q->execute();
             $data = $q->fetch();
-            echo "Start learning about: $data->title!";
+            return $data->title;
         } catch (PDOException $ex) {
             echo $ex;
         }
