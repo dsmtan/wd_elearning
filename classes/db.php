@@ -3,7 +3,7 @@
 class Dbh
 {
     private $dbUserName = "root";
-    private $dbPassword = "";
+    private $dbPassword = "root";
     private $connection = "mysql:host=localhost; dbname=elearning; charset=utf8mb4";
     private $options = [
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, // TRY-CATCH
