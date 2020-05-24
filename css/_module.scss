@@ -1,0 +1,36 @@
+.main--moduleWrapper {
+  @include generalBodyLayout;
+}
+
+.section--moduleContent {
+  display: grid;
+  grid-template-columns: auto 350px;
+}
+
+.art--segmentContent {
+  display: block;
+  padding: 5em;
+
+  h2 {
+    margin-bottom: 2em;
+  }
+
+  h3 {
+    margin: 1em 0;
+  }
+
+  p {
+    margin-bottom: 1em;
+  }
+}
+
+.art--moduleOverview {
+  background-color: $darkblue;
+
+  div {
+    background-color: white;
+    border-radius: 4px;
+    margin: 17px;
+    padding: 10px;
+  }
+}
