@@ -1,59 +1,59 @@
-.div--login, .div--signup{
-    display: grid;
-    grid-template-columns: 20fr 35fr;
-    grid-column-gap: 20px;
-    width: 100%;
-    height: 100vh;
-    margin:0%;
+.div--login,
+.div--signup {
+  display: grid;
+  grid-template-columns: 20fr 35fr;
+  grid-column-gap: 20px;
+  width: 100%;
+  height: 100vh;
+  margin: 0%;
 }
-.leftdiv--login, .leftdiv--signup{
-    background-image: url('../images/path_background.png');
-    height: 100vh;
+.leftdiv--login,
+.leftdiv--signup {
+  background-image: url("../images/path_background.png");
+  height: 100vh;
 }
-.rightdiv--login, .rightdiv--signup {
-    margin: auto;
-    width: 40%;
-    height: 100vh;
-    text-align: center;
-    position: relative;
-    
-    .p--login {
+.rightdiv--login,
+.rightdiv--signup {
+  margin: auto;
+  width: 40%;
+  height: 100vh;
+  text-align: center;
+  position: relative;
+
+  .p--login {
     margin-top: 70px;
-        a{
-            color: $darkblue;
-            font-weight: 900;
-        }
+    a {
+      color: $darkblue;
+      font-weight: 900;
     }
-    
-    img {
-        margin-top: 60px;
-    }
+  }
+
+  img {
+    margin-top: 60px;
+  }
 }
 
-#formLoginUser, #formSignupUser {
-    margin-top: 40px;
-    position: relative;
+#formLoginUser,
+#formSignupUser {
+  margin-top: 40px;
+  position: relative;
 
-    input {
-        padding: 15px 22px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        box-sizing: border-box;
-        border-radius: 4px;
-        border: none;
-        background-color: $backgroundblue;
-        width: 100%;
+  input {
+    @include formInput;
+  }
+
+  button {
+    @include primaryButton;
+    position: absolute;
+    right: 0px;
+  }
+  .div--error {
+    margin-top: 50px;
+    background-color: $lightred;
+    border-radius: 4px;
+    border: $red 1px solid;
+    p {
+      color: $red;
     }
-    button {
-     @include primaryButton;
-        position: absolute;
-        right: 0px;
-    }
-    .div--error{
-        margin-top: 50px;
-        background-color:$lightred;
-        border-radius: 4px;
-        border: $red 1px solid;
-        p {color: $red;}
-    }
-} 
+  }
+}

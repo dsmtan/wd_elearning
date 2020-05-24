@@ -21,15 +21,17 @@ class User extends Dbh
         }
     }
 
-    public function updateUser($userID, $updatedColumn, $newData)
+    public function updateUser($userID, $updatedUser)
     {
         try {
             $db = $this->connectDB();
-            $q = $db->prepare("UPDATE user SET  $updatedColumn = :newData WHERE userID= :id");
-            $q->bindValue(':newData', $newData);
+            $q = $db->prepare("UPDATE user SET  firstName = :firstName, lastName = :lastName, email = :email, password = :password WHERE userID= :id");
+            $q->bindValue(':firstName', $updatedUser->firstName);
+            $q->bindValue(':lastName', $updatedUser->lastName);
+            $q->bindValue(':email', $updatedUser->email);
+            $q->bindValue(':password', $updatedUser->password);
             $q->bindValue(':id', $userID);
             $q->execute();
-            echo 'Updated number of rows: ' . $q->rowCount();
         } catch (PDOException $ex) {
             echo $ex;
         }
@@ -41,8 +43,8 @@ class User extends Dbh
             $db = $this->connectDB();
             $q = $db->prepare('DELETE FROM user WHERE userID= :id');
             $q->bindValue(':id', $userID);
-            $q->execute();
-            echo 'Deleted number of rows: ' . $q->rowCount();
+            $data = $q->execute();
+            echo $data;
         } catch (PDOException $ex) {
             echo $ex;
         }
@@ -56,7 +58,7 @@ class User extends Dbh
             $q->bindValue(':id', $userID);
             $q->execute();
             $data = $q->fetch();
-            echo "Hi $data->firstName $data->lastName!";
+            return $data;
         } catch (PDOException $ex) {
             echo $ex;
         }
@@ -85,29 +87,26 @@ class User extends Dbh
     {
         try {
             $db = $this->connectDB();
-   
+
             $q = $db->prepare('SELECT * FROM user WHERE email= :email');
             $q->bindValue(':email', $email);
             $q->execute();
             while ($row = $q->fetch()) {
-      
-                        echo json_encode($row->userID);
-                            
-                            if ($_POST["userPassword"] == $row->password  && $_POST["userEmail"] == $row->email  ) {
-                                // Start session with stored userID
-                                session_start();
-                                $_SESSION['userID'] = $row->userID;
-                                header('Location: index.php');
-                                exit();
-                            }
-                            else if ($_POST["userPassword"] != $row->password ){
-                                echo "wrong password";
-                            }   
-                            else {
-                                echo "wrong password or email";
-                            }
-                    }
 
+                echo json_encode($row->userID);
+
+                if ($_POST["userPassword"] == $row->password  && $_POST["userEmail"] == $row->email) {
+                    // Start session with stored userID
+                    session_start();
+                    $_SESSION['userID'] = $row->userID;
+                    header('Location: ../index.php');
+                    exit();
+                } else if ($_POST["userPassword"] != $row->password) {
+                    echo "wrong password";
+                } else {
+                    echo "wrong password or email";
+                }
+            }
         } catch (PDOException $ex) {
             echo $ex;
         }

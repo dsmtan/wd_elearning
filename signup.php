@@ -36,16 +36,15 @@ if (isset($_GET["errorMsg"])) {
         <div class="leftdiv--signup"></div>
         <div class="rightdiv--signup">
 
-
             <img src="images/logo_start.jpg" alt="logo">
             <h1>Welcome to Elearning Tool</h1>
 
-            <form id="formSignupUser" action="api-signup.php" method="POST">
+            <form id="formSignupUser" action="api/api-signup.php" method="POST">
                 <h3>Sign Up</h3>
-                <input name=" firstName" type="text" placeholder="first name"><br>
-                <input name="lastName" type="text" placeholder="last name"><br>
-                <input name="email" type="text" placeholder="email"><br>
-                <input name="password" type="password" placeholder="password"><br>
+                <input name=" firstName" type="text" placeholder="first name">
+                <input name="lastName" type="text" placeholder="last name">
+                <input name="email" type="text" placeholder="email">
+                <input name="password" type="password" placeholder="password">
                 <button type="submit" name="signup-submit">Sign Up</button>
                 <div id="pErrorMsg"> <?= $msgBluePrint ?></div>
             </form>
