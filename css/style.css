@@ -102,9 +102,14 @@ p {
       grid-template-columns: 90px 1fr;
 }
 
-.section--contentsTable {
+.section--indexContent {
   background-color: #eef6ff;
   padding-left: 20px;
+}
+
+.section--indexContent a {
+  display: block;
+  margin: 10px 0;
 }
 
 .main--dashboardWrapper {
@@ -131,80 +136,67 @@ p {
   padding-left: 20px;
 }
 
-.div--login, .div--signup {
+.main--moduleWrapper {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 20fr 35fr;
-      grid-template-columns: 20fr 35fr;
-  grid-column-gap: 20px;
-  width: 100%;
-  height: 100vh;
-  margin: 0%;
+  -ms-grid-columns: 90px 1fr;
+      grid-template-columns: 90px 1fr;
 }
 
-.leftdiv--login, .leftdiv--signup {
-  background-image: url("../images/path_background.png");
-  height: 100vh;
+.section--moduleContent {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto 350px;
+      grid-template-columns: auto 350px;
 }
 
-.rightdiv--login, .rightdiv--signup {
-  margin: auto;
-  width: 40%;
-  height: 100vh;
-  text-align: center;
-  position: relative;
+.art--segmentContent {
+  display: block;
+  padding: 5em;
 }
 
-.rightdiv--login .p--login, .rightdiv--signup .p--login {
-  margin-top: 70px;
+.art--segmentContent h2 {
+  margin-bottom: 2em;
 }
 
-.rightdiv--login .p--login a, .rightdiv--signup .p--login a {
-  color: #142056;
-  font-weight: 900;
+.art--segmentContent h3 {
+  margin: 1em 0;
 }
 
-.rightdiv--login img, .rightdiv--signup img {
-  margin-top: 60px;
+.art--segmentContent p {
+  margin-bottom: 1em;
 }
 
-#formLoginUser, #formSignupUser {
-  margin-top: 40px;
-  position: relative;
-}
-
-#formLoginUser input, #formSignupUser input {
-  padding: 15px 22px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  border-radius: 4px;
-  border: none;
-  background-color: #eef6ff;
-  width: 100%;
-}
-
-#formLoginUser button, #formSignupUser button {
+.art--moduleOverview {
   background-color: #142056;
-  color: white;
-  padding: 10px 35px;
-  border: none;
-  border-radius: 4px;
-  font-weight: 900;
-  font-size: 15px;
-  position: absolute;
-  right: 0px;
 }
 
-#formLoginUser .div--error, #formSignupUser .div--error {
-  margin-top: 50px;
-  background-color: #ffeeee;
+.art--moduleOverview div {
+  background-color: white;
   border-radius: 4px;
-  border: #f47474 1px solid;
+  margin: 17px;
+  padding: 10px;
 }
 
-#formLoginUser .div--error p, #formSignupUser .div--error p {
-  color: #f47474;
+.main--testWrapper {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 90px 1fr;
+      grid-template-columns: 90px 1fr;
+}
+
+.section--testContent {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto 350px;
+      grid-template-columns: auto 350px;
+}
+
+.art--testContent {
+  padding: 5em;
+}
+
+.art--testContent h2 {
+  margin-bottom: 2em;
 }
 /*# sourceMappingURL=style.css.map */

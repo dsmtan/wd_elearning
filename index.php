@@ -1,12 +1,17 @@
 <?php
 include 'includes/autoloader.php';
 
-// fetch all module titles
-// create <div> for each module with title + progress bar
-// set current in nav
-// top right status box
+$learningModule = new Module();
+$allModules = $learningModule->getAllModules();
+$modulesHTML = "";
+foreach ($allModules as $module) {
+    $modulesHTML .= "<a href='module.php?id=$module->moduleID'>$module->title</a>"; // convert to div later
+}
 
-
+// TO DO
+// background & graphics
+// progress bars
+// optional: status right top not sure where this info should come from the DB?
 
 ?>
 
@@ -26,8 +31,11 @@ include 'includes/autoloader.php';
         require_once('components/navigation.php');
         ?>
 
-        <section class="section--contentsTable">
+        <section class="section--indexContent">
             <h1>Table of Content</h1>
+
+            <?= $modulesHTML ?>
+
         </section>
 
     </main>
@@ -85,12 +93,12 @@ include 'includes/autoloader.php';
 // $testModule->getModuleTitle(1003);
 
 // $testSegment = new Segment();
-// $testSegment->getAllSegments();
+// $testSegment->getAllSegments(1001); // by moduleID
 // $testSegment->getSegmentContent(2002); //segmentID
 // $testSegment->getSegmentExercise(2001); //segmentID
 
 // $testModuleTest = new ModuleTest();
-// $testModuleTest->getAllTests();
+// $testModuleTest->getTestbyModule(1001); // by moduleID
 // $testModuleTest->getTestQuestions(4003); //testID gets all 5 questions
 // $testModuleTest->getSingleQuestion(5009); //questionID gets 1 question
 

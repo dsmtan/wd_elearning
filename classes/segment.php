@@ -3,14 +3,15 @@ require_once('db.php');
 
 class Segment extends Dbh
 {
-    public function getAllSegments()
+    public function getAllSegments($moduleID)
     {
         try {
             $db = $this->connectDB();
-            $q = $db->prepare('SELECT * FROM segment');
+            $q = $db->prepare('SELECT * FROM segment WHERE moduleID= :moduleID');
+            $q->bindValue(':moduleID', $moduleID);
             $q->execute();
             $data = $q->fetchAll(); // returns array
-            print_r($data);
+            return $data;
         } catch (PDOException $ex) {
             echo $ex;
         }
@@ -24,7 +25,7 @@ class Segment extends Dbh
             $q->bindValue(':segmentID', $segmentID);
             $q->execute();
             $data = $q->fetch();
-            echo json_encode($data);
+            return $data;
         } catch (PDOException $ex) {
             echo $ex;
         }

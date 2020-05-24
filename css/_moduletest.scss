@@ -1,0 +1,16 @@
+.main--testWrapper {
+  @include generalBodyLayout;
+}
+
+.section--testContent {
+  display: grid;
+  grid-template-columns: auto 350px;
+}
+
+.art--testContent {
+  padding: 5em;
+
+  h2 {
+    margin-bottom: 2em;
+  }
+}

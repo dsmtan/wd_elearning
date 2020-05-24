@@ -3,14 +3,15 @@ require_once('db.php');
 
 class ModuleTest extends Dbh
 {
-    public function getAllTests()
+    public function getTestByModule($moduleID)
     {
         try {
             $db = $this->connectDB();
-            $q = $db->prepare('SELECT * FROM moduletest');
+            $q = $db->prepare('SELECT * FROM moduletest WHERE moduleID= :moduleID');
+            $q->bindValue(':moduleID', $moduleID);
             $q->execute();
-            $data = $q->fetchAll(); // returns array
-            print_r($data);
+            $data = $q->fetch(); // returns array
+            return $data->testID;
         } catch (PDOException $ex) {
             echo $ex;
         }
