@@ -121,7 +121,92 @@ p {
 
 .section--dashboardContent {
   background-color: #eef6ff;
-  padding-left: 20px;
+  padding: 3.5em;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: 1fr 2fr;
+      grid-template-rows: 1fr 2fr;
+  grid-gap: 2em;
+}
+
+.section--dashboardContent article {
+  display: block;
+  background-color: white;
+  border-radius: 5px;
+  padding: 2em 2.5em;
+  -webkit-box-shadow: 1px 2px 5px 1px #c4c4c480;
+          box-shadow: 1px 2px 5px 1px #c4c4c480;
+}
+
+.section--dashboardContent article h3 {
+  margin-bottom: 1.5em;
+}
+
+.section--dashboardContent article p {
+  margin-bottom: 3em;
+}
+
+.art--userIntro {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: 1 / 1;
+}
+
+.art--userPersonal {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: 2 / 1;
+}
+
+.art--userProgress {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 2;
+  grid-area: 1 / 2 / span 2;
+}
+
+.form--personalInfo input {
+  display: block;
+  padding: 15px 22px;
+  border-radius: 4px;
+  border: none;
+  background-color: #eef6ff;
+  width: 100%;
+  font-size: 0.9em;
+  margin: 15px 0;
+}
+
+.form--personalInfo button {
+  background-color: #142056;
+  color: white;
+  padding: 10px 35px;
+  border: none;
+  border-radius: 4px;
+  font-weight: 900;
+  font-size: 15px;
+  cursor: pointer;
+  margin-top: 1em;
+  padding: 15px;
+  width: 11em;
+  float: right;
+}
+
+#btnDeleteUser {
+  background-color: #142056;
+  color: white;
+  padding: 10px 35px;
+  border: none;
+  border-radius: 4px;
+  font-weight: 900;
+  font-size: 15px;
+  cursor: pointer;
+  background-color: #e4e6eb;
+  color: #8e92a1;
+  margin-top: 1em;
+  padding: 15px;
+  width: 12em;
 }
 
 .main--bookmarksWrapper {
@@ -200,7 +285,8 @@ p {
   margin-bottom: 2em;
 }
 
-.div--login, .div--signup {
+.div--login,
+.div--signup {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 20fr 35fr;
@@ -211,12 +297,14 @@ p {
   margin: 0%;
 }
 
-.leftdiv--login, .leftdiv--signup {
+.leftdiv--login,
+.leftdiv--signup {
   background-image: url("../images/path_background.png");
   height: 100vh;
 }
 
-.rightdiv--login, .rightdiv--signup {
+.rightdiv--login,
+.rightdiv--signup {
   margin: auto;
   width: 40%;
   height: 100vh;
@@ -224,37 +312,42 @@ p {
   position: relative;
 }
 
-.rightdiv--login .p--login, .rightdiv--signup .p--login {
+.rightdiv--login .p--login,
+.rightdiv--signup .p--login {
   margin-top: 70px;
 }
 
-.rightdiv--login .p--login a, .rightdiv--signup .p--login a {
+.rightdiv--login .p--login a,
+.rightdiv--signup .p--login a {
   color: #142056;
   font-weight: 900;
 }
 
-.rightdiv--login img, .rightdiv--signup img {
+.rightdiv--login img,
+.rightdiv--signup img {
   margin-top: 60px;
 }
 
-#formLoginUser, #formSignupUser {
+#formLoginUser,
+#formSignupUser {
   margin-top: 40px;
   position: relative;
 }
 
-#formLoginUser input, #formSignupUser input {
+#formLoginUser input,
+#formSignupUser input {
+  display: block;
   padding: 15px 22px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
   border-radius: 4px;
   border: none;
   background-color: #eef6ff;
   width: 100%;
+  font-size: 0.9em;
+  margin: 15px 0;
 }
 
-#formLoginUser button, #formSignupUser button {
+#formLoginUser button,
+#formSignupUser button {
   background-color: #142056;
   color: white;
   padding: 10px 35px;
@@ -262,18 +355,21 @@ p {
   border-radius: 4px;
   font-weight: 900;
   font-size: 15px;
+  cursor: pointer;
   position: absolute;
   right: 0px;
 }
 
-#formLoginUser .div--error, #formSignupUser .div--error {
+#formLoginUser .div--error,
+#formSignupUser .div--error {
   margin-top: 50px;
   background-color: #ffeeee;
   border-radius: 4px;
   border: #f47474 1px solid;
 }
 
-#formLoginUser .div--error p, #formSignupUser .div--error p {
+#formLoginUser .div--error p,
+#formSignupUser .div--error p {
   color: #f47474;
 }
 /*# sourceMappingURL=style.css.map */

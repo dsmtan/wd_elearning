@@ -29,13 +29,12 @@ if (isset($_GET["errorMsg"])) {
         <div class="rightdiv--login">
 
             <img src="images/logo_start.jpg" alt="logo">
-
             <h1>Welcome to Elearning Tool</h1>
-            <form id="formLoginUser" action="api-login.php" method="POST">
+
+            <form id="formLoginUser" action="api/api-login.php" method="POST">
                 <h3>Log in</h3>
-                <div>
-                    <input id="userEmail" name="userEmail" type="text" placeholder="Email"></div>
-                <div><input id="userPassword" name="userPassword" type="text" placeholder="Password"></div>
+                <input id="userEmail" name="userEmail" type="text" placeholder="Email">
+                <input id="userPassword" name="userPassword" type="password" placeholder="Password">
                 <button type="submit" name="login-submit">Log In</button>
                 <div id="pErrorMsg"> <?= $msgBluePrint ?></div>
             </form>

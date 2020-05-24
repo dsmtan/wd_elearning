@@ -58,9 +58,21 @@ p {
   border-radius: 4px;
   font-weight: 900;
   font-size: 15px;
+  cursor: pointer;
 }
 
 @mixin generalBodyLayout {
   display: grid;
   grid-template-columns: 90px 1fr;
+}
+
+@mixin formInput {
+  display: block;
+  padding: 15px 22px;
+  border-radius: 4px;
+  border: none;
+  background-color: $backgroundblue;
+  width: 100%;
+  font-size: 0.9em;
+  margin: 15px 0;
 }
