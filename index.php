@@ -1,12 +1,21 @@
 <?php
 include 'includes/autoloader.php';
 
+session_start();
+if(  !isset($_SESSION['userID'])  ){
+  header('Location: login.php');
+  exit();
+}
+$userID = $_SESSION['userID'];
+
 $learningModule = new Module();
 $allModules = $learningModule->getAllModules();
 $modulesHTML = "";
 foreach ($allModules as $module) {
     $modulesHTML .= "<a href='module.php?id=$module->moduleID'>$module->title</a>"; // convert to div later
 }
+
+
 
 // TO DO
 // background & graphics

@@ -1,32 +1,14 @@
 <?php
 include 'includes/autoloader.php';
 
-// check if existing user
-// check password
-// if correct login: userID should be stored in session
+$msgBluePrint = '';
 
-if (isset($_POST['userLogin']) && isset($_POST['userPassword'])) {
-
-    // below should be fetched from database
-    $sCorrectEmail = 'd@d.com';
-    $sCorrectPassword = 'qwerty';
-    $sCorrectName = "Denise";
-
-    $sUserLogin = $_POST['userLogin'];
-    $sUserPassword = $_POST['userPassword'];
-
-    if (
-        $sUserLogin == $sCorrectEmail &&
-        $sUserPassword == $sCorrectPassword
-    ) {
-        session_start();
-        $_SESSION['userLogin'] = $sUserLogin;
-        $_SESSION['userName'] = $sCorrectName;
-        header('Location: admin.php');
-        exit();
-    }
+if( $_GET["errorMsg"] == "emptyFields" ){
+    $msgBluePrint .= '<div class="div--error"><p>You have empty fields</p></div>';
 }
-
+else if( $_GET["errorMsg"] == "invalidEmail" ){
+    $msgBluePrint .= '<div class="div--error"><p>Invalid Email</p></div>';
+}
 
 ?>
 
@@ -37,18 +19,32 @@ if (isset($_POST['userLogin']) && isset($_POST['userPassword'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log in</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;900&display=swap" rel="stylesheet">
 </head>
 
 <body>
+<div class="div--login">
+<div class="leftdiv--login"></div>
+<div class="rightdiv--login">
 
-    <form id="formLoginUser" action="" method="POST">
+<img src="images/logo_start.jpg" alt="logo">
+
+<h1>Welcome to Elearning Tool</h1>
+<form id="formLoginUser" action="api-login.php" method="POST">
         <h3>Log in</h3>
-        <input id="inputUser" name="userLogin" type="text" placeholder="email">
-        <input id="inputPassword" name="userPassword" type="text" placeholder="password">
-        <button>LOG IN</button>
-        <p class="pErrorMsg">Error message placeholder</p>
-    </form>
+        <div>
+         <input id="userEmail" name="userEmail" type="text" placeholder="Email"></div>
+        <div><input id="userPassword" name="userPassword" type="text" placeholder="Password"></div>
+        <button type="submit" name="login-submit">Log In</button>
+        <div id="pErrorMsg"> <?= $msgBluePrint ?></div>
+</form>
 
+   
+    <p class="p--login">Don't have an account? <a href="signup.php">Sign Up</a></p>
+
+  
+</div>
 </body>
 
 </html>
