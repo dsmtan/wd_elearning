@@ -10,10 +10,10 @@ if (isset($_POST["login-submit"])){
         header("Location: login.php?errorMsg=emptyFields");
         exit();
     }
-    else if (!filter_var($email, FILTER_VALIDATE_EMAIL )){
-        header("Location: login.php?errorMsg=invalidEmail");
-        exit();
-    }
+    // else if (!filter_var($email, FILTER_VALIDATE_EMAIL )){
+    //     header("Location: login.php?errorMsg=invalidEmail");
+    //     exit();
+    // }
      else {
         $loginUser = new User();
         $loginUser->loginUser($_POST["userEmail"]); 

@@ -26,7 +26,6 @@ else if( $_GET["errorMsg"] == "invalidName" ){
     <title>Sign up</title>
     <link rel="stylesheet" href="css/style.css" />
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;900&display=swap" rel="stylesheet">
-
 </head>
 
 <body>

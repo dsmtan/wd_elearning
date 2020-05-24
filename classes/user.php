@@ -94,13 +94,11 @@ class User extends Dbh
                         echo json_encode($row->userID);
                             
                             if ($_POST["userPassword"] == $row->password  && $_POST["userEmail"] == $row->email  ) {
-                                echo "you are logged in";
                                 // Start session with stored userID
-                                // session_start();
-                                // $_SESSION['userEmail'] = $userEmail;
-                                // $_SESSION['userName'] = $sCorrectName;
-                                // header('Location: admin.php');
-                                // exit();
+                                session_start();
+                                $_SESSION['userID'] = $row->userID;
+                                header('Location: index.php');
+                                exit();
                             }
                             else if ($_POST["userPassword"] != $row->password ){
                                 echo "wrong password";
