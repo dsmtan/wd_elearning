@@ -4,14 +4,15 @@ include 'includes/autoloader.php';
 
 $msgBluePrint = '';
 
-if( $_GET["errorMsg"] == "emptyFields" ){
-    $msgBluePrint .= '<div class="div--error"><p>You have empty fields</p></div>';
-}
-else if( $_GET["errorMsg"] == "invalidEmail" ){
-    $msgBluePrint .= '<div class="div--error"><p>Invalid Email</p></div>';
-}
-else if( $_GET["errorMsg"] == "invalidName" ){
-    $msgBluePrint .= '<div class="div--error"><p>Firstname and lastname should have 2 - 20 characters</p></div>';
+if (isset($_GET["errorMsg"])) {
+
+    if ($_GET["errorMsg"] == "emptyFields") {
+        $msgBluePrint .= '<div class="div--error"><p>You have empty fields</p></div>';
+    } else if ($_GET["errorMsg"] == "invalidEmail") {
+        $msgBluePrint .= '<div class="div--error"><p>Invalid Email</p></div>';
+    } else if ($_GET["errorMsg"] == "invalidName") {
+        $msgBluePrint .= '<div class="div--error"><p>Firstname and lastname should have 2 - 20 characters</p></div>';
+    }
 }
 
 ?>
@@ -31,34 +32,34 @@ else if( $_GET["errorMsg"] == "invalidName" ){
 <body>
 
 
-<div class="div--signup">
-<div class="leftdiv--signup"></div>
-<div class="rightdiv--signup">
+    <div class="div--signup">
+        <div class="leftdiv--signup"></div>
+        <div class="rightdiv--signup">
 
 
-<img src="images/logo_start.jpg" alt="logo">
-<h1>Welcome to Elearning Tool</h1>
+            <img src="images/logo_start.jpg" alt="logo">
+            <h1>Welcome to Elearning Tool</h1>
 
-    <form id="formSignupUser" action="api-signup.php" method="POST"">
-         <h3>Sign Up</h3>
-        <input name="firstName"  type="text" placeholder="first name"><br>
-        <input name="lastName" type="text" placeholder="last name"><br>
-        <input name="email" type="text" placeholder="email"><br>
-        <input name="password" type="password" placeholder="password"><br>
-        <button type="submit" name="signup-submit">Sign Up</button>
-        <div id="pErrorMsg"> <?= $msgBluePrint ?></div>
-    </form>
+            <form id="formSignupUser" action="api-signup.php" method="POST">
+                <h3>Sign Up</h3>
+                <input name=" firstName" type="text" placeholder="first name"><br>
+                <input name="lastName" type="text" placeholder="last name"><br>
+                <input name="email" type="text" placeholder="email"><br>
+                <input name="password" type="password" placeholder="password"><br>
+                <button type="submit" name="signup-submit">Sign Up</button>
+                <div id="pErrorMsg"> <?= $msgBluePrint ?></div>
+            </form>
 
-    <p class="p--login">Already have an account? <a href="login.php">Log in</a></p>
-
-
-
-</div>
-
-    <?php
+            <p class="p--login">Already have an account? <a href="login.php">Log in</a></p>
 
 
-    ?>
+
+        </div>
+
+        <?php
+
+
+        ?>
 
 
 </body>
