@@ -3,13 +3,13 @@ include 'includes/autoloader.php';
 
 $msgBluePrint = '';
 
-if( $_GET["errorMsg"] == "emptyFields" ){
-    $msgBluePrint .= '<div class="div--error"><p>You have empty fields</p></div>';
+if (isset($_GET["errorMsg"])) {
+    if ($_GET["errorMsg"] == "emptyFields") {
+        $msgBluePrint .= '<div class="div--error"><p>You have empty fields</p></div>';
+    } else if ($_GET["errorMsg"] == "invalidEmail") {
+        $msgBluePrint .= '<div class="div--error"><p>Invalid Email</p></div>';
+    }
 }
-else if( $_GET["errorMsg"] == "invalidEmail" ){
-    $msgBluePrint .= '<div class="div--error"><p>Invalid Email</p></div>';
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -24,27 +24,27 @@ else if( $_GET["errorMsg"] == "invalidEmail" ){
 </head>
 
 <body>
-<div class="div--login">
-<div class="leftdiv--login"></div>
-<div class="rightdiv--login">
+    <div class="div--login">
+        <div class="leftdiv--login"></div>
+        <div class="rightdiv--login">
 
-<img src="images/logo_start.jpg" alt="logo">
+            <img src="images/logo_start.jpg" alt="logo">
 
-<h1>Welcome to Elearning Tool</h1>
-<form id="formLoginUser" action="api-login.php" method="POST">
-        <h3>Log in</h3>
-        <div>
-         <input id="userEmail" name="userEmail" type="text" placeholder="Email"></div>
-        <div><input id="userPassword" name="userPassword" type="text" placeholder="Password"></div>
-        <button type="submit" name="login-submit">Log In</button>
-        <div id="pErrorMsg"> <?= $msgBluePrint ?></div>
-</form>
+            <h1>Welcome to Elearning Tool</h1>
+            <form id="formLoginUser" action="api-login.php" method="POST">
+                <h3>Log in</h3>
+                <div>
+                    <input id="userEmail" name="userEmail" type="text" placeholder="Email"></div>
+                <div><input id="userPassword" name="userPassword" type="text" placeholder="Password"></div>
+                <button type="submit" name="login-submit">Log In</button>
+                <div id="pErrorMsg"> <?= $msgBluePrint ?></div>
+            </form>
 
-   
-    <p class="p--login">Don't have an account? <a href="signup.php">Sign Up</a></p>
 
-  
-</div>
+            <p class="p--login">Don't have an account? <a href="signup.php">Sign Up</a></p>
+
+
+        </div>
 </body>
 
 </html>
