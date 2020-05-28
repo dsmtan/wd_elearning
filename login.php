@@ -1,23 +1,15 @@
 <?php
 include 'includes/autoloader.php';
 
-$errorMessage = '';
-$errorClassName = '';
-session_start();
+$msgBluePrint = '';
 
-if (isset($_SESSION['errorMessage'])) {
-    $errorMessage = $_SESSION['errorMessage'];
-    $errorClassName = "class='div--error'";
-    echo $errorMessage;
-    unset($_SESSION['errorMessage']);
+if (isset($_GET["errorMsg"])) {
+    if ($_GET["errorMsg"] == "emptyFields") {
+        $msgBluePrint .= '<div class="div--error"><p>You have empty fields</p></div>';
+    } else if ($_GET["errorMsg"] == "invalidEmail") {
+        $msgBluePrint .= '<div class="div--error"><p>Invalid Email</p></div>';
+    }
 }
-
-if (isset($_SESSION['userID'])) {
-    unset($_SESSION['errorMessage']);
-    header('Location: index.php');
-    exit();
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -43,11 +35,10 @@ if (isset($_SESSION['userID'])) {
                 <h3>Log in</h3>
                 <input id="userEmail" name="userEmail" type="text" placeholder="Email">
                 <input id="userPassword" name="userPassword" type="password" placeholder="Password">
-                <button type="submit">Log In</button>
+                <button type="submit" name="login-submit">Log In</button>
+                <div id="pErrorMsg"> <?= $msgBluePrint ?></div>
             </form>
-            <div <?= $errorClassName ?>>
-                <p><?= $errorMessage ?></p>
-            </div>
+
 
             <p class="p--login">Don't have an account? <a href="signup.php">Sign Up</a></p>
 

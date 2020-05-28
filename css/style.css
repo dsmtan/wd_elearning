@@ -179,7 +179,6 @@ p {
 }
 
 .form--personalInfo button {
-  display: block;
   background-color: #142056;
   color: white;
   padding: 10px 35px;
@@ -195,7 +194,6 @@ p {
 }
 
 #btnDeleteUser {
-  display: block;
   background-color: #142056;
   color: white;
   padding: 10px 35px;
@@ -295,29 +293,28 @@ p {
       grid-template-columns: 20fr 35fr;
   grid-column-gap: 20px;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   margin: 0%;
 }
 
 .leftdiv--login,
 .leftdiv--signup {
   background-image: url("../images/path_background.png");
-  height: 100%;
+  height: 100vh;
 }
 
 .rightdiv--login,
 .rightdiv--signup {
   margin: auto;
   width: 40%;
-  height: 100%;
+  height: 100vh;
   text-align: center;
   position: relative;
 }
 
 .rightdiv--login .p--login,
 .rightdiv--signup .p--login {
-  margin-top: 20px;
-  font-size: 0.8em;
+  margin-top: 70px;
 }
 
 .rightdiv--login .p--login a,
@@ -333,9 +330,7 @@ p {
 
 #formLoginUser,
 #formSignupUser {
-  display: block;
   margin-top: 40px;
-  margin-bottom: 80px;
   position: relative;
 }
 
@@ -353,7 +348,6 @@ p {
 
 #formLoginUser button,
 #formSignupUser button {
-  display: block;
   background-color: #142056;
   color: white;
   padding: 10px 35px;
@@ -362,20 +356,20 @@ p {
   font-weight: 900;
   font-size: 15px;
   cursor: pointer;
-  position: relative;
-  float: right;
+  position: absolute;
+  right: 0px;
 }
 
-.div--error {
-  display: block;
-  position: relative;
-  padding: 10px 5px;
+#formLoginUser .div--error,
+#formSignupUser .div--error {
+  margin-top: 50px;
   background-color: #ffeeee;
   border-radius: 4px;
   border: #f47474 1px solid;
 }
 
-.div--error p {
+#formLoginUser .div--error p,
+#formSignupUser .div--error p {
   color: #f47474;
 }
 /*# sourceMappingURL=style.css.map */
