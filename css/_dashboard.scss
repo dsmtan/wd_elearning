@@ -4,39 +4,41 @@
 
 .section--dashboardContent {
   background-color: $backgroundblue;
-  padding: 3.5em;
+  padding: 3em 5%;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 2fr;
+  grid-template-rows: 1fr 2.5fr;
   grid-gap: 2em;
 
   article {
     display: block;
     background-color: white;
     border-radius: 5px;
-    padding: 2em 2.5em;
+    padding: 3em 4em;
     box-shadow: 1px 2px 5px 1px #c4c4c480;
 
     h3 {
       margin-bottom: 1.5em;
     }
 
-    p {
-      margin-bottom: 3em;
+    h4 {
+      font-size: 1em;
+      font-weight: 400;
+      margin-top: 0.8em;
     }
   }
 }
 
 .art--userIntro {
   grid-area: 1 / 1;
+
+  p {
+    margin-bottom: 1em;
+  }
 }
 
 .art--userPersonal {
   grid-area: 2 / 1;
-}
-
-.art--userProgress {
-  grid-area: 1 / 2 / span 2;
 }
 
 .form--personalInfo {
@@ -44,20 +46,121 @@
     @include formInput;
   }
 
+  #inputUserPassword {
+    margin-bottom: 1.5em;
+  }
+
   button {
     @include primaryButton;
-    margin-top: 1em;
-    padding: 15px;
-    width: 11em;
+    width: 10em;
+    padding: 10px 5px;
     float: right;
+
+    &:hover {
+      background-color: $mediumblue;
+    }
   }
 }
 
 #btnDeleteUser {
   @include primaryButton;
+  width: 10em;
+  padding: 10px 5px;
   background-color: rgb(228, 230, 235);
   color: rgb(142, 146, 161);
   margin-top: 1em;
-  padding: 15px;
-  width: 12em;
+
+  &:hover {
+    background-color: $lightred;
+    color: $red;
+  }
+}
+
+.art--userProgress {
+  grid-area: 1 / 2 / span 2;
+
+  .h3--second {
+    margin-top: 2.5em;
+  }
+
+  .div--moduleDisplay {
+    text-align: center;
+    margin-bottom: 1.8em;
+    p {
+      font-weight: 600;
+      font-size: 1.1em;
+      width: 50%;
+      margin: 0 auto;
+    }
+
+    p:first-of-type {
+      font-size: 5.9em;
+    }
+  }
+
+  progress[value] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 75%;
+    min-width: 300px;
+    height: 21px;
+    margin: 8px 0;
+  }
+
+  progress[value]::-webkit-progress-bar {
+    background-color: $lightblue;
+    border-radius: 22px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15) inset;
+  }
+
+  progress[value]::-webkit-progress-value {
+    background-color: $mint;
+    border-radius: 22px;
+    background-size: 35px 20px, 100% 100%, 100% 100%;
+  }
+}
+
+.div--achvWrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-row-gap: 2em;
+}
+
+.div--achievement {
+  text-align: center;
+
+  img {
+    height: 75px;
+    opacity: 0.4;
+    filter: saturate(0%);
+  }
+
+  p {
+    font-size: 0.9em;
+    padding: 0 20px;
+    opacity: 0.4;
+  }
+
+  &.activated {
+    img {
+      opacity: 1;
+      filter: none;
+    }
+
+    p {
+      opacity: 1;
+    }
+  }
+}
+
+@media screen and (min-width: 1220px) {
+  .section--dashboardContent {
+    padding: 3.5em 8%;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .section--dashboardContent {
+    padding: 3.5em 16%;
+  }
 }

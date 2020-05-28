@@ -19,22 +19,51 @@ class UserProgress extends Dbh
         }
     }
 
-    public function createModuleProgress($userID, $moduleID) // called when user is created
+    public function getCompletedModulesByUser($userID)
     {
         try {
             $db = $this->connectDB();
-            $q = $db->prepare('INSERT INTO moduleprogress(userID, moduleID) VALUES(:userID, :moduleID)');
+            $q = $db->prepare('SELECT * FROM moduleprogress WHERE userID= :userID AND completed= true');
             $q->bindValue(':userID', $userID);
-            $q->bindValue(':moduleID', $moduleID);
             $q->execute();
-            echo 'Module progress created. Rows: ' . $q->rowCount();
-            // FIX ME: create trigger when testScore > 80 module is completed
+            $data = $q->fetchAll();
+            return $data;
         } catch (PDOException $ex) {
             echo $ex;
         }
     }
 
-    public function completeModule($userID, $moduleID) // at end of the test
+    public function getLatestModuleByUser($userID)
+    {
+        try {
+            $db = $this->connectDB();
+            $q = $db->prepare('SELECT * FROM moduleprogress WHERE userID= :userID AND unlocked= true AND completed= false');
+            $q->bindValue(':userID', $userID);
+            $q->execute();
+            $data = $q->fetch();
+            return $data;
+        } catch (PDOException $ex) {
+            echo $ex;
+        }
+    }
+
+
+    public function createModuleProgress($userID, $moduleID, $unlocked) // called when user is created
+    {
+        try {
+            $db = $this->connectDB();
+            $q = $db->prepare('INSERT INTO moduleprogress(userID, moduleID, unlocked) VALUES(:userID, :moduleID, :unlocked)');
+            $q->bindValue(':userID', $userID);
+            $q->bindValue(':moduleID', $moduleID);
+            $q->bindValue(':unlocked', $unlocked);
+            $q->execute();
+            echo "Module progress $moduleID created for user $userID.\n";
+        } catch (PDOException $ex) {
+            echo $ex;
+        }
+    }
+
+    public function completeModule($userID, $moduleID) // FIX ME: create trigger when testScore > 80 module is completed
     {
         try {
             $db = $this->connectDB();
@@ -58,7 +87,21 @@ class UserProgress extends Dbh
             $q->bindValue(':moduleID', $moduleID);
             $q->execute();
             echo 'Module is unlocked. Rows: ' . $q->rowCount();
-            // FIX ME: trigger to unlock next module
+            // FIX ME: create segmentprocess for all segments in module
+        } catch (PDOException $ex) {
+            echo $ex;
+        }
+    }
+
+    public function getSegmentProgressByUser($userID)
+    {
+        try {
+            $db = $this->connectDB();
+            $q = $db->prepare('SELECT * FROM segmentprogress WHERE userID= :userID');
+            $q->bindValue(':userID', $userID);
+            $q->execute();
+            $data = $q->fetchAll();
+            return $data;
         } catch (PDOException $ex) {
             echo $ex;
         }
@@ -79,7 +122,37 @@ class UserProgress extends Dbh
         }
     }
 
-    public function createSegmentProgress($userID, $segmentID) // called when user starts module
+    public function getCompletedSegmentsByUser($userID)
+    {
+        try {
+            $db = $this->connectDB();
+            $q = $db->prepare('SELECT * FROM segmentprogress WHERE userID= :userID AND completed= true');
+            $q->bindValue(':userID', $userID);
+            $q->execute();
+            $data = $q->fetchAll();
+            return $data;
+        } catch (PDOException $ex) {
+            echo $ex;
+        }
+    }
+
+    public function getSegmentProgressByModule($userID, $moduleID)
+    {
+        try {
+            $db = $this->connectDB();
+            $q = $db->prepare('SELECT * FROM segmentprogress WHERE userID= :userID  AND segmentID IN 
+            (SELECT segment.segmentID FROM segment WHERE moduleID= :moduleID)');
+            $q->bindValue(':userID', $userID);
+            $q->bindValue(':moduleID', $moduleID);
+            $q->execute();
+            $data = $q->fetchAll();
+            return $data;
+        } catch (PDOException $ex) {
+            echo $ex;
+        }
+    }
+
+    public function createSegmentProgress($userID, $segmentID) // when user is created
     {
         try {
             $db = $this->connectDB();

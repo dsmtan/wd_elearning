@@ -17,6 +17,22 @@ class Achievement extends Dbh
         }
     }
 
+    public function getUserAchievement($userID, $achID)
+    {
+        try {
+            $db = $this->connectDB();
+            $q = $db->prepare('SELECT * FROM userachievement WHERE userID= :userID AND achievementID= :achID');
+            $q->bindValue(':userID', $userID);
+            $q->bindValue(':achID', $achID);
+            $q->execute();
+            $data = $q->fetch();
+            return $data;
+        } catch (PDOException $ex) {
+            echo $ex;
+        }
+    }
+
+
     public function getUserAchievements($userID)
     {
         try {
@@ -24,9 +40,8 @@ class Achievement extends Dbh
             $q = $db->prepare('SELECT * FROM userachievement WHERE userID= :userID');
             $q->bindValue(':userID', $userID);
             $q->execute();
-            $data = $q->fetchAll(); // returns array
-            print_r($data);
-            echo 'Fetched achievements. Rows: ' . $q->rowCount();
+            $data = $q->fetchAll();
+            return $data;
         } catch (PDOException $ex) {
             echo $ex;
         }
@@ -39,7 +54,7 @@ class Achievement extends Dbh
             $q = $db->prepare('SELECT * FROM achievement');
             $q->execute();
             $data = $q->fetchAll(); // returns array
-            print_r($data);
+            return $data;
         } catch (PDOException $ex) {
             echo $ex;
         }

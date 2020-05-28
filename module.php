@@ -4,7 +4,7 @@ include 'includes/autoloader.php';
 $moduleID = $_GET['id'];
 
 $segment = new Segment();
-$segmentsByModule = $segment->getAllSegments($moduleID);
+$segmentsByModule = $segment->getSegmentsByModule($moduleID);
 
 $segmentID = isset($_GET['segid']) ? $_GET['segid'] : $segmentsByModule[0]->segmentID;
 $segContent = $segment->getSegmentContent($segmentID);

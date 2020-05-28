@@ -2,9 +2,9 @@
 include 'includes/autoloader.php';
 
 session_start();
-if(  !isset($_SESSION['userID'])  ){
-  header('Location: login.php');
-  exit();
+if (!isset($_SESSION['userID'])) {
+    header('Location: login.php');
+    exit();
 }
 $userID = $_SESSION['userID'];
 
@@ -102,7 +102,7 @@ foreach ($allModules as $module) {
 // $testModule->getModuleTitle(1003);
 
 // $testSegment = new Segment();
-// $testSegment->getAllSegments(1001); // by moduleID
+// $testSegment->getAllSegments();
 // $testSegment->getSegmentContent(2002); //segmentID
 // $testSegment->getSegmentExercise(2001); //segmentID
 
