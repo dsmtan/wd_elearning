@@ -1,23 +1,38 @@
 <?php
 
 include '../includes/autoloader.php';
+session_start();
 
+if (!empty($_POST['userEmail']) && !empty($_POST['userPassword'])) {
+    $userEmail = $_POST['userEmail'];
+    $userPassword = $_POST['userPassword'];
 
+    $user = new User();
+    $loginUser = $user->findUserByEmail($userEmail); // check if user account exists
+    var_dump($loginUser);
 
-if (isset($_POST["login-submit"])) {
-
-    if (empty($_POST["userEmail"]) || empty($_POST["userPassword"])) {
-        header("Location: ../login.php?errorMsg=emptyFields");
+    if (!$loginUser) {
+        $_SESSION['errorMessage'] = 'There\'s no account for this email. Sign up first.';
+        header('Location: ../login.php');
         exit();
     }
-    // else if (!filter_var($email, FILTER_VALIDATE_EMAIL )){
-    //     header("Location: login.php?errorMsg=invalidEmail");
-    //     exit();
-    // }
-    else {
-        $loginUser = new User();
-        $loginUser->loginUser($_POST["userEmail"]);
+
+    if (
+        $loginUser && $userPassword != $loginUser->password
+    ) {
+        $_SESSION['errorMessage'] = 'Your password is incorrect. Try again.';
+        header('Location: ../login.php');
+        exit();
     }
-} else {
-    echo "error";
+
+    if (
+        $loginUser && $userPassword == $loginUser->password
+    ) {
+        $_SESSION['userID'] = $loginUser->userID;
+        unset($_SESSION['errorMessage']);
+        header('Location: ../index.php');
+        exit();
+    }
 }
+$_SESSION['errorMessage'] = 'Please fill in both fields. Try again.';
+header('Location: ../login.php');

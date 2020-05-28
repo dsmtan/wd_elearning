@@ -72,41 +72,22 @@ class User extends Dbh
             $q = $db->prepare('SELECT * FROM user');
             $q->execute();
             $data = $q->fetchAll(); // returns array
-            print_r($data);
-            // while ($row = $q->fetch()) {
-            //     echo "<p>$row->firstName </p>";
-            //     echo json_encode($row);
-            // }
+            return $data;
         } catch (PDOException $ex) {
             echo $ex;
         }
     }
 
 
-    public function loginUser($email)
+    public function findUserByEmail($email)
     {
         try {
             $db = $this->connectDB();
-
             $q = $db->prepare('SELECT * FROM user WHERE email= :email');
             $q->bindValue(':email', $email);
             $q->execute();
-            while ($row = $q->fetch()) {
-
-                echo json_encode($row->userID);
-
-                if ($_POST["userPassword"] == $row->password  && $_POST["userEmail"] == $row->email) {
-                    // Start session with stored userID
-                    session_start();
-                    $_SESSION['userID'] = $row->userID;
-                    header('Location: ../index.php');
-                    exit();
-                } else if ($_POST["userPassword"] != $row->password) {
-                    echo "wrong password";
-                } else {
-                    echo "wrong password or email";
-                }
-            }
+            $data = $q->fetch();
+            return $data;
         } catch (PDOException $ex) {
             echo $ex;
         }
