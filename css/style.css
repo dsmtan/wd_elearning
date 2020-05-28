@@ -26,23 +26,25 @@ h3 {
 }
 
 h1 {
-  font-size: 28px;
+  font-size: 1.6em;
 }
 
 h2 {
-  font-size: 25px;
+  font-size: 1.4em;
 }
 
 h3 {
-  font-size: 20px;
+  font-size: 1.2em;
 }
 
 p {
-  font-size: 18px;
+  font-size: 1em;
 }
 
 .nav--main {
-  position: relative;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
   background-color: white;
   height: 100vh;
   width: 90px;
@@ -121,13 +123,13 @@ p {
 
 .section--dashboardContent {
   background-color: #eef6ff;
-  padding: 3.5em;
+  padding: 3em 5%;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 1fr;
       grid-template-columns: 1fr 1fr;
-  -ms-grid-rows: 1fr 2fr;
-      grid-template-rows: 1fr 2fr;
+  -ms-grid-rows: 1fr 2.5fr;
+      grid-template-rows: 1fr 2.5fr;
   grid-gap: 2em;
 }
 
@@ -135,7 +137,7 @@ p {
   display: block;
   background-color: white;
   border-radius: 5px;
-  padding: 2em 2.5em;
+  padding: 3em 4em;
   -webkit-box-shadow: 1px 2px 5px 1px #c4c4c480;
           box-shadow: 1px 2px 5px 1px #c4c4c480;
 }
@@ -144,8 +146,10 @@ p {
   margin-bottom: 1.5em;
 }
 
-.section--dashboardContent article p {
-  margin-bottom: 3em;
+.section--dashboardContent article h4 {
+  font-size: 1em;
+  font-weight: 400;
+  margin-top: 0.8em;
 }
 
 .art--userIntro {
@@ -154,17 +158,14 @@ p {
   grid-area: 1 / 1;
 }
 
+.art--userIntro p {
+  margin-bottom: 1em;
+}
+
 .art--userPersonal {
   -ms-grid-row: 2;
   -ms-grid-column: 1;
   grid-area: 2 / 1;
-}
-
-.art--userProgress {
-  -ms-grid-row: 1;
-  -ms-grid-row-span: 2;
-  -ms-grid-column: 2;
-  grid-area: 1 / 2 / span 2;
 }
 
 .form--personalInfo input {
@@ -178,6 +179,10 @@ p {
   margin: 15px 0;
 }
 
+.form--personalInfo #inputUserPassword {
+  margin-bottom: 1.5em;
+}
+
 .form--personalInfo button {
   display: block;
   background-color: #142056;
@@ -185,13 +190,16 @@ p {
   padding: 10px 35px;
   border: none;
   border-radius: 4px;
-  font-weight: 900;
+  font-weight: 700;
   font-size: 15px;
   cursor: pointer;
-  margin-top: 1em;
-  padding: 15px;
-  width: 11em;
+  width: 10em;
+  padding: 10px 5px;
   float: right;
+}
+
+.form--personalInfo button:hover {
+  background-color: #182391;
 }
 
 #btnDeleteUser {
@@ -201,14 +209,116 @@ p {
   padding: 10px 35px;
   border: none;
   border-radius: 4px;
-  font-weight: 900;
+  font-weight: 700;
   font-size: 15px;
   cursor: pointer;
+  width: 10em;
+  padding: 10px 5px;
   background-color: #e4e6eb;
   color: #8e92a1;
   margin-top: 1em;
-  padding: 15px;
-  width: 12em;
+}
+
+#btnDeleteUser:hover {
+  background-color: #ffeeee;
+  color: #f47474;
+}
+
+.art--userProgress {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 2;
+  grid-area: 1 / 2 / span 2;
+}
+
+.art--userProgress .h3--second {
+  margin-top: 2.5em;
+}
+
+.art--userProgress .div--moduleDisplay {
+  text-align: center;
+  margin-bottom: 1.8em;
+}
+
+.art--userProgress .div--moduleDisplay p {
+  font-weight: 600;
+  font-size: 1.1em;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.art--userProgress .div--moduleDisplay p:first-of-type {
+  font-size: 5.9em;
+}
+
+.art--userProgress progress[value] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+       appearance: none;
+  width: 75%;
+  min-width: 300px;
+  height: 21px;
+  margin: 8px 0;
+}
+
+.art--userProgress progress[value]::-webkit-progress-bar {
+  background-color: #a4cbf5;
+  border-radius: 22px;
+  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15) inset;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15) inset;
+}
+
+.art--userProgress progress[value]::-webkit-progress-value {
+  background-color: #6bffe6;
+  border-radius: 22px;
+  background-size: 35px 20px, 100% 100%, 100% 100%;
+}
+
+.div--achvWrapper {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+  grid-row-gap: 2em;
+}
+
+.div--achievement {
+  text-align: center;
+}
+
+.div--achievement img {
+  height: 75px;
+  opacity: 0.4;
+  -webkit-filter: saturate(0%);
+          filter: saturate(0%);
+}
+
+.div--achievement p {
+  font-size: 0.9em;
+  padding: 0 20px;
+  opacity: 0.4;
+}
+
+.div--achievement.activated img {
+  opacity: 1;
+  -webkit-filter: none;
+          filter: none;
+}
+
+.div--achievement.activated p {
+  opacity: 1;
+}
+
+@media screen and (min-width: 1220px) {
+  .section--dashboardContent {
+    padding: 3.5em 8%;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .section--dashboardContent {
+    padding: 3.5em 16%;
+  }
 }
 
 .main--bookmarksWrapper {
@@ -317,6 +427,7 @@ p {
 .rightdiv--login .p--login,
 .rightdiv--signup .p--login {
   margin-top: 20px;
+  margin-bottom: 3em;
   font-size: 0.8em;
 }
 
@@ -359,7 +470,7 @@ p {
   padding: 10px 35px;
   border: none;
   border-radius: 4px;
-  font-weight: 900;
+  font-weight: 700;
   font-size: 15px;
   cursor: pointer;
   position: relative;

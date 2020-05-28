@@ -5,6 +5,7 @@ $darkblue: #142056;
 $mediumblue: #182391;
 $lightblue: #a4cbf5;
 $backgroundblue: #eef6ff;
+$mint: #6bffe6;
 
 * {
   box-sizing: border-box;
@@ -32,16 +33,16 @@ h3 {
   color: $darkblue;
 }
 h1 {
-  font-size: 28px;
+  font-size: 1.6em;
 }
 h2 {
-  font-size: 25px;
+  font-size: 1.4em;
 }
 h3 {
-  font-size: 20px;
+  font-size: 1.2em;
 }
 p {
-  font-size: 18px;
+  font-size: 1em;
 }
 
 @mixin flexCenter {
@@ -57,7 +58,7 @@ p {
   padding: 10px 35px;
   border: none;
   border-radius: 4px;
-  font-weight: 900;
+  font-weight: 700;
   font-size: 15px;
   cursor: pointer;
 }

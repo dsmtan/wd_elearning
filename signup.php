@@ -1,18 +1,14 @@
 <?php
 include 'includes/autoloader.php';
 
+$errorMessage = '';
+$errorClassName = '';
+session_start();
 
-$msgBluePrint = '';
-
-if (isset($_GET["errorMsg"])) {
-
-    if ($_GET["errorMsg"] == "emptyFields") {
-        $msgBluePrint .= '<div class="div--error"><p>You have empty fields</p></div>';
-    } else if ($_GET["errorMsg"] == "invalidEmail") {
-        $msgBluePrint .= '<div class="div--error"><p>Invalid Email</p></div>';
-    } else if ($_GET["errorMsg"] == "invalidName") {
-        $msgBluePrint .= '<div class="div--error"><p>Firstname and lastname should have 2 - 20 characters</p></div>';
-    }
+if (isset($_SESSION['errorMessage'])) {
+    $errorMessage = $_SESSION['errorMessage'];
+    $errorClassName = "class='div--error'";
+    unset($_SESSION['errorMessage']);
 }
 
 ?>
@@ -37,7 +33,7 @@ if (isset($_GET["errorMsg"])) {
         <div class="rightdiv--signup">
 
             <img src="images/logo_start.jpg" alt="logo">
-            <h1>Welcome to Elearning Tool</h1>
+            <h1>Welcome!</h1>
 
             <form id="formSignupUser" action="api/api-signup.php" method="POST">
                 <h3>Sign Up</h3>
@@ -48,20 +44,13 @@ if (isset($_GET["errorMsg"])) {
                 <button type="submit" name="signup-submit">Sign Up</button>
 
             </form>
-            <div>
-                <?= $msgBluePrint ?>
-                <p class="p--login">Already have an account? <a href="login.php">Log in</a></p>
+
+            <div <?= $errorClassName ?>>
+                <p><?= $errorMessage ?></p>
             </div>
-
-
+            <p class="p--login">Already have an account? <a href="login.php">Log in</a></p>
 
         </div>
-
-        <?php
-
-
-        ?>
-
 
 </body>
 

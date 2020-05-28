@@ -37,7 +37,7 @@ if (isset($_SESSION['userID'])) {
         <div class="rightdiv--login">
 
             <img src="images/logo_start.jpg" alt="logo">
-            <h1>Welcome to Elearning Tool</h1>
+            <h1>Welcome!</h1>
 
             <form id="formLoginUser" action="api/api-login.php" method="POST">
                 <h3>Log in</h3>

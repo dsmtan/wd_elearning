@@ -7,7 +7,7 @@ $module = new Module();
 $moduleTitle = $module->getModuleTitle($moduleID);
 
 $segment = new Segment();
-$segmentsByModule = $segment->getAllSegments($moduleID);
+$segmentsByModule = $segment->getSegmentsByModule($moduleID);
 
 $moduleTest = new ModuleTest();
 $testID = $moduleTest->getTestByModule($moduleID);
