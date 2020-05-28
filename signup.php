@@ -46,10 +46,12 @@ if (isset($_GET["errorMsg"])) {
                 <input name="email" type="text" placeholder="email">
                 <input name="password" type="password" placeholder="password">
                 <button type="submit" name="signup-submit">Sign Up</button>
-                <div id="pErrorMsg"> <?= $msgBluePrint ?></div>
-            </form>
 
-            <p class="p--login">Already have an account? <a href="login.php">Log in</a></p>
+            </form>
+            <div>
+                <?= $msgBluePrint ?>
+                <p class="p--login">Already have an account? <a href="login.php">Log in</a></p>
+            </div>
 
 
 
