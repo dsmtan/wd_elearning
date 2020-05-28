@@ -42,6 +42,7 @@ if ($lastModule) {
         $leftOffLink = "<a href='module.php?id=$lastModule->moduleID&segid=$leftOffSegment'>Continue where you left off last time.</a>";
     }
 } else {
+    $leftOffLink = '';
     echo 'You\'ve completed the course';
 }
 

@@ -255,7 +255,7 @@ p {
   -webkit-appearance: none;
   -moz-appearance: none;
        appearance: none;
-  width: 75%;
+  width: 100%;
   min-width: 300px;
   height: 21px;
   margin: 8px 0;
@@ -282,31 +282,47 @@ p {
   grid-row-gap: 2em;
 }
 
-.div--achievement {
+.div--achvWrapper .div--achievement {
   text-align: center;
+  width: 140px;
+  margin: 0 auto;
 }
 
-.div--achievement img {
+.div--achvWrapper .div--achievement img {
   height: 75px;
   opacity: 0.4;
   -webkit-filter: saturate(0%);
           filter: saturate(0%);
 }
 
-.div--achievement p {
+.div--achvWrapper .div--achievement p {
   font-size: 0.9em;
   padding: 0 20px;
   opacity: 0.4;
 }
 
-.div--achievement.activated img {
+.div--achvWrapper .div--achievement.activated img {
   opacity: 1;
   -webkit-filter: none;
           filter: none;
 }
 
-.div--achievement.activated p {
+.div--achvWrapper .div--achievement.activated p {
   opacity: 1;
+}
+
+.div--achvWrapper div:nth-child(4) {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: 2 / 1 / 2 / 3;
+}
+
+.div--achvWrapper div:nth-child(5) {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 2;
+  grid-area: 2 / 2 / 2 / 4;
 }
 
 @media screen and (min-width: 1220px) {
