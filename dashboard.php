@@ -12,17 +12,18 @@ include_once('includes/calc-course-progress.php');
 
 $segment = new Segment();
 $progress = new UserProgress();
+$module = new Module();
+$moduleTest = new ModuleTest();
 
 $lastModule = $progress->getLatestModuleByUser($userID); // unlocked but not completed yet
 if ($lastModule) {
-    $module = new Module();
     $lastModuleTitle = $module->getModuleTitle($lastModule->moduleID);
     $moduleNumber = substr($lastModule->moduleID, -2);
     $displayModuleHTML = "<p>$moduleNumber </p><p>$lastModuleTitle</p>";
 
     // progress in last left module
     $segmentsByModule = $progress->getSegmentProgressByModule($userID, $lastModule->moduleID);
-    $totalSegInLast = count($segmentsByModule);
+    $totalSegInLast = count($segmentsByModule) + 1; // + 1 is for the test FIX ME: misses test below
 
     $completedSegInLast = [];
     foreach ($segmentsByModule as $segment) {
@@ -32,16 +33,21 @@ if ($lastModule) {
     }
     $progressLastModule = round((count($completedSegInLast) / $totalSegInLast) * 100, 2);
 
-    // continue to left off link
+    // continue to left off link - default first seg
     $leftOffSegment = $segmentsByModule[0]->segmentID;
     $leftOffLink = "<a href='module.php?id=$lastModule->moduleID&segid=$leftOffSegment'>Continue where you left off last time.</a>";
 
-    if (count($completedSegInLast) > 0 && count($completedSegInLast) < $totalSegInLast) {
-        $leftOffSegment = $segmentsByModule[count($completedSegInLast)]->segmentID;
-        $leftOffLink = "<a href='module.php?id=$lastModule->moduleID&segid=$leftOffSegment'>Continue where you left off last time.</a>";
-    } else {
-        $leftOffLink = '';
-        echo 'You\'ve completed the course';
+    if (count($completedSegInLast) > 0) {
+        if (count($completedSegInLast) < count($segmentsByModule)) {
+            $leftOffSegment = $segmentsByModule[count($completedSegInLast)]->segmentID;
+            $leftOffLink = "<a href='module.php?id=$lastModule->moduleID&segid=$leftOffSegment'>Continue where you left off last time.</a>";
+        }
+
+        if (count($completedSegInLast) == count($segmentsByModule)) {
+            // user only needs to complete the test in last module
+            $testID = $moduleTest->getTestByModule($lastModule->moduleID);
+            $leftOffLink = "<a href='moduletest.php?id=$lastModule->moduleID&testid=$testID'>Continue where you left off last time.</a>";
+        }
     }
 }
 

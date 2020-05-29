@@ -9,6 +9,7 @@ $segmentsByModule = $segment->getSegmentsByModule($moduleID);
 
 $segmentID = isset($_GET['segid']) ? $_GET['segid'] : $segmentsByModule[0]->segmentID;
 $segContent = $segment->getSegmentContent($segmentID);
+$segExercise = $segment->getSegmentExercise($segmentID);
 
 // TO DO
 // media: check file type + render based on file type
@@ -39,8 +40,19 @@ $segContent = $segment->getSegmentContent($segmentID);
                 <p><?= $segContent->explanation ?></p>
 
                 <h3>Media (to do)</h3>
-
-                <h3>Exercise (to do)</h3>
+                <div class="div--exerciseContent">
+                    <h3>Exercise</h3>
+                    <p><?= $segExercise->exerciseContent ?></p>
+                    <form id="form--exercise" action="api/api-check-exercise.php" onsubmit="return false">
+                        <textarea name="exerciseAnswer" placeholder="Type your answer here.."></textarea>
+                        <button type="submit" onclick="checkExAnswer(<?= $segExercise->exerciseID ?>, <?= $segmentID ?>)">Check your answer</button>
+                        <div id="exFeedback" class="div--feedback">Feedback</div>
+                    </form>
+                </div>
+            </article>
+            <article class="art--previousNext">
+                <button>Previous</button>
+                <button>Next</button>
             </article>
             <?php
             require_once('components/moduleOverview.php');
@@ -49,7 +61,7 @@ $segContent = $segment->getSegmentContent($segmentID);
         </section>
 
     </main>
-
+    <script src="js/module.js"></script>
 </body>
 
 </html>
