@@ -36,7 +36,7 @@ if (isset($_SESSION['userID'])) {
         <div class="leftdiv--login"></div>
         <div class="rightdiv--login">
 
-            <img src="images/logo_start.jpg" alt="logo">
+            <img src="assets/logo_start.jpg" alt="logo">
             <h1>Welcome!</h1>
 
             <form id="formLoginUser" action="api/api-login.php" method="POST">

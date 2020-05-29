@@ -524,7 +524,7 @@ div.div--progressDisplay progress[value]::-webkit-progress-bar {
 
 .leftdiv--login,
 .leftdiv--signup {
-  background-image: url("../images/path_background.png");
+  background-image: url("../assets/path_background.png");
   height: 100%;
 }
 
