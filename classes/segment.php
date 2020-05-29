@@ -52,7 +52,21 @@ class Segment extends Dbh
             $q->bindValue(':segmentID', $segmentID);
             $q->execute();
             $data = $q->fetch();
-            echo json_encode($data);
+            return $data;
+        } catch (PDOException $ex) {
+            echo $ex;
+        }
+    }
+
+    public function getExerciseByID($exerciseID)
+    {
+        try {
+            $db = $this->connectDB();
+            $q = $db->prepare('SELECT * FROM exercise WHERE exerciseID= :exerciseID');
+            $q->bindValue(':exerciseID', $exerciseID);
+            $q->execute();
+            $data = $q->fetch();
+            return $data;
         } catch (PDOException $ex) {
             echo $ex;
         }
