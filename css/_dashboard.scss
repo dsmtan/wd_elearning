@@ -78,6 +78,7 @@
 
 .art--userProgress {
   grid-area: 1 / 2 / span 2;
+  @include progressBar();
 
   .h3--second {
     margin-top: 2.5em;
@@ -96,27 +97,6 @@
     p:first-of-type {
       font-size: 5.9em;
     }
-  }
-
-  progress[value] {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 100%;
-    min-width: 300px;
-    height: 21px;
-    margin: 8px 0;
-  }
-
-  progress[value]::-webkit-progress-bar {
-    background-color: $lightblue;
-    border-radius: 22px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15) inset;
-  }
-
-  progress[value]::-webkit-progress-value {
-    background-color: $mint;
-    border-radius: 22px;
-    background-size: 35px 20px, 100% 100%, 100% 100%;
   }
 }
 

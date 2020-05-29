@@ -4,27 +4,24 @@
 // fix input icons
 // triggers for achievements
 
-include 'includes/autoloader.php';
-
 session_start();
 $userID = $_SESSION['userID'];
 
-$segment = new Segment();
-$totalSegments = count($segment->getAllSegments());
+include 'includes/autoloader.php';
+include_once('includes/calc-course-progress.php');
 
+$segment = new Segment();
 $progress = new UserProgress();
-$completedSegments = count($progress->getCompletedSegmentsByUser($userID));
-$courseProgress = round(($completedSegments / $totalSegments) * 100, 2);
 
 $lastModule = $progress->getLatestModuleByUser($userID); // unlocked but not completed yet
 if ($lastModule) {
     $module = new Module();
     $lastModuleTitle = $module->getModuleTitle($lastModule->moduleID);
     $moduleNumber = substr($lastModule->moduleID, -2);
-    $displayModuleHTML = "<p>   $moduleNumber </p><p>$lastModuleTitle</p>";
+    $displayModuleHTML = "<p>$moduleNumber </p><p>$lastModuleTitle</p>";
 
+    // progress in last left module
     $segmentsByModule = $progress->getSegmentProgressByModule($userID, $lastModule->moduleID);
-
     $totalSegInLast = count($segmentsByModule);
 
     $completedSegInLast = [];
@@ -35,15 +32,17 @@ if ($lastModule) {
     }
     $progressLastModule = round((count($completedSegInLast) / $totalSegInLast) * 100, 2);
 
+    // continue to left off link
     $leftOffSegment = $segmentsByModule[0]->segmentID;
     $leftOffLink = "<a href='module.php?id=$lastModule->moduleID&segid=$leftOffSegment'>Continue where you left off last time.</a>";
-    if (count($completedSegInLast) > 0) {
+
+    if (count($completedSegInLast) > 0 && count($completedSegInLast) < $totalSegInLast) {
         $leftOffSegment = $segmentsByModule[count($completedSegInLast)]->segmentID;
         $leftOffLink = "<a href='module.php?id=$lastModule->moduleID&segid=$leftOffSegment'>Continue where you left off last time.</a>";
+    } else {
+        $leftOffLink = '';
+        echo 'You\'ve completed the course';
     }
-} else {
-    $leftOffLink = '';
-    echo 'You\'ve completed the course';
 }
 
 

@@ -1,0 +1,85 @@
+.art--moduleOverview {
+  background-color: $darkblue;
+
+  div {
+    background-color: white;
+    border-radius: 10px;
+    margin: 18px 25px;
+  }
+}
+
+.div--moduleDisplay {
+  text-align: center;
+  padding: 10px;
+  padding-bottom: 1.8em;
+  p {
+    font-weight: 600;
+    font-size: 1.3em;
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  p:first-of-type {
+    font-size: 5.9em;
+  }
+}
+
+div.div--segLinks {
+  text-align: center;
+  padding: 0;
+
+  a {
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .div--segBtn {
+    display: block;
+    background-color: transparent;
+    border-radius: 0px;
+    margin: 0;
+    padding: 1.5em 1em;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(214, 215, 218, 0.801);
+    text-decoration: none;
+
+    &.current {
+      background-color: $backgroundblue;
+    }
+
+    &:hover {
+      background-color: #6bffe62d;
+    }
+  }
+
+  a:first-child {
+    div {
+      border-radius: 10px 10px 0px 0px;
+    }
+  }
+
+  a:last-child {
+    div {
+      border-bottom: none;
+      border-radius: 0px 0px 10px 10px;
+    }
+  }
+}
+
+div.div--progressDisplay {
+  background-color: transparent;
+  padding: 10px 0;
+  p {
+    font-size: 1.1em;
+    color: white;
+    margin-top: 1.1em;
+    margin-bottom: 5px;
+  }
+  @include progressBar;
+  progress[value] {
+    height: 19px;
+  }
+  progress[value]::-webkit-progress-bar {
+    background-color: #a4cbf5a8;
+  }
+}
