@@ -1,5 +1,6 @@
 <?php
 include 'includes/autoloader.php';
+session_start();
 
 $moduleID = $_GET['id'];
 

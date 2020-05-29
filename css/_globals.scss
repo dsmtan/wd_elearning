@@ -78,3 +78,26 @@ p {
   font-size: 0.9em;
   margin: 15px 0;
 }
+
+@mixin progressBar {
+  progress[value] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    min-width: 190px;
+    height: 21px;
+    margin: 8px 0;
+  }
+
+  progress[value]::-webkit-progress-bar {
+    background-color: $lightblue;
+    border-radius: 22px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15) inset;
+  }
+
+  progress[value]::-webkit-progress-value {
+    background-color: $mint;
+    border-radius: 22px;
+    background-size: 35px 20px, 100% 100%, 100% 100%;
+  }
+}
