@@ -22,11 +22,45 @@
   }
 
   p {
+    max-width: 750px;
     margin-bottom: 1em;
   }
 }
 
+.div--bookmarkBtn {
+  text-align: right;
+  float: right;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+
+  svg {
+    display: inline-block;
+  }
+
+  p {
+    display: inline-block;
+    margin-bottom: 0;
+    margin-right: 5px;
+    margin-top: 3px;
+    font-weight: 600;
+  }
+
+  &.bookmarked {
+    svg {
+      path {
+        fill: $mint; // temporary until fill is fixed or svg replaced
+      }
+    }
+
+    p {
+      display: none;
+    }
+  }
+}
+
 .div--exerciseContent {
+  clear: both;
   margin-top: 4em;
   margin-bottom: 8em;
 }

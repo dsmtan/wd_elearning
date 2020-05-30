@@ -30,7 +30,7 @@ $currentTest = $isTest ? 'current' : '';
 $segmentOverview .= "<a href='moduletest.php?id=$moduleID&testid=$testID' ><div class='div--segBtn $currentTest'>Test</div></a>";
 
 $moduleOverview = "
-    <article class='art--moduleOverview'>
+    <article id='moduleOverview' class='art--moduleOverview'>
         <div class='div--moduleDisplay'>
             $displayModuleHTML
         </div>    

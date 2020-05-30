@@ -24,6 +24,14 @@ async function checkExAnswer(exerciseID, segmentID) {
 async function completeSegment(segmentID) {
   var url = `api/api-complete-segment.php?segID=${segmentID}`;
   var jConnection = await fetch(url);
-  var result = await jConnection.text();
-  console.log(result);
+  await jConnection;
+  $("#moduleOverview").load(location.href + " #moduleOverview>*", "");
+}
+
+async function toggleBookmark(userID, segmentID) {
+  var url = `api/api-toggle-bookmark.php?segID=${segmentID}`;
+  var jConnection = await fetch(url);
+  await jConnection;
+  console.log(userID, segmentID);
+  divBookmarkBtn.classList.toggle("bookmarked");
 }
