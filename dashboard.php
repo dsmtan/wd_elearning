@@ -111,7 +111,7 @@ foreach ($allAchievements as $ach) {
                 <h4>Course progress</h4>
                 <progress max="100" value="<?= $courseProgress ?>"></progress>
 
-                <h3 class="h3--second">Your achievements</h3>
+                <h3>Your achievements</h3>
                 <div class="div--achvWrapper">
                     <?= $achievementsHTML ?>
                 </div>

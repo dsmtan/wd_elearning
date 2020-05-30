@@ -31,6 +31,21 @@ class Bookmark extends Dbh
         }
     }
 
+    public function getSingleBookmark($userID, $segmentID)
+    {
+        try {
+            $db = $this->connectDB();
+            $q = $db->prepare('SELECT * FROM bookmark WHERE userID= :userID AND segmentID= :segmentID');
+            $q->bindValue(':userID', $userID);
+            $q->bindValue(':segmentID', $segmentID);
+            $q->execute();
+            $data = $q->fetch();
+            return $data;
+        } catch (PDOException $ex) {
+            echo $ex;
+        }
+    }
+
     public function getBookmarks($userID)
     {
         try {
@@ -39,7 +54,7 @@ class Bookmark extends Dbh
             $q->bindValue(':userID', $userID);
             $q->execute();
             $data = $q->fetchAll();
-            print_r($data);
+            return $data;
         } catch (PDOException $ex) {
             echo $ex;
         }

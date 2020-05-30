@@ -174,7 +174,6 @@ class UserProgress extends Dbh
             $q->bindValue(':userID', $userID);
             $q->bindValue(':segmentID', $segmentID);
             $q->execute();
-            echo "Completed segment $segmentID";
         } catch (PDOException $ex) {
             echo $ex;
         }

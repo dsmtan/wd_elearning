@@ -16,7 +16,7 @@ $isModule = strpos(basename($urlPath), 'module.php') === 0;
 $isTest = strpos(basename($urlPath), 'moduletest.php') === 0;
 foreach ($navOptions as $option) {
     $currentClass = basename($urlPath) === $option['url'] || ($isModule || $isTest) && $option['url'] === 'index.php' ? "class='current'" : '';
-    $navLinks .= "<a href='{$option['url']}' $currentClass>{$option['icon']}</a>\n";
+    $navLinks .= "<a href='{$option['url']}' $currentClass>{$option['icon']}</a>";
 }
 
 $mainNavigation =   "<nav class='nav--main'>

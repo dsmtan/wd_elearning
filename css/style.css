@@ -103,6 +103,7 @@ p {
   display: grid;
   -ms-grid-columns: 90px 1fr;
       grid-template-columns: 90px 1fr;
+  min-height: 100vh;
 }
 
 .section--indexContent {
@@ -120,6 +121,7 @@ p {
   display: grid;
   -ms-grid-columns: 90px 1fr;
       grid-template-columns: 90px 1fr;
+  min-height: 100vh;
 }
 
 .section--dashboardContent {
@@ -255,7 +257,11 @@ p {
   background-size: 35px 20px, 100% 100%, 100% 100%;
 }
 
-.art--userProgress .h3--second {
+.art--userProgress h3:first-of-type {
+  margin-bottom: 0.4em;
+}
+
+.art--userProgress h3:nth-of-type(2) {
   margin-top: 2.5em;
 }
 
@@ -297,7 +303,7 @@ p {
 }
 
 .div--achvWrapper .div--achievement p {
-  font-size: 0.95em;
+  font-size: 0.9em;
   padding: 4px 22px;
   opacity: 0.4;
 }
@@ -343,6 +349,7 @@ p {
   display: grid;
   -ms-grid-columns: 90px 1fr;
       grid-template-columns: 90px 1fr;
+  min-height: 100vh;
 }
 
 .section--bookmarksContent {
@@ -355,6 +362,7 @@ p {
   display: grid;
   -ms-grid-columns: 90px 1fr;
       grid-template-columns: 90px 1fr;
+  min-height: 100vh;
 }
 
 .section--moduleContent {
@@ -383,10 +391,44 @@ p {
 }
 
 .art--segmentContent p {
+  max-width: 750px;
   margin-bottom: 1em;
 }
 
+.div--bookmarkBtn {
+  text-align: right;
+  float: right;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
+}
+
+.div--bookmarkBtn svg {
+  display: inline-block;
+}
+
+.div--bookmarkBtn p {
+  display: inline-block;
+  margin-bottom: 0;
+  margin-right: 5px;
+  margin-top: 3px;
+  font-weight: 600;
+}
+
+.div--bookmarkBtn.bookmarked svg path {
+  fill: #6bffe6;
+}
+
+.div--bookmarkBtn.bookmarked p {
+  display: none;
+}
+
 .div--exerciseContent {
+  clear: both;
   margin-top: 4em;
   margin-bottom: 8em;
 }
@@ -597,6 +639,7 @@ div.div--progressDisplay progress[value]::-webkit-progress-bar {
   display: grid;
   -ms-grid-columns: 90px 1fr;
       grid-template-columns: 90px 1fr;
+  min-height: 100vh;
 }
 
 .section--testContent {

@@ -1,6 +1,6 @@
 <?php
 
-// $userID = $_SESSION['userID']; should already be in file to export to.
+// needs userID
 
 $segment = new Segment();
 $totalSegments = count($segment->getAllSegments());

@@ -68,6 +68,7 @@ p {
 @mixin generalBodyLayout {
   display: grid;
   grid-template-columns: 90px 1fr;
+  min-height: 100vh;
 }
 
 @mixin formInput {

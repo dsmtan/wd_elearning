@@ -80,7 +80,10 @@
   grid-area: 1 / 2 / span 2;
   @include progressBar();
 
-  .h3--second {
+  h3:first-of-type {
+    margin-bottom: 0.4em;
+  }
+  h3:nth-of-type(2) {
     margin-top: 2.5em;
   }
 
@@ -117,7 +120,7 @@
     }
 
     p {
-      font-size: 0.95em;
+      font-size: 0.9em;
       padding: 4px 22px;
       opacity: 0.4;
     }
