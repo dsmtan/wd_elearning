@@ -72,6 +72,11 @@ p {
   margin: 1em auto;
 }
 
+.nav--main a {
+  position: absolute;
+  bottom: 2%;
+}
+
 .div--navLinks {
   display: block;
   width: 100%;
