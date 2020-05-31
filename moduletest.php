@@ -2,6 +2,10 @@
 session_start();
 include 'includes/autoloader.php';
 
+require_once('components/moduleOverview.php');
+
+$lastSegIDOfModule = $segmentsByModule[count($segmentsByModule) - 1]->segmentID;
+
 ?>
 
 <!DOCTYPE html>
@@ -27,9 +31,10 @@ include 'includes/autoloader.php';
                 <p>blabla add test questions</p>
 
             </article>
-            <?php
-            require_once('components/moduleOverview.php');
-            ?>
+            <article class="art--previousNext">
+                <a href="module.php?id=<?= $moduleID ?>&segid=<?= $lastSegIDOfModule ?>"><button>Previous</button></a>
+            </article>
+            <?= $moduleOverview ?>
 
         </section>
 

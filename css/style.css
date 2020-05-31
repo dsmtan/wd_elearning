@@ -674,6 +674,7 @@ p {
 
 .art--previousNext {
   clear: both;
+  position: relative;
   -ms-grid-row: 2;
   -ms-grid-column: 1;
   grid-area: 2 / 1;
@@ -693,11 +694,22 @@ p {
   font-size: 15px;
   cursor: pointer;
   display: inline-block;
-  margin: 10px;
+  width: 7em;
+  margin: 10px 0;
+  padding: 10px;
 }
 
 .art--previousNext button:hover {
   background-color: #182391;
+}
+
+.art--previousNext a:nth-of-type(2) {
+  position: absolute;
+  right: 12%;
+}
+
+.art--previousNext .hide {
+  display: none;
 }
 
 .art--moduleOverview {
@@ -829,10 +841,12 @@ div.div--progressDisplay progress[value]::-webkit-progress-bar {
   display: grid;
   -ms-grid-columns: auto 350px;
       grid-template-columns: auto 350px;
+  -ms-grid-rows: auto 100px;
+      grid-template-rows: auto 100px;
 }
 
 .art--testContent {
-  padding: 5em;
+  padding: 5em 12%;
 }
 
 .art--testContent h2 {
