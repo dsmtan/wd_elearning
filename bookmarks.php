@@ -10,6 +10,7 @@ $getAllModules = new Module();
 
 $allBookmarks = $getAllBookmarks->getBookmarks($userID);
 $numberBookmarks = count($allBookmarks);
+$noBookmarksHTMl = "";
 
 if ($numberBookmarks === 0){
     $noBookmarksHTMl .= "<h3>You have no bookmarks</h3> ";
