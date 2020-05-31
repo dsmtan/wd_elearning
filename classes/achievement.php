@@ -3,19 +3,20 @@ require_once('db.php');
 
 class Achievement extends Dbh
 {
-    public function addUserAchievement($userID, $achievementID)
-    {
-        try {
-            $db = $this->connectDB();
-            $q = $db->prepare('INSERT INTO userachievement VALUES(:userID, :achievementID)');
-            $q->bindValue(':userID', $userID);
-            $q->bindValue(':achievementID', $achievementID);
-            $q->execute();
-            echo 'New achievement added. Rows: ' . $q->rowCount();
-        } catch (PDOException $ex) {
-            echo $ex;
-        }
-    }
+    // userAchievements are added by triggers + stored procedure bc it's a requirement
+    // public function addUserAchievement($userID, $achievementID)
+    // {
+    //     try {
+    //         $db = $this->connectDB();
+    //         $q = $db->prepare('INSERT INTO userachievement VALUES(:userID, :achievementID)');
+    //         $q->bindValue(':userID', $userID);
+    //         $q->bindValue(':achievementID', $achievementID);
+    //         $q->execute();
+    //         echo 'New achievement added. Rows: ' . $q->rowCount();
+    //     } catch (PDOException $ex) {
+    //         echo $ex;
+    //     }
+    // }
 
     public function getUserAchievement($userID, $achID)
     {
