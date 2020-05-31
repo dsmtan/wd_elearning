@@ -13,7 +13,7 @@ class UserProgress extends Dbh
             $q->bindValue(':moduleID', $moduleID);
             $q->execute();
             $data = $q->fetch();
-            echo json_encode($data);
+            return $data;
         } catch (PDOException $ex) {
             echo $ex;
         }
@@ -41,6 +41,26 @@ class UserProgress extends Dbh
             $q->bindValue(':userID', $userID);
             $q->execute();
             $data = $q->fetch();
+            return $data;
+        } catch (PDOException $ex) {
+            echo $ex;
+        }
+    }
+
+    public function getModuleProgressJoin($userID, $moduleID)
+    {
+        try {
+            $db = $this->connectDB();
+            $q = $db->prepare(
+            'SELECT segment.segmentID, segment.moduleID, segmentprogress.userID, segmentprogress.completed
+            FROM segment
+            JOIN segmentprogress
+            ON segment.segmentID = segmentprogress.segmentID
+            WHERE userID= :userID AND moduleID= :moduleID AND completed="1"');
+            $q->bindValue(':userID', $userID);
+            $q->bindValue(':moduleID', $moduleID);
+            $q->execute();
+            $data = $q->fetchAll();
             return $data;
         } catch (PDOException $ex) {
             echo $ex;

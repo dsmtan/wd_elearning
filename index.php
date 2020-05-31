@@ -1,6 +1,7 @@
 <?php
 include 'includes/autoloader.php';
 
+
 session_start();
 if (!isset($_SESSION['userID'])) {
     header('Location: login.php');
@@ -11,16 +12,31 @@ $userID = $_SESSION['userID'];
 $learningModule = new Module();
 $allModules = $learningModule->getAllModules();
 $modulesHTML = "";
+
 foreach ($allModules as $module) {
-    $modulesHTML .= "<a href='module.php?id=$module->moduleID'>$module->title</a>"; // convert to div later
+
+    $userProgress = new UserProgress();
+    $moduleProgress = $userProgress->getModuleProgress($userID, $module->moduleID);  
+    switch($moduleProgress->unlocked)
+    {
+        case '0':
+         $linkStatusClass = 'not--active--link';
+         $notactiveModuleClass = 'not--active--module';
+            break;
+    } 
+    $segmentsProgress = $userProgress->getModuleProgressJoin($userID, $module->moduleID);
+    $completedSegments = count($segmentsProgress) * 33 ."px";
+
+    $modulesHTML .= "
+    <div  id='info_module$module->moduleID'>
+    <h3 class'white-text'>$module->title</h3>
+    <div class='index--progress'>
+    <div class='index--progress--done' style='width:$completedSegments'></div>
+    </div>
+    </div>
+    <a class='$linkStatusClass' href='module.php?id=$module->moduleID'><div class='$notactiveModuleClass' id='i_module$module->moduleID'></div></a>
+    "; 
 }
-
-
-
-// TO DO
-// background & graphics
-// progress bars
-// optional: status right top not sure where this info should come from the DB?
 
 ?>
 
@@ -35,19 +51,22 @@ foreach ($allModules as $module) {
 </head>
 
 <body>
+
     <main class="main--indexWrapper">
         <?php
         require_once('components/navigation.php');
         ?>
-
         <section class="section--indexContent">
-            <h1>Table of Content</h1>
-
-            <?= $modulesHTML ?>
-
+            <div id="module_illustrations">
+        <?= $modulesHTML ?>
+            </div>
+        <div id="learning_path_illustration">
+        <div id="background_path"></div>
+        </div>
+        <div class="index--background"></div>
         </section>
-
     </main>
+    <script src="js/index.js"> </script>
 
 </body>
 
