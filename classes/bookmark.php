@@ -11,7 +11,6 @@ class Bookmark extends Dbh
             $q->bindValue(':userID', $userID);
             $q->bindValue(':segmentID', $segmentID);
             $q->execute();
-            echo 'New bookmark created';
         } catch (PDOException $ex) {
             echo $ex;
         }
@@ -25,7 +24,6 @@ class Bookmark extends Dbh
             $q->bindValue(':userID', $userID);
             $q->bindValue(':segmentID', $segmentID);
             $q->execute();
-            echo 'Deleted number of rows: ' . $q->rowCount();
         } catch (PDOException $ex) {
             echo $ex;
         }
