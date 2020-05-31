@@ -16,16 +16,22 @@ $modulesHTML = "";
 foreach ($allModules as $module) {
 
     $userProgress = new UserProgress();
-    $moduleProgress = $userProgress->getModuleProgress($userID, $module->moduleID);  
-    switch($moduleProgress->unlocked)
-    {
+    $moduleProgress = $userProgress->getModuleProgress($userID, $module->moduleID);
+    switch ($moduleProgress->unlocked) {
         case '0':
-         $linkStatusClass = 'not--active--link';
-         $notactiveModuleClass = 'not--active--module';
+            $linkStatusClass = 'not--active--link';
+            $notactiveModuleClass = 'not--active--module';
             break;
-    } 
+        case '1':
+            $linkStatusClass = '';
+            $notactiveModuleClass = '';
+            break;
+        default:
+            $linkStatusClass = '';
+            $notactiveModuleClass = '';
+    }
     $segmentsProgress = $userProgress->getModuleProgressJoin($userID, $module->moduleID);
-    $completedSegments = count($segmentsProgress) * 33 ."px";
+    $completedSegments = count($segmentsProgress) * 33 . "px";
 
     $modulesHTML .= "
     <div  id='info_module$module->moduleID'>
@@ -35,7 +41,7 @@ foreach ($allModules as $module) {
     </div>
     </div>
     <a class='$linkStatusClass' href='module.php?id=$module->moduleID'><div class='$notactiveModuleClass' id='i_module$module->moduleID'></div></a>
-    "; 
+    ";
 }
 
 ?>
@@ -58,12 +64,12 @@ foreach ($allModules as $module) {
         ?>
         <section class="section--indexContent">
             <div id="module_illustrations">
-        <?= $modulesHTML ?>
+                <?= $modulesHTML ?>
             </div>
-        <div id="learning_path_illustration">
-        <div id="background_path"></div>
-        </div>
-        <div class="index--background"></div>
+            <div id="learning_path_illustration">
+                <div id="background_path"></div>
+            </div>
+            <div class="index--background"></div>
         </section>
     </main>
     <script src="js/index.js"> </script>
