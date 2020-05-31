@@ -1,5 +1,6 @@
 <?php
 include 'includes/autoloader.php';
+
 session_start();
 
 $moduleID = $_GET['id'];
@@ -12,6 +13,9 @@ $segmentID = isset($_GET['segid']) ? $_GET['segid'] : $segmentsByModule[0]->segm
 $segContent = $segment->getSegmentContent($segmentID);
 $segExercise = $segment->getSegmentExercise($segmentID);
 
+require_once('components/moduleOverview.php');
+
+// bookmark toggle
 $bookmark = new Bookmark();
 $isBookmarked = $bookmark->getSingleBookmark($userID, $segmentID);
 $bookmarkedClass = $isBookmarked ? 'bookmarked' : '';
@@ -20,9 +24,14 @@ $bookmarkIcon = file_get_contents('assets/ico_bookmark_flat.svg');
 $bookmarkButton = "<div id='divBookmarkBtn' class='div--bookmarkBtn $bookmarkedClass' onclick='toggleBookmark($userID, $segmentID)'><p id='pBookmarkText'>$bookmarkedLabel</p> $bookmarkIcon </div>";
 
 
-// TO DO
-// media: check file type + render based on file type
+// previous - next buttons
+$previousSegID = $segmentID - 1;
+$nextSegID = $segmentID + 1;
 
+// if seg is last of module then link to test
+$nextLink = $segmentsByModule[count($segmentsByModule) - 1]->segmentID == $segmentID ? "moduletest.php?id=$moduleID&testid=$testID" : "module.php?id=$moduleID&segid=$nextSegID";
+// if seg is first of module hide previous button
+$previousHide = $segmentsByModule[0]->segmentID == $segmentID ? "class='hide'" : '';
 
 ?>
 
@@ -62,11 +71,11 @@ $bookmarkButton = "<div id='divBookmarkBtn' class='div--bookmarkBtn $bookmarkedC
                 </div>
             </article>
             <article class="art--previousNext">
-                <button>Previous</button>
-                <button>Next</button>
+                <a <?= $previousHide ?> href="module.php?id=<?= $moduleID ?>&segid=<?= $previousSegID ?>"><button>Previous</button></a>
+                <a href="<?= $nextLink ?>"><button>Next</button></a>
             </article>
-            <?php
-            require_once('components/moduleOverview.php');
+            <?=
+                $moduleOverview
             ?>
 
         </section>

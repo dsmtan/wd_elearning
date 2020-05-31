@@ -44,5 +44,3 @@ $moduleOverview = "
             <progress max='100' value='$courseProgress'></progress>
         </div>
     </article>";
-
-echo $moduleOverview;

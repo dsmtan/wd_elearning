@@ -5,10 +5,11 @@
 .section--testContent {
   display: grid;
   grid-template-columns: auto 350px;
+  grid-template-rows: auto 100px;
 }
 
 .art--testContent {
-  padding: 5em;
+  padding: 5em 12%;
 
   h2 {
     margin-bottom: 2em;
