@@ -505,7 +505,50 @@ p {
 
 .section--bookmarksContent {
   background-color: #eef6ff;
-  padding-left: 20px;
+  padding: 3em 5%;
+  text-align: center;
+}
+
+.section--bookmarksContent h1 {
+  padding-bottom: 4%;
+}
+
+.section--bookmarksContent .section--bookmarksArticles {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+  -ms-grid-rows: 1fr 2.5fr;
+      grid-template-rows: 1fr 2.5fr;
+  grid-gap: 2em;
+}
+
+.section--bookmarksContent .section--bookmarksArticles a {
+  text-decoration: none;
+}
+
+.section--bookmarksContent .section--bookmarksArticles article {
+  display: block;
+  background-color: white;
+  border-radius: 5px;
+  padding: 2em 3em;
+  -webkit-box-shadow: 1px 2px 5px 1px #c4c4c480;
+          box-shadow: 1px 2px 5px 1px #c4c4c480;
+  text-align: center;
+}
+
+.section--bookmarksContent .section--bookmarksArticles article h3 {
+  margin-bottom: 1.5em;
+}
+
+.section--bookmarksContent .section--bookmarksArticles article h4 {
+  font-size: 1em;
+  font-weight: 400;
+  margin-top: 0.8em;
+}
+
+.section--bookmarksContent .section--bookmarksArticles article:hover {
+  background-color: #a4cbf5;
 }
 
 .main--moduleWrapper {
