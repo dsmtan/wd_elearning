@@ -560,22 +560,23 @@ p {
 
 .div--bookmarkBtn svg {
   display: inline-block;
+  height: 26px;
+}
+
+.div--bookmarkBtn svg #bookmark_fill {
+  display: none;
 }
 
 .div--bookmarkBtn p {
   display: inline-block;
   margin-bottom: 0;
-  margin-right: 5px;
-  margin-top: 3px;
+  margin-right: 7px;
+  margin-top: 1px;
   font-weight: 600;
 }
 
-.div--bookmarkBtn.bookmarked svg path {
-  fill: #6bffe6;
-}
-
-.div--bookmarkBtn.bookmarked p {
-  display: none;
+.div--bookmarkBtn.bookmarked svg #bookmark_fill {
+  display: block;
 }
 
 .div--exerciseContent {

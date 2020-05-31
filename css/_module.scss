@@ -36,25 +36,26 @@
 
   svg {
     display: inline-block;
+    height: 26px;
+
+    #bookmark_fill {
+      display: none;
+    }
   }
 
   p {
     display: inline-block;
     margin-bottom: 0;
-    margin-right: 5px;
-    margin-top: 3px;
+    margin-right: 7px;
+    margin-top: 1px;
     font-weight: 600;
   }
 
   &.bookmarked {
     svg {
-      path {
-        fill: $mint; // temporary until fill is fixed or svg replaced
+      #bookmark_fill {
+        display: block;
       }
-    }
-
-    p {
-      display: none;
     }
   }
 }

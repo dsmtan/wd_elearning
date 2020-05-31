@@ -31,7 +31,10 @@ async function completeSegment(segmentID) {
 async function toggleBookmark(userID, segmentID) {
   var url = `api/api-toggle-bookmark.php?segID=${segmentID}`;
   var jConnection = await fetch(url);
-  await jConnection;
-  console.log(userID, segmentID);
+  const bookmarkStatus = await jConnection.text();
+  bookmarkStatus === "created"
+    ? (pBookmarkText.innerHTML = "Saved")
+    : (pBookmarkText.innerHTML = "Save for later");
+
   divBookmarkBtn.classList.toggle("bookmarked");
 }

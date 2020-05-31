@@ -15,10 +15,9 @@ $segExercise = $segment->getSegmentExercise($segmentID);
 $bookmark = new Bookmark();
 $isBookmarked = $bookmark->getSingleBookmark($userID, $segmentID);
 $bookmarkedClass = $isBookmarked ? 'bookmarked' : '';
+$bookmarkedLabel = $isBookmarked ? 'Saved' : 'Save for later';
 $bookmarkIcon = file_get_contents('assets/ico_bookmark_flat.svg');
-$bookmarkButton = "<div id='divBookmarkBtn' class='div--bookmarkBtn $bookmarkedClass' onclick='toggleBookmark($userID, $segmentID)'><p>Save for later</p> $bookmarkIcon </div>";
-
-
+$bookmarkButton = "<div id='divBookmarkBtn' class='div--bookmarkBtn $bookmarkedClass' onclick='toggleBookmark($userID, $segmentID)'><p id='pBookmarkText'>$bookmarkedLabel</p> $bookmarkIcon </div>";
 
 
 // TO DO
