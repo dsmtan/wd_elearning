@@ -1,6 +1,6 @@
 <?php
 
-// needs userID, moduleID and $testID
+// needs progress class, userID, moduleID and $testID
 
 $segmentsByModule = $progress->getSegmentProgressByModule($userID, $moduleID);
 $totalSegInModule = count($segmentsByModule) + 1; // + 1 is for the test
