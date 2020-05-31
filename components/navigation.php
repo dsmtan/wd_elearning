@@ -24,6 +24,7 @@ $mainNavigation =   "<nav class='nav--main'>
                         <div class='div--navLinks'>
                         {$navLinks}
                         </div>
+                        <a href='logout.php'>Log Out</a>
                     </nav>";
 
 echo $mainNavigation;
