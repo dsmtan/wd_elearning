@@ -160,15 +160,30 @@ p {
   z-index: 0;
 }
 
-#module1:hover, #module2:hover, #module3:hover, #module4:hover, #module5:hover, #module6:hover {
+#module1:hover,
+#module2:hover,
+#module3:hover,
+#module4:hover,
+#module5:hover,
+#module6:hover {
   opacity: 0.8;
 }
 
-#i_module1001, #i_module1002, #i_module1003, #i_module1004, #i_module1005, #i_module1006 {
+#i_module1001,
+#i_module1002,
+#i_module1003,
+#i_module1004,
+#i_module1005,
+#i_module1006 {
   position: absolute;
 }
 
-#info_module1001, #info_module1002, #info_module1003, #info_module1004, #info_module1005, #info_module1006 {
+#info_module1001,
+#info_module1002,
+#info_module1003,
+#info_module1004,
+#info_module1005,
+#info_module1006 {
   position: absolute;
 }
 
@@ -234,27 +249,42 @@ p {
 
 .index--progress {
   height: 10px;
-  width: 100px;
-  background-color: #46527E;
-  border-radius: 20px;
+  width: 140px;
 }
 
-.index--progress--done {
-  height: 100%;
-  background: #6BFFE6;
-  color: #fff;
+.index--progress progress[value] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+       appearance: none;
+  width: 100%;
+  min-width: 190px;
+  height: 21px;
+  margin: 8px 0;
+}
+
+.index--progress progress[value]::-webkit-progress-bar {
+  background-color: #a4cbf5;
+  border-radius: 22px;
+  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15) inset;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15) inset;
+}
+
+.index--progress progress[value]::-webkit-progress-value {
+  background-color: #6bffe6;
+  border-radius: 22px;
+  background-size: 35px 20px, 100% 100%, 100% 100%;
+}
+
+.index--progress progress[value] {
+  min-width: 100px;
+  height: 10px;
+  margin: 0 0;
   border-radius: 20px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-transition: 1s ease;
-  transition: 1s ease;
+  vertical-align: top;
+}
+
+.index--progress progress[value]::-webkit-progress-bar {
+  background-color: #46527e;
 }
 
 .not--active--link {
@@ -264,7 +294,7 @@ p {
 }
 
 .not--active--module {
-  opacity: .2;
+  opacity: 0.2;
 }
 
 .main--dashboardWrapper {
