@@ -23,7 +23,7 @@ class UserProgress extends Dbh
     {
         try {
             $db = $this->connectDB();
-            $q = $db->prepare('SELECT * FROM moduleprogress WHERE userID= :userID AND completed= true');
+            $q = $db->prepare('SELECT * FROM moduleprogress WHERE userID= :userID AND completed= 1');
             $q->bindValue(':userID', $userID);
             $q->execute();
             $data = $q->fetchAll();
@@ -37,7 +37,7 @@ class UserProgress extends Dbh
     {
         try {
             $db = $this->connectDB();
-            $q = $db->prepare('SELECT * FROM moduleprogress WHERE userID= :userID AND unlocked= true AND completed= false');
+            $q = $db->prepare('SELECT * FROM moduleprogress WHERE userID= :userID AND unlocked= 1 AND completed= 0 LIMIT 1');
             $q->bindValue(':userID', $userID);
             $q->execute();
             $data = $q->fetch();
@@ -52,11 +52,12 @@ class UserProgress extends Dbh
         try {
             $db = $this->connectDB();
             $q = $db->prepare(
-            'SELECT segment.segmentID, segment.moduleID, segmentprogress.userID, segmentprogress.completed
+                'SELECT segment.segmentID, segment.moduleID, segmentprogress.userID, segmentprogress.completed
             FROM segment
             JOIN segmentprogress
             ON segment.segmentID = segmentprogress.segmentID
-            WHERE userID= :userID AND moduleID= :moduleID AND completed="1"');
+            WHERE userID= :userID AND moduleID= :moduleID AND completed=1'
+            );
             $q->bindValue(':userID', $userID);
             $q->bindValue(':moduleID', $moduleID);
             $q->execute();
@@ -91,8 +92,8 @@ class UserProgress extends Dbh
             $q->bindValue(':userID', $userID);
             $q->bindValue(':moduleID', $moduleID);
             $q->execute();
-            echo 'Module is completed. Rows: ' . $q->rowCount();
-            // FIX ME: trigger to unlock next module
+            $data = $q->fetch();
+            return $data->moduleID;
         } catch (PDOException $ex) {
             echo $ex;
         }
@@ -106,8 +107,8 @@ class UserProgress extends Dbh
             $q->bindValue(':userID', $userID);
             $q->bindValue(':moduleID', $moduleID);
             $q->execute();
-            echo 'Module is unlocked. Rows: ' . $q->rowCount();
-            // FIX ME: create segmentprocess for all segments in module
+            $data = $q->fetch();
+            return $data->moduleID;
         } catch (PDOException $ex) {
             echo $ex;
         }

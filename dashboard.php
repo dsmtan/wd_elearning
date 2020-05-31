@@ -2,7 +2,6 @@
 
 // TO DO:
 // fix input icons
-// triggers for achievements
 
 session_start();
 $userID = $_SESSION['userID'];
@@ -49,6 +48,15 @@ if ($lastModule) {
             $leftOffLink = "<a href='moduletest.php?id=$lastModule->moduleID&testid=$testID'>Continue where you left off last time.</a>";
         }
     }
+} else { // course fully completed
+    $leftOffLink = '';
+    $allModules = $module->getAllModules();
+    $finishedModuleID = $allModules[count($allModules) - 1]->moduleID;
+    $moduleNumber = substr($finishedModuleID, -2);
+    $displayModuleHTML = "<p>$moduleNumber </p><p>$lastModuleTitle</p>";
+
+    $courseProgress = 100;
+    $progressLastModule =  100;
 }
 
 
