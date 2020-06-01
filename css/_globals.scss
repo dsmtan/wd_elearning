@@ -47,6 +47,10 @@ p {
   font-size: 1em;
 }
 
+a {
+  text-decoration: none;
+}
+
 @mixin flexCenter {
   display: flex;
   align-items: center;
@@ -63,6 +67,7 @@ p {
   font-weight: 700;
   font-size: 15px;
   cursor: pointer;
+  outline: none;
 }
 
 @mixin generalBodyLayout {
