@@ -33,6 +33,15 @@ $nextLink = $segmentsByModule[count($segmentsByModule) - 1]->segmentID == $segme
 // if seg is first of module hide previous button
 $previousHide = $segmentsByModule[0]->segmentID == $segmentID ? "class='hide'" : '';
 
+$mediaURLhtml = "";
+if (strpos($segContent->mediaURL, 'youtube') !== false) {
+    $mediaURLhtml .= "<iframe width='100%' height='500' frameborder='0'
+    src='https://www.youtube.com/embed/ $segContent->mediaURL'></iframe>";
+} else {
+    $mediaURLhtml .= "<iframe width='100%' height='500' frameborder='0'
+    src='$segContent->mediaURL'></iframe>";
+}
+
 ?>
 
 
@@ -58,10 +67,8 @@ $previousHide = $segmentsByModule[0]->segmentID == $segmentID ? "class='hide'" :
                 <?= $bookmarkButton ?>
                 <h2><?= $segContent->title ?></h2>
                 <p><?= $segContent->explanation ?></p>
-
-                <iframe width="100%" height="500" frameborder="0"
-                src="https://www.youtube.com/embed/<?= $segContent->mediaURL ?>">
-</iframe>
+                <?= $mediaURLhtml ?>
+                
                 <div class="div--exerciseContent">
                     <h3>Exercise</h3>
                     <p><?= $segExercise->exerciseContent ?></p>

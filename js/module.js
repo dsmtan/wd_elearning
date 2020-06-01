@@ -38,3 +38,4 @@ async function toggleBookmark(userID, segmentID) {
 
   divBookmarkBtn.classList.toggle("bookmarked");
 }
+
