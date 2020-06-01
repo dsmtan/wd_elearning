@@ -84,7 +84,7 @@ class UserProgress extends Dbh
         }
     }
 
-    public function completeModule($userID, $moduleID) // FIX ME: create trigger when testScore > 80 module is completed
+    public function completeModule($userID, $moduleID)
     {
         try {
             $db = $this->connectDB();
@@ -92,8 +92,6 @@ class UserProgress extends Dbh
             $q->bindValue(':userID', $userID);
             $q->bindValue(':moduleID', $moduleID);
             $q->execute();
-            $data = $q->fetch();
-            return $data->moduleID;
         } catch (PDOException $ex) {
             echo $ex;
         }
@@ -107,8 +105,6 @@ class UserProgress extends Dbh
             $q->bindValue(':userID', $userID);
             $q->bindValue(':moduleID', $moduleID);
             $q->execute();
-            $data = $q->fetch();
-            return $data->moduleID;
         } catch (PDOException $ex) {
             echo $ex;
         }
@@ -200,6 +196,20 @@ class UserProgress extends Dbh
         }
     }
 
+    public function completeAllSegments($userID, $moduleID)
+    {
+        try {
+            $db = $this->connectDB();
+            $q = $db->prepare('UPDATE segmentprogress SET completed= true WHERE userID= :userID AND segmentID IN 
+            (SELECT segment.segmentID FROM segment WHERE moduleID= :moduleID)');
+            $q->bindValue(':userID', $userID);
+            $q->bindValue(':moduleID', $moduleID);
+            $q->execute();
+        } catch (PDOException $ex) {
+            echo $ex;
+        }
+    }
+
     public function getTestResult($userID, $testID)
     {
         try {
@@ -215,7 +225,7 @@ class UserProgress extends Dbh
         }
     }
 
-    public function addTestResult($userID, $testID, $testScore) // when test is submitted and all questions answered
+    public function addTestResult($userID, $testID, $testScore)
     {
         try {
             $db = $this->connectDB();
@@ -224,8 +234,6 @@ class UserProgress extends Dbh
             $q->bindValue(':testID', $testID);
             $q->bindValue(':testScore', $testScore);
             $q->execute();
-            echo 'Module test finished. Rows: ' . $q->rowCount();
-            // FIX ME: create trigger when testScore > 80 module is completed
         } catch (PDOException $ex) {
             echo $ex;
         }
@@ -245,7 +253,7 @@ class UserProgress extends Dbh
             $q->execute();
             $data = $q->fetchAll();
             $testScore = (count($data) * 20);
-            echo 'Test score is: ' .  $testScore . '/100';
+            return $testScore;
         } catch (PDOException $ex) {
             echo $ex;
         }
@@ -261,7 +269,7 @@ class UserProgress extends Dbh
             $q->bindValue(':questionID', $questionID);
             $q->execute();
             $data = $q->fetch();
-            echo 'User answered correct: ' . ($data->correct > 0 ? "true" : "false");
+            return $data;
         } catch (PDOException $ex) {
             echo $ex;
         }
@@ -275,10 +283,8 @@ class UserProgress extends Dbh
             $q = $db->prepare('INSERT INTO usertestanswer VALUES(:userID, :questionID, :correct) ON DUPLICATE KEY UPDATE correct= :correct');
             $q->bindValue(':userID', $userID);
             $q->bindValue(':questionID', $questionID);
-            $q->bindValue(':correct', $answeredCorrect); // boolean
+            $q->bindValue(':correct', $answeredCorrect);
             $q->execute();
-            echo 'TestAnswer saved. Rows: ' . $q->rowCount();
-            // REMINDER: answeredCorrect = true then add points to testTotal in frontend
         } catch (PDOException $ex) {
             echo $ex;
         }

@@ -42,6 +42,10 @@ p {
   font-size: 1em;
 }
 
+a {
+  text-decoration: none;
+}
+
 .nav--main {
   position: -webkit-sticky;
   position: sticky;
@@ -382,6 +386,7 @@ p {
   font-weight: 700;
   font-size: 15px;
   cursor: pointer;
+  outline: none;
   width: 10em;
   padding: 10px 5px;
   float: right;
@@ -401,6 +406,7 @@ p {
   font-weight: 700;
   font-size: 15px;
   cursor: pointer;
+  outline: none;
   width: 10em;
   padding: 10px 5px;
   background-color: #e4e6eb;
@@ -693,6 +699,7 @@ p {
   font-size: 15px;
   cursor: pointer;
   outline: none;
+  outline: none;
   height: 37px;
   width: 11em;
   padding: 10px;
@@ -729,6 +736,7 @@ p {
   display: block;
   padding: 0 12%;
   padding-bottom: 2em;
+  text-align: left;
 }
 
 .art--previousNext button {
@@ -741,10 +749,12 @@ p {
   font-weight: 700;
   font-size: 15px;
   cursor: pointer;
+  outline: none;
   display: inline-block;
   width: 7em;
   margin: 10px 0;
   padding: 10px;
+  outline: none;
 }
 
 .art--previousNext button:hover {
@@ -885,6 +895,8 @@ div.div--progressDisplay progress[value]::-webkit-progress-bar {
 }
 
 .section--testContent {
+  background-color: #eef6ff;
+  text-align: center;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: auto 350px;
@@ -898,7 +910,143 @@ div.div--progressDisplay progress[value]::-webkit-progress-bar {
 }
 
 .art--testContent h2 {
+  margin-bottom: 3.8em;
+  font-size: 1.9em;
+}
+
+.art--testContent h3 {
   margin-bottom: 2em;
+  font-size: 1.5em;
+}
+
+.art--testContent p {
+  margin-bottom: 2.5em;
+  font-size: 1.2em;
+}
+
+.art--testContent input {
+  display: none;
+}
+
+.art--testContent [type="radio"]:checked + label {
+  background-color: #a4cbf5;
+}
+
+.art--testContent label {
+  display: inline-block;
+  padding: 20px 10px;
+  background: #fff;
+  border-radius: 6px;
+  min-height: 3.5em;
+  font-size: 1.2em;
+  cursor: pointer;
+  -webkit-box-shadow: 1px 2px 5px 1px #c4c4c480;
+          box-shadow: 1px 2px 5px 1px #c4c4c480;
+}
+
+.art--testContent label:hover {
+  background-color: #f8f9fb;
+}
+
+.form--answerOptions {
+  position: relative;
+  margin: 1em auto;
+  padding: 1em 14%;
+  min-width: 670px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  grid-gap: 1.4em;
+}
+
+.form--answerOptions button {
+  display: block;
+  background-color: #142056;
+  color: white;
+  padding: 10px 35px;
+  border: none;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  outline: none;
+  position: absolute;
+  right: 14%;
+  bottom: -4.5em;
+  height: 2.7em;
+  font-size: 1.1em;
+  border-radius: 6px;
+}
+
+.form--answerOptions button:hover {
+  background-color: #182391;
+}
+
+.div--testResult {
+  width: 75%;
+  min-height: 90%;
+  margin: 5% auto 0;
+  padding: 3em;
+  border-radius: 10px;
+  background-color: white;
+  -webkit-box-shadow: 1px 2px 5px 1px #c4c4c480;
+          box-shadow: 1px 2px 5px 1px #c4c4c480;
+}
+
+.div--testResult h2 {
+  font-size: 2.2em;
+  font-weight: 900;
+  margin-bottom: 1.3em;
+}
+
+.div--testResult p {
+  font-size: 1.4em;
+  margin-bottom: 10px;
+}
+
+.div--testResult p:last-of-type {
+  margin-bottom: 2em;
+}
+
+.div--testResult .p--score {
+  font-size: 2.5em;
+  font-weight: 900;
+  line-height: 1.3;
+  margin-bottom: 0.7em;
+}
+
+.div--testResult .p--score span {
+  font-size: 2.5em;
+}
+
+.div--testResult .p--finished {
+  font-size: 2em;
+  font-weight: 700;
+  margin-top: 1.4em;
+}
+
+.div--testResult button {
+  display: block;
+  background-color: #142056;
+  color: white;
+  padding: 10px 35px;
+  border: none;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  outline: none;
+  border-radius: 10px;
+  margin: 0 auto;
+  padding: 0.8em 1.5em;
+  font-size: 1.2em;
+  background-color: #6bffe6;
+  color: #142056;
+}
+
+.div--testResult button:hover {
+  background-color: #a4cbf5;
 }
 
 .div--login,
@@ -977,6 +1125,7 @@ div.div--progressDisplay progress[value]::-webkit-progress-bar {
   font-weight: 700;
   font-size: 15px;
   cursor: pointer;
+  outline: none;
   position: relative;
   float: right;
 }

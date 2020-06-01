@@ -2,9 +2,82 @@
 session_start();
 include 'includes/autoloader.php';
 
-require_once('components/moduleOverview.php');
+$userID = $_SESSION['userID'];
+$testID = $_GET['testid'];
 
-$lastSegIDOfModule = $segmentsByModule[count($segmentsByModule) - 1]->segmentID;
+require 'components/moduleOverview.php';
+
+$test = new ModuleTest();
+$testQuestions = $test->getTestQuestions($testID);
+
+if (!isset($_GET['result'])) {
+    $questionID = isset($_GET['qid']) ? $_GET['qid'] : $testQuestions[0]->questionID;
+    $key = array_search($questionID, array_column($testQuestions, 'questionID'));
+
+    $qNumber = $key + 1;
+    $question = $testQuestions[$key];
+    $questionContent = $question->questionContent;
+
+    $optionsArray = [$question->choiceA, $question->choiceB, $question->choiceC, $question->choiceD];
+    $optionsHTML = '';
+
+    foreach ($optionsArray as $i => $option) {
+        $i = $i + 1;
+        $checked = $i === 1 ? 'checked' : ''; // first option selected by default
+        $optionsHTML .=
+            "<input class='input--options' type='radio' name='questionAnswer' value='$option' id='option-$i'  $checked>
+        <label class='label--options' for='option-$i'>
+        $option
+        </label>";
+    }
+
+    $isLastQuestion = count($testQuestions) === $qNumber ? true : false;
+    $buttonText = $isLastQuestion ? 'FINISH TEST' : 'Next question';
+
+    $testContentHTML = "
+        <h2>TEST TIME!</h2>
+        <h3>Question $qNumber / 5</h3>
+        <p>$questionContent</p>
+        <form id='formAnswerOptions' class=' form--answerOptions' action='api/api-check-testanswer.php?moduleid=$moduleID&testid=$testID&qid=$questionID' method='POST'>
+            $optionsHTML
+            <button type='submit'>$buttonText</button>
+        </form>";
+} else {
+    $result = $_GET['result'];
+    $testScore = $_GET['testscore'];
+    $correctAnswers = $testScore / 100 * count($testQuestions);
+
+    switch ($result) {
+        case 'completed':
+            $nextModule = $moduleID + 1;
+            $testContentHTML = "
+            <div class='div--testResult'>
+                <h2>CONGRATULATIONS!</h2>
+                <p>You passed the test and scored</p>
+                <p class='p--score'><span>$correctAnswers/5</span><br>CORRECT</p>
+                <p>Keep up the good work!</p>
+                <a href ='module.php?id=$nextModule'><button>Continue to the next module</button></a>
+            </div>";
+            break;
+        case 'finished':
+            $testContentHTML = "
+            <div class='div--testResult'>
+                <h2>CONGRATULATIONS!</h2>
+                <p>You passed the LAST test and scored</p>
+                <p class='p--score'><span>$correctAnswers/5</span><br>CORRECT!</p>
+                <p class='p--finished'>Amazing, you've completed the WHOLE COURSE!</p>           
+            </div>";
+            break;
+        default:
+            $testContentHTML = "
+            <div class='div--testResult'>
+                <h2>Oh no...</h2>
+                <p>Sorry, you failed the test and scored</p>
+                <p class='p--score'><span>$correctAnswers/5</span><br>CORRECT</p>
+                <a href ='moduletest.php?id=$moduleID&testid=$testID'><button>Let's try again</button></a>
+            </div>";
+    }
+}
 
 ?>
 
@@ -27,19 +100,17 @@ $lastSegIDOfModule = $segmentsByModule[count($segmentsByModule) - 1]->segmentID;
 
         <section class="section--testContent">
             <article class="art--testContent">
-                <h2>Time to test your knowledge!</h2>
-                <p>blabla add test questions</p>
-
+                <?= $testContentHTML ?>
             </article>
             <article class="art--previousNext">
-                <a href="module.php?id=<?= $moduleID ?>&segid=<?= $lastSegIDOfModule ?>"><button>Previous</button></a>
+
             </article>
             <?= $moduleOverview ?>
 
         </section>
 
     </main>
-
+    <script src="js/moduleTest.js"></script>
 </body>
 
 </html>

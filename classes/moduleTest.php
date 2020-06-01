@@ -25,7 +25,7 @@ class ModuleTest extends Dbh
             $q->bindValue(':testID', $testID);
             $q->execute();
             $data = $q->fetchAll();
-            print_r($data);
+            return $data;
         } catch (PDOException $ex) {
             echo $ex;
         }
@@ -39,7 +39,7 @@ class ModuleTest extends Dbh
             $q->bindValue(':questionID', $questionID);
             $q->execute();
             $data = $q->fetch();
-            echo json_encode($data);
+            return $data;
         } catch (PDOException $ex) {
             echo $ex;
         }
