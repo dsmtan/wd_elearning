@@ -15,8 +15,6 @@ $noBookmarksHTMl = "";
 if ($numberBookmarks === 0){
     $noBookmarksHTMl .= "<h3>You have no bookmarks</h3> ";
 } else {
-    $bookmarkHTMl = "";
-
     foreach ($allBookmarks as $bookmark) {
         if ($numberBookmarks === "0"){
             $bookmarkHTMl .= "<h3>You have no bookmarks</h3> ";

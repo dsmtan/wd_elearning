@@ -15,7 +15,7 @@ $modulesHTML = "";
 
 foreach ($allModules as $module) {
     $moduleID = $module->moduleID;
-
+    $moduleNumber = substr($moduleID, -2);
     $progress = new UserProgress();
     $moduleProgress = $progress->getModuleProgress($userID, $moduleID);
     switch ($moduleProgress->unlocked) {
@@ -39,7 +39,7 @@ foreach ($allModules as $module) {
 
     $modulesHTML .= "
     <div class='div--moduleStatus' id='info_module$moduleID'>
-        <h3 class='white-text'>$module->title</h3>
+        <h3 class='white-text'>$moduleNumber $module->title</h3>
         <div class='index--progress'>
         <progress max='100' value='$progressInModule'></progress> 
         </div>
