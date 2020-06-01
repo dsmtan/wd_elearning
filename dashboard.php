@@ -53,7 +53,7 @@ if ($lastModule) {
     $allModules = $module->getAllModules();
     $finishedModuleID = $allModules[count($allModules) - 1]->moduleID;
     $moduleNumber = substr($finishedModuleID, -2);
-    $displayModuleHTML = "<p>$moduleNumber </p><p>$lastModuleTitle</p>";
+    $displayModuleHTML = "<p>$moduleNumber </p><p>{$allModules[count($allModules) - 1]->title}</p>";
 
     $courseProgress = 100;
     $progressLastModule =  100;
