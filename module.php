@@ -59,7 +59,9 @@ $previousHide = $segmentsByModule[0]->segmentID == $segmentID ? "class='hide'" :
                 <h2><?= $segContent->title ?></h2>
                 <p><?= $segContent->explanation ?></p>
 
-                <h3>Media (to do)</h3>
+                <iframe width="100%" height="500" frameborder="0"
+                src="https://www.youtube.com/embed/<?= $segContent->mediaURL ?>">
+</iframe>
                 <div class="div--exerciseContent">
                     <h3>Exercise</h3>
                     <p><?= $segExercise->exerciseContent ?></p>
