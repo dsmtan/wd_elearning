@@ -134,6 +134,7 @@ a {
   margin: 10px 0;
   color: white;
   z-index: 10;
+  width: 200px;
 }
 
 .index--background {
@@ -202,7 +203,7 @@ a {
 }
 
 #info_module1002 {
-  top: 26%;
+  top: 23%;
   left: 26%;
 }
 
@@ -217,13 +218,13 @@ a {
 }
 
 #info_module1005 {
-  top: 71%;
-  left: 80%;
+  top: 73%;
+  left: 25%;
 }
 
 #info_module1006 {
-  top: 76%;
-  left: 25%;
+  top: 70%;
+  left: 80%;
 }
 
 #i_module1001 {
@@ -247,13 +248,13 @@ a {
 }
 
 #i_module1005 {
-  top: 66%;
-  left: 62%;
+  top: 70%;
+  left: 7%;
 }
 
 #i_module1006 {
-  top: 70%;
-  left: 7%;
+  top: 66%;
+  left: 62%;
 }
 
 .index--progress {
