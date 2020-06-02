@@ -183,6 +183,7 @@ class UserProgress extends Dbh
         }
     }
 
+
     public function completeSegment($userID, $segmentID)
     {
         try {
@@ -285,6 +286,74 @@ class UserProgress extends Dbh
             $q->bindValue(':questionID', $questionID);
             $q->bindValue(':correct', $answeredCorrect);
             $q->execute();
+        } catch (PDOException $ex) {
+            echo $ex;
+        }
+    }
+
+    public function handleTestSubmission($userID, $testID)
+    {
+        try {
+            $db = $this->connectDB();
+            $db->beginTransaction();
+
+            // CALCULATE TEST SCORE
+            $q = $db->prepare('SELECT usertestanswer.questionID, usertestanswer.correct FROM usertestanswer
+            JOIN testquestion
+            ON usertestanswer.questionID = testquestion.questionID AND testquestion.testID = :testID
+            WHERE usertestanswer.userID = :userID AND usertestanswer.correct = 1');
+            $q->bindValue(':userID', $userID);
+            $q->bindValue(':testID', $testID);
+            $q->execute();
+            $data = $q->fetchAll();
+            $testScore = (count($data) * 20);
+            $q->closeCursor();
+
+            // ADD TEST RESULT TO USERTESTRESULT
+            $q = $db->prepare('INSERT INTO usertestresult VALUES(:userID, :testID, :testScore) ON DUPLICATE KEY UPDATE testScore= :testScore');
+            $q->bindValue(':userID', $userID);
+            $q->bindValue(':testID', $testID);
+            $q->bindValue(':testScore', $testScore);
+            $q->execute();
+            $db->commit();
+            return $testScore;
+        } catch (PDOException $ex) {
+            $db->rollBack();
+            echo $ex;
+            exit();
+        }
+    }
+
+
+    public function handlePassedTest($userID, $moduleID, $isLastModule)
+    {
+        try {
+            $db = $this->connectDB();
+            $db->beginTransaction();
+            // complete module
+            $q = $db->prepare('UPDATE moduleprogress SET completed= true WHERE userID= :userID AND moduleID= :moduleID');
+            $q->bindValue(':userID', $userID);
+            $q->bindValue(':moduleID', $moduleID);
+            $q->execute();
+            $q->closeCursor();
+
+            if (!$isLastModule) {
+                // unlock next module
+                $nextModuleID = strval($moduleID + 1);
+                $q = $db->prepare('UPDATE moduleprogress SET unlocked= true WHERE userID= :userID AND moduleID= :moduleID');
+                $q->bindValue(':userID', $userID);
+                $q->bindValue(':moduleID', $nextModuleID);
+                $q->execute();
+                $q->closeCursor();
+            }
+
+            // complete all segments within module in case user skipped exercise
+            $q = $db->prepare('UPDATE segmentprogress SET completed= true WHERE userID= :userID AND segmentID IN 
+            (SELECT segment.segmentID FROM segment WHERE moduleID= :moduleID)');
+            $q->bindValue(':userID', $userID);
+            $q->bindValue(':moduleID', $moduleID);
+            $q->execute();
+            $db->commit();
         } catch (PDOException $ex) {
             echo $ex;
         }
