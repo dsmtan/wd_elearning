@@ -851,6 +851,7 @@ div.div--segLinks a:last-child div {
 div.div--progressDisplay {
   background-color: transparent;
   padding: 10px 0;
+  text-align: left;
 }
 
 div.div--progressDisplay p {
