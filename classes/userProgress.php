@@ -84,32 +84,6 @@ class UserProgress extends Dbh
         }
     }
 
-    public function completeModule($userID, $moduleID)
-    {
-        try {
-            $db = $this->connectDB();
-            $q = $db->prepare('UPDATE moduleprogress SET completed= true WHERE userID= :userID AND moduleID= :moduleID');
-            $q->bindValue(':userID', $userID);
-            $q->bindValue(':moduleID', $moduleID);
-            $q->execute();
-        } catch (PDOException $ex) {
-            echo $ex;
-        }
-    }
-
-    public function unlockModule($userID, $moduleID) // at end of the test
-    {
-        try {
-            $db = $this->connectDB();
-            $q = $db->prepare('UPDATE moduleprogress SET unlocked= true WHERE userID= :userID AND moduleID= :moduleID');
-            $q->bindValue(':userID', $userID);
-            $q->bindValue(':moduleID', $moduleID);
-            $q->execute();
-        } catch (PDOException $ex) {
-            echo $ex;
-        }
-    }
-
     public function getSegmentProgressByUser($userID)
     {
         try {
@@ -197,20 +171,6 @@ class UserProgress extends Dbh
         }
     }
 
-    public function completeAllSegments($userID, $moduleID)
-    {
-        try {
-            $db = $this->connectDB();
-            $q = $db->prepare('UPDATE segmentprogress SET completed= true WHERE userID= :userID AND segmentID IN 
-            (SELECT segment.segmentID FROM segment WHERE moduleID= :moduleID)');
-            $q->bindValue(':userID', $userID);
-            $q->bindValue(':moduleID', $moduleID);
-            $q->execute();
-        } catch (PDOException $ex) {
-            echo $ex;
-        }
-    }
-
     public function getTestResult($userID, $testID)
     {
         try {
@@ -221,40 +181,6 @@ class UserProgress extends Dbh
             $q->execute();
             $data = $q->fetch();
             return $data;
-        } catch (PDOException $ex) {
-            echo $ex;
-        }
-    }
-
-    public function addTestResult($userID, $testID, $testScore)
-    {
-        try {
-            $db = $this->connectDB();
-            $q = $db->prepare('INSERT INTO usertestresult VALUES(:userID, :testID, :testScore) ON DUPLICATE KEY UPDATE testScore= :testScore');
-            $q->bindValue(':userID', $userID);
-            $q->bindValue(':testID', $testID);
-            $q->bindValue(':testScore', $testScore);
-            $q->execute();
-        } catch (PDOException $ex) {
-            echo $ex;
-        }
-    }
-
-
-    public function calculateTestScore($userID, $testID)
-    {
-        try {
-            $db = $this->connectDB();
-            $q = $db->prepare('SELECT usertestanswer.questionID, usertestanswer.correct FROM usertestanswer
-            JOIN testquestion
-            ON usertestanswer.questionID = testquestion.questionID AND testquestion.testID = :testID
-            WHERE usertestanswer.userID = :userID AND usertestanswer.correct = 1');
-            $q->bindValue(':userID', $userID);
-            $q->bindValue(':testID', $testID);
-            $q->execute();
-            $data = $q->fetchAll();
-            $testScore = (count($data) * 20);
-            return $testScore;
         } catch (PDOException $ex) {
             echo $ex;
         }
@@ -330,7 +256,8 @@ class UserProgress extends Dbh
         try {
             $db = $this->connectDB();
             $db->beginTransaction();
-            // complete module
+
+            // COMPLETE MODULE
             $q = $db->prepare('UPDATE moduleprogress SET completed= true WHERE userID= :userID AND moduleID= :moduleID');
             $q->bindValue(':userID', $userID);
             $q->bindValue(':moduleID', $moduleID);
@@ -338,7 +265,7 @@ class UserProgress extends Dbh
             $q->closeCursor();
 
             if (!$isLastModule) {
-                // unlock next module
+                // UNLOCK NEXT MODULE
                 $nextModuleID = strval($moduleID + 1);
                 $q = $db->prepare('UPDATE moduleprogress SET unlocked= true WHERE userID= :userID AND moduleID= :moduleID');
                 $q->bindValue(':userID', $userID);
@@ -347,7 +274,7 @@ class UserProgress extends Dbh
                 $q->closeCursor();
             }
 
-            // complete all segments within module in case user skipped exercise
+            // COMPLETE ALL SEGMENTS IN MODULE (in case user skipped exercise)
             $q = $db->prepare('UPDATE segmentprogress SET completed= true WHERE userID= :userID AND segmentID IN 
             (SELECT segment.segmentID FROM segment WHERE moduleID= :moduleID)');
             $q->bindValue(':userID', $userID);
@@ -358,4 +285,81 @@ class UserProgress extends Dbh
             echo $ex;
         }
     }
+
+
+    // public function addTestResult($userID, $testID, $testScore)
+    // {
+    //     try {
+    //         $db = $this->connectDB();
+    //         $q = $db->prepare('INSERT INTO usertestresult VALUES(:userID, :testID, :testScore) ON DUPLICATE KEY UPDATE testScore= :testScore');
+    //         $q->bindValue(':userID', $userID);
+    //         $q->bindValue(':testID', $testID);
+    //         $q->bindValue(':testScore', $testScore);
+    //         $q->execute();
+    //     } catch (PDOException $ex) {
+    //         echo $ex;
+    //     }
+    // }
+
+
+    // public function calculateTestScore($userID, $testID)
+    // {
+    //     try {
+    //         $db = $this->connectDB();
+    //         $q = $db->prepare('SELECT usertestanswer.questionID, usertestanswer.correct FROM usertestanswer
+    //         JOIN testquestion
+    //         ON usertestanswer.questionID = testquestion.questionID AND testquestion.testID = :testID
+    //         WHERE usertestanswer.userID = :userID AND usertestanswer.correct = 1');
+    //         $q->bindValue(':userID', $userID);
+    //         $q->bindValue(':testID', $testID);
+    //         $q->execute();
+    //         $data = $q->fetchAll();
+    //         $testScore = (count($data) * 20);
+    //         return $testScore;
+    //     } catch (PDOException $ex) {
+    //         echo $ex;
+    //     }
+    // }
+
+    // public function completeModule($userID, $moduleID)
+    // {
+    //     try {
+    //         $db = $this->connectDB();
+    //         $q = $db->prepare('UPDATE moduleprogress SET completed= true WHERE userID= :userID AND moduleID= :moduleID');
+    //         $q->bindValue(':userID', $userID);
+    //         $q->bindValue(':moduleID', $moduleID);
+    //         $q->execute();
+    //     } catch (PDOException $ex) {
+    //         echo $ex;
+    //     }
+    // }
+
+    // public function unlockModule($userID, $moduleID) // at end of the test
+    // {
+    //     try {
+    //         $db = $this->connectDB();
+    //         $q = $db->prepare('UPDATE moduleprogress SET unlocked= true WHERE userID= :userID AND moduleID= :moduleID');
+    //         $q->bindValue(':userID', $userID);
+    //         $q->bindValue(':moduleID', $moduleID);
+    //         $q->execute();
+    //     } catch (PDOException $ex) {
+    //         echo $ex;
+    //     }
+    // }
+
+    // public function completeAllSegments($userID, $moduleID)
+    // {
+    //     try {
+    //         $db = $this->connectDB();
+    //         $q = $db->prepare('UPDATE segmentprogress SET completed= true WHERE userID= :userID AND segmentID IN 
+    //         (SELECT segment.segmentID FROM segment WHERE moduleID= :moduleID)');
+    //         $q->bindValue(':userID', $userID);
+    //         $q->bindValue(':moduleID', $moduleID);
+    //         $q->execute();
+    //     } catch (PDOException $ex) {
+    //         echo $ex;
+    //     }
+    // }
+
+
 }
