@@ -9,9 +9,11 @@
 }
 
 .art--segmentContent {
+  position: relative;
   display: block;
   padding: 5em 12%;
   grid-area: 1 / 1;
+  z-index: 10;
 
   h2 {
     margin-bottom: 2em;
@@ -26,27 +28,27 @@
     margin-bottom: 1em;
   }
 }
+
 .div--syntaxBackground {
-  
-  background-color: #EEF6FF;
+  background-color: #eef6ff;
   text-align: center;
   border-radius: 10px;
   padding: 2%;
   margin-bottom: 5%;
- 
+
   div {
     width: 300px;
     margin-left: auto;
     margin-right: auto;
   }
 
-  .p--syntaxExample{
-    color:#F47474;
+  .p--syntaxExample {
+    color: #f47474;
     text-align: left;
     margin-left: auto;
     margin-right: auto;
   }
-  .p--syntaxCode{
+  .p--syntaxCode {
     text-align: left;
     margin-left: auto;
     margin-right: auto;
@@ -54,8 +56,9 @@
 }
 
 .div--bookmarkBtn {
+  position: absolute;
+  right: 12%;
   text-align: right;
-  float: right;
   display: flex;
   justify-content: center;
   cursor: pointer;
@@ -87,12 +90,13 @@
 }
 
 .div--exerciseContent {
-  clear: both;
-  margin-top: 4em;
-  margin-bottom: 8em;
+  position: relative;
+  margin-top: 3em;
+  margin-bottom: 4em;
 }
 
 #form--exercise {
+  position: relative;
   width: 65%;
   min-width: 450px;
 
@@ -112,13 +116,14 @@
 
   button {
     @include primaryButton;
+    position: absolute;
+    right: 0;
     outline: none;
     height: 37px;
     width: 11em;
     padding: 10px;
     background-color: $lightblue;
     color: $darkblue;
-    float: right;
 
     &:hover {
       background-color: $mint;
@@ -142,11 +147,10 @@
 }
 
 .art--previousNext {
-  clear: both;
   position: relative;
   grid-area: 2 / 1;
   display: block;
-  padding: 0 12%;
+  padding: 1em 12%;
   padding-bottom: 2em;
   text-align: left;
 

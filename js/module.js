@@ -1,3 +1,14 @@
+window.onload = () => {
+  const popupClass = document.querySelectorAll(".div--achievedPopup");
+  popupClass.forEach((el) => {
+    el.onanimationend = () => {
+      setTimeout(() => {
+        el.style.display = "none";
+      }, 1000);
+    };
+  });
+};
+
 async function checkExAnswer(exerciseID, segmentID) {
   var url = `api/api-check-exercise.php?exID=${exerciseID}`;
   var oForm = document.querySelector("#form--exercise");
@@ -24,7 +35,8 @@ async function checkExAnswer(exerciseID, segmentID) {
 async function completeSegment(segmentID) {
   var url = `api/api-complete-segment.php?segID=${segmentID}`;
   var jConnection = await fetch(url);
-  await jConnection;
+  var achPopupHTML = await jConnection.text();
+  divAchPopups.innerHTML = achPopupHTML;
   $("#moduleOverview").load(location.href + " #moduleOverview>*", "");
 }
 
@@ -42,6 +54,6 @@ async function toggleBookmark(userID, segmentID) {
 var iframe = document.getElementById("segmentIframe");
 
 // Adjusting the iframe height onload event
-iframe.onload = function () {
-  iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
-}
+// iframe.onload = function () {
+//   // iframe.style.height = iframe.contentWindow.document.body.scrollHeight + "px";
+// };

@@ -34,7 +34,7 @@ if ($lastModule) {
 
     // continue to left off link - default first seg
     $leftOffSegment = $segmentsByModule[0]->segmentID;
-    $leftOffLink = "<a href='module.php?id=$lastModule->moduleID&segid=$leftOffSegment'>Continue where you left off last time.</a>";
+    $leftOffLink = "<a href='module.php?id=$lastModule->moduleID&segid=$leftOffSegment'>Continue where you left off</a>";
 
     if (count($completedSegInLast) > 0) {
         if (count($completedSegInLast) < count($segmentsByModule)) {

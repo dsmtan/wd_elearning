@@ -10,6 +10,8 @@ require 'components/moduleOverview.php';
 $test = new ModuleTest();
 $testQuestions = $test->getTestQuestions($testID);
 
+$achPopupHTML = '';
+
 if (!isset($_GET['result'])) {
     $questionID = isset($_GET['qid']) ? $_GET['qid'] : $testQuestions[0]->questionID;
     $key = array_search($questionID, array_column($testQuestions, 'questionID'));
@@ -80,6 +82,23 @@ if (!isset($_GET['result'])) {
                 <a href ='moduletest.php?id=$moduleID&testid=$testID'><button>Let's try again</button></a>
             </div>";
     }
+
+    // check for new achievements
+    $achievement = new Achievement();
+    $userAchievements = $achievement->getUserAchievements($userID);
+
+    foreach ($userAchievements as $userAch) {
+        if ($userAch->unread == true) {
+            // display notification
+            $achData = $achievement->getAchievement($userAch->achievementID);
+            $achPopupHTML .= "
+            <div id='divAchPopup' class='div--achievedPopup'>
+                <img src='$achData->imageURL' />
+                <p>You've earned the badge:<br><span>$achData->name</span></p>
+            </div>";
+            $achievement->markReadUserAchievement($userID, $userAch->achievementID);
+        }
+    }
 }
 
 ?>
@@ -104,12 +123,11 @@ if (!isset($_GET['result'])) {
         <section class="section--testContent">
             <article class="art--testContent">
                 <?= $testContentHTML ?>
-            </article>
-            <article class="art--previousNext">
-
+                <div class="div--achNotifications">
+                    <?= $achPopupHTML ?>
+                </div>
             </article>
             <?= $moduleOverview ?>
-
         </section>
 
     </main>

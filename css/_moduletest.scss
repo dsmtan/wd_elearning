@@ -7,7 +7,10 @@
   text-align: center;
   display: grid;
   grid-template-columns: auto 350px;
-  grid-template-rows: auto 100px;
+
+  .art--moduleOverview {
+    grid-area: 1 / 2;
+  }
 }
 
 .art--testContent {
@@ -78,8 +81,9 @@
 
 .div--testResult {
   width: 75%;
+  min-width: 450px;
   min-height: 90%;
-  margin: 5% auto 0;
+  margin: 5% auto;
   padding: 3em;
   border-radius: 10px;
   background-color: white;
@@ -113,7 +117,7 @@
     font-size: 2em;
     font-weight: 700;
     margin-top: 1.4em;
-    margin-bottom:0;
+    margin-bottom: 0;
   }
 
   button {
@@ -130,8 +134,70 @@
     }
   }
 }
-svg{
-  rect{
-    display:none;
+
+svg {
+  rect {
+    display: none;
+  }
+}
+
+.div--achNotifications {
+  position: absolute;
+  top: 1em;
+  right: 366px;
+
+  div:nth-child(2) {
+    animation-delay: 1.3s;
+  }
+  div:nth-child(3) {
+    animation-delay: 1.8s;
+  }
+  div:nth-child(4) {
+    animation-delay: 2.3s;
+  }
+}
+
+.div--achievedPopup {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: 0 auto 5px;
+  width: 18em;
+  background-color: white;
+  border-radius: 6px;
+  border: 2px solid $mint;
+  text-align: left;
+  padding: 1.2em 1em;
+  box-shadow: 1px 2px 5px 1px #c4c4c480;
+  z-index: 100;
+  opacity: 0;
+  animation: displayAch 3.8s linear 0.8s;
+
+  img {
+    display: inline-block;
+    height: 45px;
+  }
+  p {
+    display: inline-block;
+    font-size: 0.9em;
+    margin: 0;
+    margin-left: 10px;
+
+    span {
+      font-weight: 800;
+    }
+  }
+}
+
+@keyframes displayAch {
+  15% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
   }
 }
