@@ -39,3 +39,9 @@ async function toggleBookmark(userID, segmentID) {
   divBookmarkBtn.classList.toggle("bookmarked");
 }
 
+var iframe = document.getElementById("segmentIframe");
+
+// Adjusting the iframe height onload event
+iframe.onload = function () {
+  iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
+}

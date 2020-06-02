@@ -35,10 +35,10 @@ $previousHide = $segmentsByModule[0]->segmentID == $segmentID ? "class='hide'" :
 
 $mediaURLhtml = "";
 if (strpos($segContent->mediaURL, 'youtube') !== false) {
-    $mediaURLhtml .= "<iframe width='100%' height='500' frameborder='0'
+    $mediaURLhtml .= "<iframe width='100%' height='500' frameborder='0' 
     src='https://www.youtube.com/embed/ $segContent->mediaURL'></iframe>";
 } else {
-    $mediaURLhtml .= "<iframe width='100%' height='500' frameborder='0'
+    $mediaURLhtml .= "<iframe width='100%' height='100%' frameborder='0' id='segmentIframe'
     src='$segContent->mediaURL'></iframe>";
 }
 
