@@ -48,7 +48,7 @@ if (!isset($_GET['result'])) {
     $result = $_GET['result'];
     $testScore = $_GET['testscore'];
     $correctAnswers = $testScore / 100 * count($testQuestions);
-
+    $scriptAnimation = "";
     switch ($result) {
         case 'completed':
             $nextModule = $moduleID + 1;
@@ -61,6 +61,7 @@ if (!isset($_GET['result'])) {
                 <p>Keep up the good work!</p>
                 <a href ='module.php?id=$nextModule'><button>Continue to the next module</button></a>
             </div>";
+            $scriptAnimation .=  "initHappyRobot()";
             break;
         case 'finished':
             $testContentHTML = "
@@ -71,6 +72,7 @@ if (!isset($_GET['result'])) {
                 <div id='i_robot_happy'></div>
                 <p class='p--finished'>Amazing, you've completed the WHOLE COURSE!</p>           
             </div>";
+            $scriptAnimation .=  "initHappyRobot()";
             break;
         default:
             $testContentHTML = "
@@ -81,6 +83,7 @@ if (!isset($_GET['result'])) {
                 <div id='i_robot_sad'></div>
                 <a href ='moduletest.php?id=$moduleID&testid=$testID'><button>Let's try again</button></a>
             </div>";
+            $scriptAnimation .=  "initSadRobot()";
     }
 
     // check for new achievements
@@ -133,6 +136,7 @@ if (!isset($_GET['result'])) {
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.6/gsap.min.js"></script>
     <script src="js/moduleTest.js"></script>
+    <script> <?= $scriptAnimation ?> </script>
 </body>
 
 </html>
