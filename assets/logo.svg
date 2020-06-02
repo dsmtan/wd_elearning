@@ -1,14 +1,1 @@
-<svg id="logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="87.4" height="87.4" viewBox="0 0 87.4 87.4">
-  <defs>
-    <radialGradient id="radial-gradient" cx="43.71" cy="43.71" r="43.71" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#9ec3f1"/>
-      <stop offset="0.87" stop-color="#182490"/>
-      <stop offset="1" stop-color="#172382"/>
-    </radialGradient>
-  </defs>
-  <circle cx="43.7" cy="43.7" r="43.7" fill="url(#radial-gradient)"/>
-  <g>
-    <ellipse cx="31" cy="43.9" rx="5" ry="9" fill="#6dffe6"/>
-    <ellipse cx="57" cy="43.9" rx="5" ry="9" fill="#6dffe6"/>
-  </g>
-</svg>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="169.2" height="169.2" viewBox="0 0 169.2 169.2"><defs><style>.cls-1{fill:#182391;}.cls-2{fill:#6dffe6;}</style></defs><circle class="cls-1" cx="84.6" cy="84.6" r="84.6"/><ellipse class="cls-2" cx="59.9" cy="84.9" rx="9.6" ry="17.5"/><ellipse class="cls-2" cx="110.3" cy="84.9" rx="9.6" ry="17.5"/></svg>
