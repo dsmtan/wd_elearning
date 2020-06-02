@@ -82,6 +82,7 @@ a {
 }
 
 .div--navLinks {
+  position: relative;
   display: block;
   width: 100%;
   text-align: center;
@@ -95,12 +96,34 @@ a {
   text-decoration: none;
 }
 
-.svg--navIcons:hover path {
+.div--navLinks a span {
+  position: absolute;
+  top: 50px;
+  left: calc(50% - 3em);
+  width: 6em;
+  opacity: 0;
+  font-size: 0.8em;
+  color: #182391;
+  -webkit-transition: opacity 0.4s ease-in;
+  transition: opacity 0.4s ease-in;
+  z-index: 15;
+}
+
+.div--navLinks a:hover span {
+  opacity: 1;
+}
+
+.div--navLinks a:hover .svg--navIcons path {
   fill: #182391;
 }
 
-.svg--navIcons:active path {
+.div--navLinks a:active .svg--navIcons path {
   fill: #182391;
+}
+
+.a--logout:hover {
+  color: #182391;
+  font-weight: 700;
 }
 
 .current path {
@@ -268,7 +291,7 @@ a {
        appearance: none;
   width: 100%;
   min-width: 190px;
-  height: 21px;
+  height: 20px;
   margin: 8px 0;
 }
 
@@ -480,7 +503,7 @@ a {
        appearance: none;
   width: 100%;
   min-width: 190px;
-  height: 21px;
+  height: 20px;
   margin: 8px 0;
 }
 
@@ -939,7 +962,7 @@ div.div--progressDisplay progress[value] {
        appearance: none;
   width: 100%;
   min-width: 190px;
-  height: 21px;
+  height: 20px;
   margin: 8px 0;
 }
 
