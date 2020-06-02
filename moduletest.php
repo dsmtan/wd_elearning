@@ -54,7 +54,8 @@ if (!isset($_GET['result'])) {
             <div class='div--testResult'>
                 <h2>CONGRATULATIONS!</h2>
                 <p>You passed the test and scored</p>
-                <p class='p--score'><span>$correctAnswers/5</span><br>CORRECT</p>
+                <p class='p--score'>$correctAnswers/5 CORRECT</p>
+                <div id='i_robot_happy'></div>
                 <p>Keep up the good work!</p>
                 <a href ='module.php?id=$nextModule'><button>Continue to the next module</button></a>
             </div>";
@@ -64,7 +65,8 @@ if (!isset($_GET['result'])) {
             <div class='div--testResult'>
                 <h2>CONGRATULATIONS!</h2>
                 <p>You passed the LAST test and scored</p>
-                <p class='p--score'><span>$correctAnswers/5</span><br>CORRECT!</p>
+                <p class='p--score'>$correctAnswers/5 CORRECT!</p>
+                <div id='i_robot_happy'></div>
                 <p class='p--finished'>Amazing, you've completed the WHOLE COURSE!</p>           
             </div>";
             break;
@@ -73,7 +75,8 @@ if (!isset($_GET['result'])) {
             <div class='div--testResult'>
                 <h2>Oh no...</h2>
                 <p>Sorry, you failed the test and scored</p>
-                <p class='p--score'><span>$correctAnswers/5</span><br>CORRECT</p>
+                <p class='p--score'>$correctAnswers/5 CORRECT</p>
+                <div id='i_robot_sad'></div>
                 <a href ='moduletest.php?id=$moduleID&testid=$testID'><button>Let's try again</button></a>
             </div>";
     }
@@ -110,6 +113,7 @@ if (!isset($_GET['result'])) {
         </section>
 
     </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.6/gsap.min.js"></script>
     <script src="js/moduleTest.js"></script>
 </body>
 
