@@ -10,22 +10,19 @@ $getAllModules = new Module();
 
 $allBookmarks = $getAllBookmarks->getBookmarks($userID);
 $numberBookmarks = count($allBookmarks);
-$noBookmarksHTMl = "";
+$bookmarkHTML = "";
 
-if ($numberBookmarks === 0){
-    $noBookmarksHTMl .= "<h3>You have no bookmarks</h3> ";
+if ($numberBookmarks === 0) {
+    $bookmarkHTML .= "<h3>You have no bookmarks</h3> ";
 } else {
     foreach ($allBookmarks as $bookmark) {
-        if ($numberBookmarks === "0"){
-            $bookmarkHTMl .= "<h3>You have no bookmarks</h3> ";
-        } else {
-            $segmentID = $bookmark->segmentID;
-            $segment = $getAllSegments->getSegmentContent($segmentID);
-            $moduleID = $segment->moduleID;
-            $moduleTitle = $getAllModules->getModuleTitle($moduleID);
-            $moduleNumber = substr($moduleID, -2);
-        
-            $bookmarkHTMl .= "  
+        $segmentID = $bookmark->segmentID;
+        $segment = $getAllSegments->getSegmentContent($segmentID);
+        $moduleID = $segment->moduleID;
+        $moduleTitle = $getAllModules->getModuleTitle($moduleID);
+        $moduleNumber = substr($moduleID, -2);
+
+        $bookmarkHTML .= "  
             <a href='module.php?id=$moduleID&segid=$segmentID'>
             <article>
             <div><h1>$segment->title</h1></div>
@@ -33,9 +30,8 @@ if ($numberBookmarks === 0){
             </article>
             </a>
             ";
-        }
+        // }
     }
-
 }
 
 ?>
@@ -56,11 +52,10 @@ if ($numberBookmarks === 0){
         require_once('components/navigation.php');
         ?>
         <section class="section--bookmarksContent">
-        <h1>Bookmarks</h1>
-        <?= $noBookmarksHTMl ?>
-        <div class='section--bookmarksArticles'>
-        <?= $bookmarkHTMl ?>
-        </div>
+            <h1>Bookmarks</h1>
+            <div class='section--bookmarksArticles'>
+                <?= $bookmarkHTML ?>
+            </div>
         </section>
 
     </main>
