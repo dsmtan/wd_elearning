@@ -316,6 +316,7 @@ a {
 }
 
 .section--dashboardContent {
+  position: relative;
   background-color: #eef6ff;
   padding: 3em 5%;
   display: -ms-grid;
@@ -334,6 +335,7 @@ a {
   padding: 3em 4em;
   -webkit-box-shadow: 1px 2px 5px 1px #c4c4c480;
           box-shadow: 1px 2px 5px 1px #c4c4c480;
+  min-width: 450px;
 }
 
 .section--dashboardContent article h3 {
@@ -344,6 +346,49 @@ a {
   font-size: 1em;
   font-weight: 400;
   margin-top: 0.8em;
+}
+
+#divNotification {
+  display: none;
+  position: absolute;
+  top: 1em;
+  left: calc(50% - 155px);
+  margin: 0 auto;
+  width: 310px;
+  opacity: 0;
+  background-color: white;
+  border-radius: 6px;
+  border: 3px solid #6bffe6;
+  text-align: center;
+  padding: 1.2em 1em;
+  -webkit-box-shadow: 1px 2px 5px 1px #c4c4c480;
+          box-shadow: 1px 2px 5px 1px #c4c4c480;
+  -webkit-animation: displayPopup 2.8s ease-out;
+          animation: displayPopup 2.8s ease-out;
+}
+
+@-webkit-keyframes displayPopup {
+  15% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes displayPopup {
+  15% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 .art--userIntro {
@@ -488,7 +533,7 @@ a {
 
 .div--achvWrapper .div--achievement {
   text-align: center;
-  width: 140px;
+  max-width: 140px;
   margin: 0 auto;
 }
 
