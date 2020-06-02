@@ -11,6 +11,7 @@ $test = new ModuleTest();
 $testQuestions = $test->getTestQuestions($testID);
 
 $achPopupHTML = '';
+$scriptAnimation = '';
 
 if (!isset($_GET['result'])) {
     $questionID = isset($_GET['qid']) ? $_GET['qid'] : $testQuestions[0]->questionID;
@@ -48,7 +49,7 @@ if (!isset($_GET['result'])) {
     $result = $_GET['result'];
     $testScore = $_GET['testscore'];
     $correctAnswers = $testScore / 100 * count($testQuestions);
-    $scriptAnimation = "";
+
     switch ($result) {
         case 'completed':
             $nextModule = $moduleID + 1;
@@ -136,7 +137,9 @@ if (!isset($_GET['result'])) {
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.6/gsap.min.js"></script>
     <script src="js/moduleTest.js"></script>
-    <script> <?= $scriptAnimation ?> </script>
+    <script>
+        <?= $scriptAnimation ?>
+    </script>
 </body>
 
 </html>
