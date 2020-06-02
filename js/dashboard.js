@@ -18,17 +18,26 @@ async function updateUser() {
     method: "POST",
     body: new FormData(oForm),
   });
-  var jData = await jConnection.json();
-  console.log(jData);
-  // temporary
-  alert("Your info has been updated.");
+  var userData = await jConnection.json();
+  if (userData) {
+    divNotification.style.display = "block";
+    divNotification.textContent = "Your information is updated!";
+    divNotification.onanimationend = () => {
+      divNotification.style.display = "none";
+    };
+  }
 }
 
 async function deleteUser() {
-  console.log("delete");
   var jConnection = await fetch("api/api-delete-user.php");
   var userData = await jConnection.text();
-  // temporary
-  alert("Your account has been deleted.");
-  window.location = "signup.php";
+  if (userData) {
+    divNotification.style.display = "block";
+    divNotification.style.borderColor = "#f47474";
+    divNotification.innerHTML =
+      "Your account has been deleted.<br>You'll be redirected.";
+    divNotification.onanimationend = () => {
+      window.location = "signup.php";
+    };
+  }
 }

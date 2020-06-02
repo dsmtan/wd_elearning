@@ -124,6 +124,7 @@ foreach ($allAchievements as $ach) {
                     <?= $achievementsHTML ?>
                 </div>
             </article>
+            <div id="divNotification"></div>
         </section>
 
     </main>
