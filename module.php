@@ -67,8 +67,8 @@ if (strpos($segContent->mediaURL, 'youtube') !== false) {
                 <?= $bookmarkButton ?>
                 <h2><?= $segContent->title ?></h2>
                 <p><?= $segContent->explanation ?></p>
-                <?= $mediaURLhtml ?>
-                
+
+
                 <div class="div--exerciseContent">
                     <h3>Exercise</h3>
                     <p><?= $segExercise->exerciseContent ?></p>
@@ -86,7 +86,8 @@ if (strpos($segContent->mediaURL, 'youtube') !== false) {
             <?=
                 $moduleOverview
             ?>
-
+            <div id="divAchPopups" class="div--achNotifications">
+            </div>
         </section>
 
     </main>
