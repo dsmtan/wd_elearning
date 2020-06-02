@@ -30,7 +30,6 @@ if ($numberBookmarks === 0) {
             </article>
             </a>
             ";
-        // }
     }
 }
 

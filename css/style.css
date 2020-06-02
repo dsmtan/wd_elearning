@@ -356,6 +356,10 @@ a {
   margin-bottom: 1.5em;
 }
 
+.art--userIntro a {
+  text-decoration: underline;
+}
+
 .art--userPersonal {
   -ms-grid-row: 2;
   -ms-grid-column: 1;
