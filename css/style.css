@@ -698,7 +698,13 @@ a {
 
 .art--segmentContent p {
   max-width: 750px;
-  margin-bottom: 1em;
+  margin-top: 1.5em;
+  margin-bottom: 8px;
+}
+
+.art--segmentContent ul {
+  padding-left: 1.2em;
+  line-height: 1.5;
 }
 
 .div--syntaxBackground {
@@ -718,12 +724,14 @@ a {
 .div--syntaxBackground .p--syntaxExample {
   color: #f47474;
   text-align: left;
+  margin-top: 0;
   margin-left: auto;
   margin-right: auto;
 }
 
 .div--syntaxBackground .p--syntaxCode {
   text-align: left;
+  margin-top: 0;
   margin-left: auto;
   margin-right: auto;
 }
@@ -772,6 +780,10 @@ a {
   position: relative;
   width: 65%;
   min-width: 450px;
+}
+
+#form--exercise p {
+  margin-bottom: 1em;
 }
 
 #form--exercise textarea {
@@ -1334,5 +1346,9 @@ svg rect {
 
 .div--error p {
   color: #f47474;
+}
+
+.bold {
+  font-weight: 700;
 }
 /*# sourceMappingURL=style.css.map */
