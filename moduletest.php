@@ -94,12 +94,11 @@ if (!isset($_GET['result'])) {
     foreach ($userAchievements as $userAch) {
         if ($userAch->unread == true) {
             // display notification
-            $achData = $achievement->getAchievement($userAch->achievementID);
             $achPopupHTML .= "
-            <div id='divAchPopup' class='div--achievedPopup'>
-                <img src='$achData->imageURL' />
-                <p>You've earned the badge:<br><span>$achData->name</span></p>
-            </div>";
+                <div id='divAchPopup' class='div--achievedPopup'>
+                    <img src='$userAch->imageURL' />
+                    <p>You've earned the badge:<br><span>$userAch->name</span></p>
+                </div>";
             $achievement->markReadUserAchievement($userID, $userAch->achievementID);
         }
     }

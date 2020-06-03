@@ -34,21 +34,7 @@ class Segment extends Dbh
     {
         try {
             $db = $this->connectDB();
-            $q = $db->prepare('SELECT * FROM segment WHERE segmentID= :segmentID');
-            $q->bindValue(':segmentID', $segmentID);
-            $q->execute();
-            $data = $q->fetch();
-            return $data;
-        } catch (PDOException $ex) {
-            echo $ex;
-        }
-    }
-
-    public function getSegmentExercise($segmentID)
-    {
-        try {
-            $db = $this->connectDB();
-            $q = $db->prepare('SELECT * FROM exercise WHERE segmentID= :segmentID');
+            $q = $db->prepare('SELECT * FROM segment JOIN exercise ON segment.segmentID = exercise.segmentID WHERE exercise.segmentID= :segmentID');
             $q->bindValue(':segmentID', $segmentID);
             $q->execute();
             $data = $q->fetch();

@@ -37,7 +37,7 @@ class Achievement extends Dbh
     {
         try {
             $db = $this->connectDB();
-            $q = $db->prepare('SELECT * FROM userachievement WHERE userID= :userID');
+            $q = $db->prepare('SELECT * FROM achievement JOIN userachievement ON achievement.achievementID = userachievement.achievementID WHERE userachievement.userID = :userID');
             $q->bindValue(':userID', $userID);
             $q->execute();
             $data = $q->fetchAll();

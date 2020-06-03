@@ -11,7 +11,6 @@ $segmentsByModule = $segment->getSegmentsByModule($moduleID);
 
 $segmentID = isset($_GET['segid']) ? $_GET['segid'] : $segmentsByModule[0]->segmentID;
 $segContent = $segment->getSegmentContent($segmentID);
-$segExercise = $segment->getSegmentExercise($segmentID);
 
 require_once('components/moduleOverview.php');
 
@@ -71,10 +70,10 @@ if (strpos($segContent->mediaURL, 'youtube') !== false) {
 
                 <div class="div--exerciseContent">
                     <h3>Exercise</h3>
-                    <p><?= $segExercise->exerciseContent ?></p>
+                    <p><?= $segContent->exerciseContent ?></p>
                     <form id="form--exercise" action="api/api-check-exercise.php" onsubmit="return false">
                         <textarea name="exerciseAnswer" placeholder="Type your answer here.."></textarea>
-                        <button type="submit" onclick="checkExAnswer(<?= $segExercise->exerciseID ?>, <?= $segmentID ?>)">Check your answer</button>
+                        <button type="submit" onclick="checkExAnswer(<?= $segContent->exerciseID ?>, <?= $segmentID ?>)">Check your answer</button>
                         <div id="exFeedback" class="div--feedback">Feedback</div>
                     </form>
                 </div>

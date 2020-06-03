@@ -1,8 +1,5 @@
 <?php
 
-// TO DO:
-// fix input icons
-
 session_start();
 $userID = $_SESSION['userID'];
 
@@ -16,13 +13,13 @@ $moduleTest = new ModuleTest();
 
 $lastModule = $progress->getLatestModuleByUser($userID); // unlocked but not completed yet
 if ($lastModule) {
-    $lastModuleTitle = $module->getModuleTitle($lastModule->moduleID);
+    $lastModuleTitle = $lastModule->title;
     $moduleNumber = substr($lastModule->moduleID, -2);
     $displayModuleHTML = "<p>$moduleNumber </p><p>$lastModuleTitle</p>";
 
     // progress in last left module
     $segmentsByModule = $progress->getSegmentProgressByModule($userID, $lastModule->moduleID);
-    $totalSegInLast = count($segmentsByModule) + 1; // + 1 is for the test FIX ME: misses test below
+    $totalSegInLast = count($segmentsByModule) + 1; // + 1 is for the test
 
     $completedSegInLast = [];
     foreach ($segmentsByModule as $segment) {
@@ -64,7 +61,6 @@ if ($lastModule) {
 
 $achievement = new Achievement();
 $allAchievements = $achievement->getAllAchievements();
-$userAchievements = $achievement->getUserAchievements($userID);
 $achievementsHTML = '';
 
 foreach ($allAchievements as $ach) {

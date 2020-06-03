@@ -33,11 +33,12 @@ class UserProgress extends Dbh
         }
     }
 
+
     public function getLatestModuleByUser($userID)
     {
         try {
             $db = $this->connectDB();
-            $q = $db->prepare('SELECT * FROM moduleprogress WHERE userID= :userID AND unlocked= 1 AND completed= 0 LIMIT 1');
+            $q = $db->prepare('SELECT * FROM module JOIN moduleprogress ON module.moduleID = moduleprogress.moduleID WHERE moduleprogress.userID = :userID AND unlocked= 1 AND completed= 0 LIMIT 1');
             $q->bindValue(':userID', $userID);
             $q->execute();
             $data = $q->fetch();
@@ -98,6 +99,23 @@ class UserProgress extends Dbh
         }
     }
 
+    public function getSegmentProgressByModule($userID, $moduleID)
+    {
+        try {
+            $db = $this->connectDB();
+            $q = $db->prepare('SELECT * FROM segmentprogress WHERE userID= :userID  AND segmentID IN 
+            (SELECT segment.segmentID FROM segment WHERE moduleID= :moduleID)');
+            $q->bindValue(':userID', $userID);
+            $q->bindValue(':moduleID', $moduleID);
+            $q->execute();
+            $data = $q->fetchAll();
+            return $data;
+        } catch (PDOException $ex) {
+            echo $ex;
+        }
+    }
+
+
     public function getSegmentProgress($userID, $segmentID)
     {
         try {
@@ -119,22 +137,6 @@ class UserProgress extends Dbh
             $db = $this->connectDB();
             $q = $db->prepare('SELECT * FROM segmentprogress WHERE userID= :userID AND completed= true');
             $q->bindValue(':userID', $userID);
-            $q->execute();
-            $data = $q->fetchAll();
-            return $data;
-        } catch (PDOException $ex) {
-            echo $ex;
-        }
-    }
-
-    public function getSegmentProgressByModule($userID, $moduleID)
-    {
-        try {
-            $db = $this->connectDB();
-            $q = $db->prepare('SELECT * FROM segmentprogress WHERE userID= :userID  AND segmentID IN 
-            (SELECT segment.segmentID FROM segment WHERE moduleID= :moduleID)');
-            $q->bindValue(':userID', $userID);
-            $q->bindValue(':moduleID', $moduleID);
             $q->execute();
             $data = $q->fetchAll();
             return $data;
