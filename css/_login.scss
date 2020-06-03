@@ -10,6 +10,7 @@
 .leftdiv--login,
 .leftdiv--signup {
   background-image: url("../assets/path_background.png");
+  background-size: cover; 
   height: 100%;
 }
 .rightdiv--login,
@@ -30,8 +31,9 @@
     }
   }
 
-  img {
-    margin-top: 60px;
+  #i_logo {
+    margin-top: 40%;
+    margin-bottom: 10%;
   }
 }
 
