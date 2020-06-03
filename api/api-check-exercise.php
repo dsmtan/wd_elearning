@@ -8,7 +8,7 @@ $userAnswer = trim($_POST['exerciseAnswer']);
 $segment = new Segment();
 $exercise = $segment->getExerciseByID($exerciseID);
 
-if ($exercise->correctAnswer == $userAnswer) {
+if (strtolower($exercise->correctAnswer) == strtolower($userAnswer)) {
     echo 'correct';
     exit();
 };
