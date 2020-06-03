@@ -713,6 +713,23 @@ a {
   margin-bottom: 2em;
 }
 
+.art--segmentContent table {
+  border-collapse: collapse;
+  width: 65%;
+  margin: 1em 0;
+}
+
+.art--segmentContent td,
+.art--segmentContent th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 5px;
+}
+
+.art--segmentContent tr:nth-child(even) {
+  background-color: #eef6ff;
+}
+
 .div--syntaxBackground {
   background-color: #eef6ff;
   text-align: center;
@@ -897,7 +914,7 @@ a {
   position: sticky;
   top: 0;
   background-color: #142056;
-  height: 100%;
+  height: 100vh;
 }
 
 .art--moduleOverview div {
