@@ -10,7 +10,7 @@ class ModuleTest extends Dbh
             $q = $db->prepare('SELECT * FROM moduletest WHERE moduleID= :moduleID');
             $q->bindValue(':moduleID', $moduleID);
             $q->execute();
-            $data = $q->fetch(); // returns array
+            $data = $q->fetch();
             return $data->testID;
         } catch (PDOException $ex) {
             echo $ex;

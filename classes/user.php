@@ -15,7 +15,6 @@ class User extends Dbh
             $q->bindValue(':password', $password);
             $q->execute();
             return $db->lastInsertId();
-            // FIX ME: create moduleprogress for each module when user is created
         } catch (PDOException $ex) {
             echo $ex;
         }
@@ -71,7 +70,7 @@ class User extends Dbh
             $db = $this->connectDB();
             $q = $db->prepare('SELECT * FROM user');
             $q->execute();
-            $data = $q->fetchAll(); // returns array
+            $data = $q->fetchAll();
             return $data;
         } catch (PDOException $ex) {
             echo $ex;

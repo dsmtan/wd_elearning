@@ -66,7 +66,7 @@ class Achievement extends Dbh
             $db = $this->connectDB();
             $q = $db->prepare('SELECT * FROM achievement');
             $q->execute();
-            $data = $q->fetchAll(); // returns array
+            $data = $q->fetchAll();
             return $data;
         } catch (PDOException $ex) {
             echo $ex;

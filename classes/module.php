@@ -9,7 +9,7 @@ class Module extends Dbh
             $db = $this->connectDB();
             $q = $db->prepare('SELECT * FROM module');
             $q->execute();
-            $data = $q->fetchAll(); // returns array
+            $data = $q->fetchAll();
             return $data;
         } catch (PDOException $ex) {
             echo $ex;
