@@ -11,6 +11,8 @@ $progress = new UserProgress();
 $module = new Module();
 $moduleTest = new ModuleTest();
 
+$introText = 'You\'re doing great, keep up the good work!';
+
 $lastModule = $progress->getLatestModuleByUser($userID); // unlocked but not completed yet
 if ($lastModule) {
     $lastModuleTitle = $lastModule->title;
@@ -36,16 +38,20 @@ if ($lastModule) {
     if (count($completedSegInLast) > 0) {
         if (count($completedSegInLast) < count($segmentsByModule)) {
             $leftOffSegment = $segmentsByModule[count($completedSegInLast)]->segmentID;
-            $leftOffLink = "<a href='module.php?id=$lastModule->moduleID&segid=$leftOffSegment'>Continue where you left off last time.</a>";
+            $leftOffLink = "<a href='module.php?id=$lastModule->moduleID&segid=$leftOffSegment'>Continue where you left off last time</a>";
         }
 
         if (count($completedSegInLast) == count($segmentsByModule)) {
             // user only needs to complete the test in last module
             $testID = $moduleTest->getTestByModule($lastModule->moduleID);
-            $leftOffLink = "<a href='moduletest.php?id=$lastModule->moduleID&testid=$testID'>Continue where you left off last time.</a>";
+            $leftOffLink = "<a href='moduletest.php?id=$lastModule->moduleID&testid=$testID'>Continue straight to the test</a>";
         }
+    } else if ($moduleNumber == '01') {
+        $introText = "Excited to learn lots of new things??";
+        $leftOffLink = "<a href='module.php?id=$lastModule->moduleID&segid=$leftOffSegment'>Start straight away!</a>";
     }
 } else { // course fully completed
+    $introText = 'Great job on completing the whole course!';
     $leftOffLink = '';
     $allModules = $module->getAllModules();
     $finishedModuleID = $allModules[count($allModules) - 1]->moduleID;
@@ -93,7 +99,7 @@ foreach ($allAchievements as $ach) {
         <section class="section--dashboardContent">
             <article class="art--userIntro">
                 <h3>Welcome<span id="spanIntroName"></span>!</h3>
-                <p>You're doing great, keep up the good work!</p>
+                <p><?= $introText ?></p>
                 <?= $leftOffLink ?>
             </article>
             <article class="art--userPersonal">
