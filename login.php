@@ -36,7 +36,8 @@ if (isset($_SESSION['userID'])) {
         <div class="leftdiv--login"></div>
         <div class="rightdiv--login">
 
-            <img src="assets/logo_start.jpg" alt="logo">
+            <!-- <img src="assets/logo_start.jpg" alt="logo"> -->
+            <div id="i_logo"></div>
             <h1>Welcome!</h1>
 
             <form id="formLoginUser" action="api/api-login.php" method="POST">
@@ -51,7 +52,8 @@ if (isset($_SESSION['userID'])) {
 
             <p class="p--login">Don't have an account? <a href="signup.php">Sign Up</a></p>
 
-
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.6/gsap.min.js"></script>
+            <script src="js/login.js"></script>
         </div>
 </body>
 

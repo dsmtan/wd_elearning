@@ -32,7 +32,7 @@ if (isset($_SESSION['errorMessage'])) {
         <div class="leftdiv--signup"></div>
         <div class="rightdiv--signup">
 
-            <img src="assets/logo_start.jpg" alt="logo">
+            <div id="i_logo"></div>
             <h1>Welcome!</h1>
 
             <form id="formSignupUser" action="api/api-signup.php" method="POST">
@@ -51,6 +51,9 @@ if (isset($_SESSION['errorMessage'])) {
             <p class="p--login">Already have an account? <a href="login.php">Log in</a></p>
 
         </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.6/gsap.min.js"></script>
+        <script src="js/login.js"></script>
 
 </body>
 

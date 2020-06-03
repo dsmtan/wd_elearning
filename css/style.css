@@ -1275,6 +1275,7 @@ svg rect {
 .leftdiv--login,
 .leftdiv--signup {
   background-image: url("../assets/path_background.png");
+  background-size: cover;
   height: 100%;
 }
 
@@ -1300,9 +1301,10 @@ svg rect {
   font-weight: 900;
 }
 
-.rightdiv--login img,
-.rightdiv--signup img {
-  margin-top: 60px;
+.rightdiv--login #i_logo,
+.rightdiv--signup #i_logo {
+  margin-top: 40%;
+  margin-bottom: 10%;
 }
 
 #formLoginUser,
