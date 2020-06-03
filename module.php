@@ -65,7 +65,7 @@ if (strpos($segContent->mediaURL, 'youtube') !== false) {
             <article class="art--segmentContent">
                 <?= $bookmarkButton ?>
                 <h2><?= $segContent->title ?></h2>
-                <p><?= $segContent->explanation ?></p>
+                <div class="div--explanation"><?= $segContent->explanation ?></div>
 
 
                 <div class="div--exerciseContent">
