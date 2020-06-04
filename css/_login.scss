@@ -10,7 +10,7 @@
 .leftdiv--login,
 .leftdiv--signup {
   background-image: url("../assets/path_background.png");
-  background-size: cover; 
+  background-size: cover;
   height: 100%;
 }
 .rightdiv--login,
@@ -52,6 +52,10 @@
     @include primaryButton;
     position: relative;
     float: right;
+
+    &:hover {
+      background-color: $mediumblue;
+    }
   }
 }
 

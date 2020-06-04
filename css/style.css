@@ -678,6 +678,24 @@ a {
       grid-template-rows: auto 100px;
 }
 
+table {
+  border-collapse: collapse;
+  width: 65%;
+  margin: 1em auto;
+  background-color: white;
+}
+
+table td,
+table th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 5px;
+}
+
+table tr:nth-child(even) {
+  background-color: #eef6ff;
+}
+
 .art--segmentContent {
   position: relative;
   display: block;
@@ -714,20 +732,7 @@ a {
 }
 
 .art--segmentContent table {
-  border-collapse: collapse;
-  width: 65%;
   margin: 1em 0;
-}
-
-.art--segmentContent td,
-.art--segmentContent th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 5px;
-}
-
-.art--segmentContent tr:nth-child(even) {
-  background-color: #eef6ff;
 }
 
 .div--syntaxBackground {
@@ -849,6 +854,8 @@ a {
 }
 
 #form--exercise .div--feedback {
+  position: absolute;
+  left: 0;
   display: none;
   width: calc(100% - 14em);
   padding: 10px;
@@ -1194,7 +1201,7 @@ svg rect {
 }
 
 .div--achNotifications {
-  position: absolute;
+  position: fixed;
   top: 1em;
   right: 366px;
 }
@@ -1358,6 +1365,11 @@ svg rect {
   outline: none;
   position: relative;
   float: right;
+}
+
+#formLoginUser button:hover,
+#formSignupUser button:hover {
+  background-color: #182391;
 }
 
 .div--error {

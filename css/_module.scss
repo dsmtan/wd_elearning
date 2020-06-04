@@ -8,6 +8,24 @@
   grid-template-rows: auto 100px;
 }
 
+table {
+  border-collapse: collapse;
+  width: 65%;
+  margin: 1em auto;
+  background-color: white;
+
+  td,
+  th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 5px;
+  }
+
+  tr:nth-child(even) {
+    background-color: $backgroundblue;
+  }
+}
+
 .art--segmentContent {
   position: relative;
   display: block;
@@ -41,20 +59,7 @@
   }
 
   table {
-    border-collapse: collapse;
-    width: 65%;
     margin: 1em 0;
-  }
-
-  td,
-  th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 5px;
-  }
-
-  tr:nth-child(even) {
-    background-color: $backgroundblue;
   }
 }
 
@@ -166,6 +171,8 @@
   }
 
   .div--feedback {
+    position: absolute;
+    left: 0;
     display: none;
     width: calc(100% - 14em);
     padding: 10px;
