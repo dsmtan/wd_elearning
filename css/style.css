@@ -1384,4 +1384,172 @@ svg rect {
 .div--error p {
   color: #f47474;
 }
+
+.main--adminWrapper {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 90px 1fr;
+      grid-template-columns: 90px 1fr;
+  min-height: 100vh;
+}
+
+.section--adminContent {
+  background-color: #142056;
+  padding: 2em 9%;
+}
+
+.section--adminContent form label {
+  display: block;
+}
+
+.section--adminContent form input {
+  display: block;
+  padding: 15px 22px;
+  border-radius: 4px;
+  border: none;
+  background-color: #eef6ff;
+  width: 100%;
+  font-size: 0.9em;
+  margin: 15px 0;
+  display: inline-block;
+  width: 300px;
+  margin-right: 1em;
+  padding: 10px;
+  height: 38.4px;
+  background-color: white;
+  margin-bottom: 10px;
+}
+
+.section--adminContent form input:focus {
+  outline: none;
+}
+
+.section--adminContent form button {
+  display: block;
+  background-color: #142056;
+  color: white;
+  padding: 10px 35px;
+  border: none;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  outline: none;
+  display: inline-block;
+  background-color: #6bffe6;
+  color: #142056;
+}
+
+.section--adminContent h1 {
+  color: white;
+  text-align: center;
+  margin-bottom: 3em;
+}
+
+.section--adminContent h2 {
+  font-size: 1.2em;
+  font-weight: 600;
+  margin: 1.8em 0 1.2em;
+}
+
+.section--adminContent svg {
+  fill: #142056;
+  height: 17px;
+  cursor: pointer;
+}
+
+.section--adminContent svg:hover {
+  fill: #f47474;
+}
+
+.div--backgroundWrapper {
+  min-width: 720px;
+  background-color: #eef6ff;
+  padding: 3em 3em 6em;
+  border-radius: 5px;
+}
+
+.div--studentWrapper {
+  background-color: white;
+  border-radius: 5px;
+  margin-top: 1em;
+}
+
+.div--studentHeaders {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1.2fr 1.5fr 20px;
+      grid-template-columns: 1fr 1fr 1.2fr 1.5fr 20px;
+  -webkit-column-gap: 15px;
+          column-gap: 15px;
+  padding: 15px;
+  font-weight: bold;
+  text-align: left;
+  background-color: #a4cbf5;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.div--studentRow {
+  width: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1.2fr 1.5fr 20px;
+      grid-template-columns: 1fr 1fr 1.2fr 1.5fr 20px;
+  -webkit-column-gap: 15px;
+          column-gap: 15px;
+  border-top: 1px solid #a4cbf5;
+  padding: 15px;
+  text-align: left;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.div--studentRow progress[value] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+       appearance: none;
+  width: 100%;
+  min-width: 190px;
+  height: 20px;
+  margin: 8px 0;
+}
+
+.div--studentRow progress[value]::-webkit-progress-bar {
+  background-color: #a4cbf5;
+  border-radius: 22px;
+  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15) inset;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15) inset;
+}
+
+.div--studentRow progress[value]::-webkit-progress-value {
+  background-color: #6bffe6;
+  border-radius: 22px;
+  background-size: 35px 20px, 100% 100%, 100% 100%;
+}
+
+.div--studentRow progress[value] {
+  width: 90%;
+  min-width: 0;
+  height: 12px;
+  margin: 0;
+}
+
+.div--emptyStudents {
+  width: 100%;
+  padding: 15px;
+}
+
+#pAddError {
+  height: 1.5em;
+  color: #f47474;
+  font-size: 0.9em;
+}
+
+@media screen and (min-width: 1250px) {
+  .section--adminContent {
+    padding: 2em 17%;
+  }
+}
 /*# sourceMappingURL=style.css.map */

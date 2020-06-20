@@ -1,0 +1,119 @@
+.main--adminWrapper {
+  @include generalBodyLayout;
+}
+
+.section--adminContent {
+  background-color: $darkblue;
+  padding: 2em 9%;
+
+  form {
+    label {
+      display: block;
+    }
+
+    input {
+      @include formInput;
+      display: inline-block;
+      width: 300px;
+      margin-right: 1em;
+      padding: 10px;
+      height: 38.4px;
+      background-color: white;
+      margin-bottom: 10px;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    button {
+      @include primaryButton;
+      display: inline-block;
+      background-color: $mint;
+      color: $darkblue;
+    }
+  }
+
+  h1 {
+    color: white;
+    text-align: center;
+    margin-bottom: 3em;
+  }
+
+  h2 {
+    font-size: 1.2em;
+    font-weight: 600;
+    margin: 1.8em 0 1.2em;
+  }
+
+  svg {
+    fill: $darkblue;
+    height: 17px;
+    cursor: pointer;
+
+    &:hover {
+      fill: $red;
+    }
+  }
+}
+
+.div--backgroundWrapper {
+  min-width: 720px;
+  background-color: $backgroundblue;
+  padding: 3em 3em 6em;
+  border-radius: 5px;
+}
+
+.div--studentWrapper {
+  background-color: white;
+  border-radius: 5px;
+  margin-top: 1em;
+}
+
+.div--studentHeaders {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.2fr 1.5fr 20px;
+  column-gap: 15px;
+  padding: 15px;
+  font-weight: bold;
+  text-align: left;
+  background-color: $lightblue;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.div--studentRow {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.2fr 1.5fr 20px;
+  column-gap: 15px;
+  border-top: 1px solid $lightblue;
+  padding: 15px;
+  text-align: left;
+  align-items: center;
+
+  @include progressBar;
+  progress[value] {
+    width: 90%;
+    min-width: 0;
+    height: 12px;
+    margin: 0;
+  }
+}
+
+.div--emptyStudents {
+  width: 100%;
+  padding: 15px;
+}
+
+#pAddError {
+  height: 1.5em;
+  color: $red;
+  font-size: 0.9em;
+}
+
+@media screen and (min-width: 1250px) {
+  .section--adminContent {
+    padding: 2em 17%;
+  }
+}
