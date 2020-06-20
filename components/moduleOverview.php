@@ -1,4 +1,6 @@
 <?php
+include_once('includes/calc-module-progress.php');
+include_once('includes/calc-course-progress.php');
 
 $userID = $_SESSION['userID'];
 $urlPath = $_SERVER['REQUEST_URI'];
@@ -9,8 +11,8 @@ $isTest = strpos(basename($urlPath), 'moduletest.php') === 0;
 $moduleTest = new ModuleTest();
 $testID = $moduleTest->getTestByModule($moduleID);
 
-include_once('includes/calc-course-progress.php');
-include_once('includes/calc-module-progress.php');
+$courseProgress = calcCourseProgress($userID);
+$progressInModule = calcModuleProgress($userID, $moduleID, $testID);
 
 $module = new Module();
 $moduleTitle = $module->getModuleTitle($moduleID);

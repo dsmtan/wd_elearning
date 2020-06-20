@@ -1,10 +1,12 @@
 <?php
 
+include 'includes/autoloader.php';
+include_once('includes/calc-course-progress.php');
+
 session_start();
 $userID = $_SESSION['userID'];
 
-include 'includes/autoloader.php';
-include_once('includes/calc-course-progress.php');
+$courseProgress = calcCourseProgress($userID);
 
 $segment = new Segment();
 $progress = new UserProgress();

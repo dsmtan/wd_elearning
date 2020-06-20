@@ -1,5 +1,6 @@
 <?php
 include 'includes/autoloader.php';
+include 'includes/calc-module-progress.php';
 
 
 session_start();
@@ -35,7 +36,7 @@ foreach ($allModules as $module) {
     $moduleTest = new ModuleTest();
     $testID = $moduleTest->getTestByModule($moduleID);
 
-    include('includes/calc-module-progress.php');
+    $progressInModule = calcModuleProgress($userID, $moduleID, $testID);
 
     $modulesHTML .= "
     <div class='div--moduleStatus' id='info_module$moduleID'>
