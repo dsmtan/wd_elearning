@@ -173,6 +173,20 @@ class UserProgress extends Dbh
         }
     }
 
+    public function getPassedTestsByUser($userID)
+    {
+        try {
+            $db = $this->connectDB();
+            $q = $db->prepare('SELECT * FROM usertestresult WHERE userID= :userID AND testScore > 79');
+            $q->bindValue(':userID', $userID);
+            $q->execute();
+            $data = $q->fetchAll();
+            return $data;
+        } catch (PDOException $ex) {
+            echo $ex;
+        }
+    }
+
     public function getTestResult($userID, $testID)
     {
         try {

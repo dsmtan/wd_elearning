@@ -1,10 +1,13 @@
 <?php
 
 // needs userID
+$module = new Module();
+$totalModules = count($module->getAllModules());
 
 $segment = new Segment();
-$totalSegments = count($segment->getAllSegments());
+$totalCourseSteps = count($segment->getAllSegments()) + $totalModules;
 
 $progress = new UserProgress();
 $completedSegments = count($progress->getCompletedSegmentsByUser($userID));
-$courseProgress = round(($completedSegments / $totalSegments) * 100, 2);
+$completedTests = count($progress->getPassedTestsByUser($userID));
+$courseProgress = round((($completedSegments + $completedTests) / $totalCourseSteps) * 100, 2);
