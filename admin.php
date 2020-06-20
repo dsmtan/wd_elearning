@@ -14,6 +14,12 @@ $students = $classRoom->getStudentsByTeacher($userID);
 $studentsHTML = '';
 
 if ($students) {
+    function compare($a, $b)
+    {
+        return strcmp($a->firstName, $b->firstName);
+    }
+    usort($students, "compare");
+
     foreach ($students as $student) {
         $studentProgress = calcCourseProgress($student->userID);
         $studentsHTML .=
