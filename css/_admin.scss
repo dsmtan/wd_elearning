@@ -31,6 +31,11 @@
       display: inline-block;
       background-color: $mint;
       color: $darkblue;
+
+      &:hover {
+        background-color: $mediumblue;
+        color: white;
+      }
     }
   }
 
@@ -98,6 +103,9 @@
     min-width: 0;
     height: 12px;
     margin: 0;
+  }
+  progress[value]::-webkit-progress-bar {
+    background-color: #b5c3d1;
   }
 }
 

@@ -67,6 +67,19 @@
       }
     }
   }
+
+  .a--classRoom {
+    height: 75px;
+    svg {
+      max-height: 49px;
+    }
+    path {
+      fill: $lightblue;
+    }
+    span {
+      margin-top: 8px;
+    }
+  }
 }
 
 .a--logout {
@@ -79,5 +92,11 @@
 .current {
   path {
     fill: $darkblue;
+  }
+
+  &.a--classRoom {
+    path {
+      fill: $darkblue;
+    }
   }
 }

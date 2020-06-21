@@ -91,4 +91,18 @@ class User extends Dbh
             echo $ex;
         }
     }
+
+    public function checkIfTeacher($userID)
+    {
+        try {
+            $db = $this->connectDB();
+            $q = $db->prepare('SELECT teacherAccess FROM user WHERE userID= :id AND teacherAccess=1');
+            $q->bindValue(':id', $userID);
+            $q->execute();
+            $data = $q->fetch();
+            return $data;
+        } catch (PDOException $ex) {
+            echo $ex;
+        }
+    }
 }

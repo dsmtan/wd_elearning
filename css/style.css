@@ -121,12 +121,32 @@ a {
   fill: #182391;
 }
 
+.div--navLinks .a--classRoom {
+  height: 75px;
+}
+
+.div--navLinks .a--classRoom svg {
+  max-height: 49px;
+}
+
+.div--navLinks .a--classRoom path {
+  fill: #a4cbf5;
+}
+
+.div--navLinks .a--classRoom span {
+  margin-top: 8px;
+}
+
 .a--logout:hover {
   color: #182391;
   font-weight: 700;
 }
 
 .current path {
+  fill: #142056;
+}
+
+.current.a--classRoom path {
   fill: #142056;
 }
 
@@ -1440,6 +1460,11 @@ svg rect {
   color: #142056;
 }
 
+.section--adminContent form button:hover {
+  background-color: #182391;
+  color: white;
+}
+
 .section--adminContent h1 {
   color: white;
   text-align: center;
@@ -1534,6 +1559,10 @@ svg rect {
   min-width: 0;
   height: 12px;
   margin: 0;
+}
+
+.div--studentRow progress[value]::-webkit-progress-bar {
+  background-color: #b5c3d1;
 }
 
 .div--emptyStudents {
